@@ -3,22 +3,24 @@
 }
 #menu-block{
   position: fixed;
-  right: 0;
+  top: 0;
   left: 0;
   height: 100%;
-}
-#menu{
-  height: 100%;
-  margin-top: 80px;
-  display: inline-block;
   background-color: #f8f8f8;
   border-right: 1px solid #e7e7e7;
 }
-#menu li{
-  display: block;
+
+#right-block{
+  position: fixed;
+  top: 50%;
+  right: 5px;
 }
 
-
-#main-block{
+#menu-block,#main-block{
   margin-top: 80px;
 }
+#right-block{
+  margin-top: -80px;
+}
+
+

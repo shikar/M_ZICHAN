@@ -17,7 +17,7 @@
       <script src="js/html5shiv.min.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
-    <script src="js/holder.min.js"></script>
+    
   </head>
   <body>
     <div id="header-block"></div>
@@ -85,19 +85,39 @@
         </div>
       </div>
     </div>
-
+    <footer>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                Copyright © 2016 Shanghai Data Magic Information Technology Co., ltd. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 
-    
+    <script src="js/holder.min.js"></script>
     <script type="text/javascript">
     <!--
-    $( "#header-block" ).load( "https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/header.html" );
-    $( "#menu-block" ).load( "https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/menu.html" );
-    $( "#right-block" ).load( "https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/right.html" );
+    var loadcount = 0;
+    function docLoad() {
+        loadcount++;
+        if(loadcount < 4) return;
+
+        Holder.run();
+    }
+    if (navigator.userAgent.toLowerCase().match(/chrome/) != null) {
+        $( "#header-block" ).load( "https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/header.html", function(){docLoad()});
+        $( "#menu-block" ).load( "https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/menu.html", function(){docLoad()});
+        $( "#right-block" ).load( "https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/right.html", function(){docLoad()});
+    } else {
+        $( "#header-block" ).load( "header.html", function(){docLoad()});
+        $( "#menu-block" ).load( "menu.html", function(){docLoad()});
+        $( "#right-block" ).load( "right.html", function(){docLoad()});
+    }
+    $(document).ready(function(){docLoad()});
     //-->
     </script>
   </body>
