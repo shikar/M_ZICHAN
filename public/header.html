@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="pull-left" style="padding: 6px 0;">
-    <a class="btn btn-link" href=""><span class="glyphicon glyphicon-home"></span></a><br>
-    <a class="btn btn-link" href=""><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+    <a class="btn btn-link" href="javascript:void(null)"><span class="glyphicon glyphicon-home"></span></a><br>
+    <a class="btn btn-link btn-menu-toggle" href="javascript:void(null)"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
   </div>
   <div class="container">
     <div class="navbar-header">
@@ -18,8 +18,8 @@
           <img data-src="holder.js/100x60" data-holder-rendered="true">
           <img data-src="holder.js/100x60" data-holder-rendered="true">
         </div>
-        <div class="col-sm-6 text-center">
-          <form class="form-group" role="search" id="top-search">
+        <div class="col-sm-6 text-center" id="top-search">
+          <form class="form-group" role="search">
             <div class="input-group">
               <span class="input-group-btn dropdown">
                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,8 +33,6 @@
               </span>
               <input type="text" name="key" class="form-control" placeholder="当前目录下需要的功能">
               <ul class="dropdown-menu search-tip">
-                <li><a href="javascript:void(null)">搜索本目录</a></li>
-                <li><a href="javascript:void(null)">搜索全部目录</a></li>
               </ul>
               <input type="hidden" name="type" class="form-control" value="cur">
               <span class="input-group-btn">
@@ -42,13 +40,8 @@
               </span>
             </div>
           </form>
-          <ul class="list-unstyled list-inline">
+          <ul class="list-unstyled list-inline search-hot">
             <li>热搜:</li>
-            <li><a href="javascript:void(null)">数据集查询</a></li>
-            <li><a href="javascript:void(null)">数据元查询</a></li>
-            <li><a href="javascript:void(null)">代码查询</a></li>
-            <li><a href="javascript:void(null)">指标查询</a></li>
-            <li><a href="javascript:void(null)">居民主数据维护</a></li>
           </ul>
         </div>
         <div class="col-sm-1" style="padding: 23px 0;">

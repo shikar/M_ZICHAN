@@ -1,4 +1,4 @@
-#top-search{
+#top-search form{
   margin: 10px 0 5px 0;
 }
 #top-search .search-tip{
@@ -14,8 +14,10 @@
   background-color: #f8f8f8;
   border-right: 1px solid #e7e7e7;
 }
-#menu-block .txt,#menu-block .caret{
-  display: none;
+#menu-block .txt{
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 #menu-block .nav-pills>li>a, #menu-block .nav-pills>li>a:hover{

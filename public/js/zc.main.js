@@ -7,7 +7,7 @@
     this.loadCount = 0
     this.urlPath = ''
 
-    if (navigator.userAgent.toLowerCase().match(/chrome/) != null) urlPath = this.opts.localAccessUrl
+    if (navigator.userAgent.toLowerCase().match(/chrome/) != null) this.urlPath = this.opts.localAccessUrl
 
     this.loadBlock()
   }
@@ -18,6 +18,7 @@
     , init: function() {
         Holder.run()
         this.initTopSearch()
+        this.initMenuBlock()
         this.initRightBlock()
 
 
@@ -43,22 +44,36 @@
 
     /* 加载顶部搜索 */
     , initTopSearch: function() {
+        // 搜索提示框
+        $('#top-search .search-tip').on('click', 'li a', $.proxy(this.onSearchTipSel, this))
         // 输入框监听
         $('#top-search input[name=key]').bind({
           input: $.proxy(this.onTopSearchInput, this),
           blur: $.proxy(this.onTopSearchBlur, this),
           keyup: $.proxy(this.onTopSearchKeyup, this),
         })
-        // 搜索提示框
-        $('#top-search .search-tip').on('click', 'li a', $.proxy(this.onSearchTipSel, this))
         // 提交搜索
         $('#top-search .btn-search').bind('click', $.proxy(this.onTopSearchClick, this))
         // 目录选择
-        $('#top-search .search-type-option').bind('click', $.proxy(this.onTopSearchSelect, this))
+        $('#top-search .search-type-option li a').bind('click', $.proxy(this.onTopSearchSelect, this))
+        // 热门搜索载入
+        $.ajax({
+          url: this.urlPath + this.opts.ajaxSearchHot,
+          dataType: "json",
+          success: $.proxy(this.onAjaxSearchHotResult, this)
+        })
+        $('#top-search .search-hot').on('click', 'li a', $.proxy(this.onSearchHotClick, this))
+      }
+    , goSearch: function(key, type) {
+        $.ajax({
+          url: this.urlPath + this.opts.ajaxSearch,
+          dataType: "json",
+          data: {key: key, type: type},
+          success: $.proxy(this.onAjaxSearchResult, this)
+        })
       }
     , onTopSearchClick: function(e) {
-        $('#top-search input[name=key]').val()
-        $('#top-search input[name=type]').val()
+        this.goSearch($('#top-search input[name=key]').val(), $('#top-search input[name=type]').val());
       }
     , onTopSearchSelect: function(e) {
         var self = $(e.currentTarget)
@@ -69,16 +84,26 @@
     , onTopSearchInput: function(e) {
         var self = $(e.currentTarget)
         $.ajax({
-          url: this.urlPath + this.opts.searchTipAjax,
+          url: this.urlPath + this.opts.ajaxSearchTip,
           dataType: "json",
-          data: {search: self.val()},
-          success: $.proxy(this.onSearchTipAjaxResult, this)
+          data: {search: self.val(), type:$('#top-search input[name=type]').val()},
+          success: $.proxy(this.onAjaxSearchTipResult, this)
         })
       }
-    , onSearchTipAjaxResult: function(json) {
+    , onSearchHotClick: function(e) {
+        var self = $(e.currentTarget)
+        this.goSearch(self.text(), 'all');
+      }
+    , onAjaxSearchHotResult: function(json) {
+        if (json.length <= 0) return
+        for (var i = 0; i < json.length; i++)
+          $('#top-search .search-hot').append($.sprintf(this.opts.tplSearchHot, json[i]))
+      }
+    , onAjaxSearchTipResult: function(json) {
         if (json.length > 0) {
           $('#top-search .search-tip').empty()
-          for (var i = 0; i < json.length; i++) $('#top-search .search-tip').append($.sprintf(this.opts.searchTipTpl, json[i]))
+          for (var i = 0; i < json.length; i++)
+            $('#top-search .search-tip').append($.sprintf(this.opts.tplSearchTip, json[i]))
           $('#top-search .search-tip').css({
             left: $('#top-search input[name=key]').position().left,
             width: $('#top-search input[name=key]').outerWidth()
@@ -88,13 +113,16 @@
           $('#top-search .search-tip').empty().hide()
         }
       }
+    , onAjaxSearchResult: function (json) {
+
+      }
     , onSearchTipSel: function(e) {
         var self = $(e.currentTarget)
         $('#top-search input[name=key]').val(self.text())
         $('#top-search .search-tip').empty().hide()
       }
     , onTopSearchBlur: function(e) {
-        $('#top-search .search-tip').hide()
+        $('#top-search .search-tip').hide(500)
       }
     , onTopSearchKeyup: function(e) {
 
@@ -117,6 +145,17 @@
         $('#right-block').on('mouseenter','.list-group-item',function(e){
           $(e.target).focus()
         })
+      }
+
+
+
+    /* 创建菜单控制 */
+    , initMenuBlock: function() {
+        $('.btn-menu-toggle').bind('click', $.proxy(this.onMenuToggleClick, this))
+        $('#menu-block .txt').animate({width:'toggle'}, 0);
+      }
+    , onMenuToggleClick: function(e) {
+        $('#menu-block .txt').animate({width:'toggle'}, 200)
       }
 
 
@@ -144,8 +183,11 @@
     , includeHeader: 'header.html'
     , includeMenu: 'menu.html'
     , includeRight: 'right.html'
-    , searchTipAjax: 'json/searchTip.json'
-    , searchTipTpl: '<li><a href="javascript:void(null)">%s</a></li>'
+    , ajaxSearchTip: 'json/searchTip.json'
+    , ajaxSearchHot: 'json/searchHot.json'
+    , ajaxSearch: 'json/search.json'
+    , tplSearchTip: '<li><a href="javascript:void(null)">%s</a></li>'
+    , tplSearchHot: '<li><a href="javascript:void(null)">%s</a></li>'
   }
 
   $.fn.ZCMain.Constructor = ZCMain
