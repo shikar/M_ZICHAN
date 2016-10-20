@@ -60,17 +60,13 @@
         $.ajax({
           url: this.urlPath + this.opts.ajaxSearchHot,
           dataType: "json",
+          cache: false,
           success: $.proxy(this.onAjaxSearchHotResult, this)
         })
         $('#top-search .search-hot').on('click', 'li a', $.proxy(this.onSearchHotClick, this))
       }
     , goSearch: function(key, type) {
-        $.ajax({
-          url: this.urlPath + this.opts.ajaxSearch,
-          dataType: "json",
-          data: {key: key, type: type},
-          success: $.proxy(this.onAjaxSearchResult, this)
-        })
+        $('#main-block').ZCTopSearch('goSearch', key, type, 1);
       }
     , onTopSearchClick: function(e) {
         this.goSearch($('#top-search input[name=key]').val(), $('#top-search input[name=type]').val());
@@ -86,6 +82,7 @@
         $.ajax({
           url: this.urlPath + this.opts.ajaxSearchTip,
           dataType: "json",
+          cache: false,
           data: {search: self.val(), type:$('#top-search input[name=type]').val()},
           success: $.proxy(this.onAjaxSearchTipResult, this)
         })
@@ -112,9 +109,6 @@
         } else {
           $('#top-search .search-tip').empty().hide()
         }
-      }
-    , onAjaxSearchResult: function (json) {
-
       }
     , onSearchTipSel: function(e) {
         var self = $(e.currentTarget)
@@ -185,7 +179,6 @@
     , includeRight: 'right.html'
     , ajaxSearchTip: 'json/searchTip.json'
     , ajaxSearchHot: 'json/searchHot.json'
-    , ajaxSearch: 'json/search.json'
     , tplSearchTip: '<li><a href="javascript:void(null)">%s</a></li>'
     , tplSearchHot: '<li><a href="javascript:void(null)">%s</a></li>'
   }
