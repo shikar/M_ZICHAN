@@ -16,6 +16,10 @@
 
       constructor: ZCMain
     , init: function() {
+        $.ajaxSetup({
+          cache: false,
+          dataType: "json"
+        })
         Holder.run()
         this.initTopSearch()
         this.initMenuBlock()
@@ -59,8 +63,6 @@
         // 热门搜索载入
         $.ajax({
           url: this.urlPath + this.opts.ajaxSearchHot,
-          dataType: "json",
-          cache: false,
           success: $.proxy(this.onAjaxSearchHotResult, this)
         })
         $('#top-search .search-hot').on('click', 'li a', $.proxy(this.onSearchHotClick, this))
@@ -81,8 +83,6 @@
         var self = $(e.currentTarget)
         $.ajax({
           url: this.urlPath + this.opts.ajaxSearchTip,
-          dataType: "json",
-          cache: false,
           data: {search: self.val(), type:$('#top-search input[name=type]').val()},
           success: $.proxy(this.onAjaxSearchTipResult, this)
         })
