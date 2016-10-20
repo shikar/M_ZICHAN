@@ -21,21 +21,24 @@
         <div class="col-sm-6 text-center">
           <form class="form-group" role="search" id="top-search">
             <div class="input-group">
-              <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  搜索目录
+              <span class="input-group-btn dropdown">
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="txt">搜索本目录</span>
                   <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu">
-                  <li><a href="#">目录一</a></li>
-                  <li><a href="#">目录二</a></li>
-                  <li><a href="#">目录三</a></li>
-                  <li><a href="#">目录四</a></li>
+                <ul class="dropdown-menu search-type-option">
+                  <li><a href="javascript:void(null)" data-val="cur" data-placeholder="当前目录下需要的功能">搜索本目录</a></li>
+                  <li><a href="javascript:void(null)" data-val="all" data-placeholder="全部目录下需要的功能">搜索全部目录</a></li>
                 </ul>
-              </div>
-              <input type="text" class="form-control" placeholder="当前目录下需要的功能">
+              </span>
+              <input type="text" name="key" class="form-control" placeholder="当前目录下需要的功能">
+              <ul class="dropdown-menu search-tip">
+                <li><a href="javascript:void(null)">搜索本目录</a></li>
+                <li><a href="javascript:void(null)">搜索全部目录</a></li>
+              </ul>
+              <input type="hidden" name="type" class="form-control" value="cur">
               <span class="input-group-btn">
-                <button class="btn btn-default" type="button">搜索</button>
+                <button class="btn btn-success btn-search" type="button">搜索</button>
               </span>
             </div>
           </form>
