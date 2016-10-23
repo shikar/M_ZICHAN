@@ -20,18 +20,18 @@
 
         if (this.opts.pageTotal > 1) {
 
-          pagesRange = parseInt((this.opts.pageNum-1)/2)
+          pagesRange = parseInt((this.opts.pageRange-1)/2)
 
           if (this.opts.pageCur-pagesRange < 1) {
             pagesRangeMin = 1
-            pagesRangeMax = this.opts.pageNum
+            pagesRangeMax = this.opts.pageRange
           } else {
             pagesRangeMin = this.opts.pageCur-pagesRange
           }
           if (pagesRangeMax <= 0) {
             if (this.opts.pageCur+pagesRange > this.opts.pageTotal) {
               pagesRangeMax = this.opts.pageTotal
-              pagesRangeMin = this.opts.pageTotal - this.opts.pageNum + 1
+              pagesRangeMin = this.opts.pageTotal - this.opts.pageRange + 1
             } else {
               pagesRangeMax = this.opts.pageCur+pagesRange
             }
@@ -79,13 +79,13 @@
   }
 
   $.fn.ZCPagination1.defs = {
-      tplMain: '<nav aria-label="Page navigation"><ul class="pagination"></ul></nav>'
-    , pageNum: 7
-    , pageTotal: 10
-    , pageCur: 1
-    , tplPagePrev: '<li%s><a href="javascript:void(null)" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>'
-    , tplPageNext: '<li%s><a href="javascript:void(null)" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>'
-    , tplPageItem: '<li%s><a href="javascript:void(null)">%s</a></li>'
+      pageRange   : 7
+    , pageTotal   : 10
+    , pageCur     : 1
+    , tplMain     : '<nav aria-label="Page navigation"><ul class="pagination"></ul></nav>'
+    , tplPagePrev : '<li%s><a href="javascript:void(null)" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>'
+    , tplPageNext : '<li%s><a href="javascript:void(null)" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>'
+    , tplPageItem : '<li%s><a href="javascript:void(null)">%s</a></li>'
   }
 
   $.fn.ZCPagination1.Constructor = ZCPagination1
