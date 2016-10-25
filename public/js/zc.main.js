@@ -35,7 +35,7 @@
 
     /* 检测载入情况 */
     , loadBlock: function () {
-        $( "#header-block" ).load( this.urlPath + this.opts.includeHeader, $.proxy(this.onLoadedBlock, this))
+        $( "#header-block" ).load( this.urlPath + this.opts.includeHeader + '?' + Math.random(), $.proxy(this.onLoadedBlock, this))
         $( "#menu-block" ).load( this.urlPath + this.opts.includeMenu, $.proxy(this.onLoadedBlock, this))
         $( "#right-block" ).load( this.urlPath + this.opts.includeRight, $.proxy(this.onLoadedBlock, this))
       }

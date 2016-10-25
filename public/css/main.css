@@ -1,5 +1,13 @@
-#top-search form {
-  margin: 10px 0 5px 0;
+#top-search {
+  margin-top: 13px;
+  margin-bottom: 0;
+}
+
+
+@media (min-width: 991px) {
+  #top-search .input-group .form-control {
+    width: 350px;
+  }
 }
 #top-search .search-tip {
   margin-top: -1px;
@@ -16,7 +24,7 @@
   left: 0;
 
   height: 100%;
-  margin-top: 81px;
+  margin-top: 80px;
 
   border-right: 1px solid #e7e7e7;
   background-color: #f8f8f8;
@@ -38,7 +46,7 @@
 #right-block {
   position: fixed;
   z-index: 1040;
-  top: 50%;
+  top: 55%;
   right: 5px;
 
   margin-top: -80px;
@@ -67,7 +75,14 @@
 
 #main-block {
   min-height: 500px;
-  margin-top: 100px;
+  margin-top: 110px;
+}
+
+
+.form-inline .page-ipt {
+  width: 40px;
+
+  text-align: center;
 }
 
 

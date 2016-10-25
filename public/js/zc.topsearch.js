@@ -38,7 +38,7 @@
        * 搜索调用
        * @param  {String} key  搜索关键字
        * @param  {string} type 搜索类别(all|cur)
-       * @param  {Int} page 第几页 默认:1
+       * @param  {Number} page 第几页 默认:1
        */
     , goSearch: function(key, type, page) {
         this.el.html(this.opts.loadHtml)

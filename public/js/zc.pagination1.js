@@ -25,17 +25,21 @@
           if (this.opts.pageCur-pagesRange < 1) {
             pagesRangeMin = 1
             pagesRangeMax = this.opts.pageRange
-          } else {
-            pagesRangeMin = this.opts.pageCur-pagesRange
-          }
+          } else
+            pagesRangeMin = this.opts.pageCur - pagesRange
+
           if (pagesRangeMax <= 0) {
             if (this.opts.pageCur+pagesRange > this.opts.pageTotal) {
               pagesRangeMax = this.opts.pageTotal
               pagesRangeMin = this.opts.pageTotal - this.opts.pageRange + 1
-            } else {
-              pagesRangeMax = this.opts.pageCur+pagesRange
-            }
+            } else
+              pagesRangeMax = this.opts.pageCur + pagesRange
+
           }
+          if (pagesRangeMin < 1)
+            pagesRangeMin = 1
+          else if(pagesRangeMax > this.opts.pageTotal)
+            pagesRangeMax = this.opts.pageTotal
 
           this.el.html(this.opts.tplMain)
           $pagination = this.el.find('.pagination')
