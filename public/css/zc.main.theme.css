@@ -1,11 +1,12 @@
 .navbar-default {
+  color: #fff;
   border-color: #0099cb;
   background-color: #0099cb;
-  color: #fff;
 }
 
 .navbar-default .icon-home {
   position: fixed;
+
   padding: 0;
   padding-top: 1px;
 }
@@ -46,10 +47,23 @@
   color: #fff;
 }
 
-#menu-block .nav .open>a,
-#menu-block .nav .open>a:hover,
-#menu-block .nav .open>a:focus,
-#menu-block .nav>li>a:hover,
-#menu-block .nav>li>a:focus {
+#menu-block .nav .open > a,
+#menu-block .nav .open > a:hover,
+#menu-block .nav .open > a:focus,
+#menu-block .nav > li > a:hover,
+#menu-block .nav > li > a:focus {
   background-color: #22282e;
+}
+
+#right-block button.list-group-item:hover,
+#right-block a.list-group-item:focus,
+#right-block button.list-group-item:focus {
+  color: #0099cb;
+  background-color: #f4f8ff;
+}
+#right-block .list-group-item {
+  color: #0099cb;
+}
+#right-block .list-group-item:hover .txt {
+  background-color: #f4f8ff;
 }
