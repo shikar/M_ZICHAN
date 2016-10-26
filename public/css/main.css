@@ -19,12 +19,12 @@
 
 #menu-block {
   position: fixed;
-  z-index: 1020;
+  z-index: 1050;
   top: 0;
   left: 0;
 
   height: 100%;
-  margin-top: 80px;
+  margin-top: 81px;
 
   border-right: 1px solid #e7e7e7;
   background-color: #f8f8f8;
@@ -36,6 +36,8 @@
   overflow: hidden;
 
   white-space: nowrap;
+
+  padding-left: 8px;
 }
 #menu-block .nav-pills > li > a,
 #menu-block .nav-pills > li > a:hover {
