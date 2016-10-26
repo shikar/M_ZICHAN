@@ -23,7 +23,7 @@
         Holder.run()
         this.initTopSearch()
         this.initMenuBlock()
-        this.initRightBlock()
+        this.initPopover()
 
 
         $('#main-block').bind({
@@ -130,19 +130,15 @@
 
 
 
-    /* 创建右边浮动栏 */
-    , initRightBlock: function () {
-        $('[data-toggle="popover-focus"]').each(function(idx, el){
+    /* 创建 HTML Popover */
+    , initPopover: function () {
+        $('[data-toggle="popover-html"][data-html="true"]').each(function(idx, el){
           var cur = $(el)
           cur.data({
-            'trigger'   : 'focus',
-            'container' : 'body',
-            'html'      : true,
-            'placement' : 'left',
             'content'   : $(cur.data('target')).html()
           })
         }).popover()
-        $('#right-block').on('mouseenter','.list-group-item',function(e){
+        $('[data-toggle="popover-html"][data-trigger="focus"]').on('mouseenter','.list-group-item',function(e){
           $(e.target).focus()
         })
       }
