@@ -1,0 +1,55 @@
+.navbar-default {
+  border-color: #0099cb;
+  background-color: #0099cb;
+  color: #fff;
+}
+
+.navbar-default .icon-home {
+  position: fixed;
+  padding: 0;
+  padding-top: 1px;
+}
+.navbar-default .btn-link {
+  font-size: 18px;
+}
+.navbar-default a,
+.navbar-default a:hover,
+.navbar-default .btn-link,
+.navbar-default .navbar-nav > li > a,
+.navbar-default .btn-link:hover,
+.navbar-default .btn-link:focus {
+  color: #fff;
+}
+
+.navbar-nav > li > a {
+  font-size: 25px;
+  line-height: 30px;
+
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #fff;
+  background-color: #0088b0;
+}
+
+
+#menu-block {
+  border-right: 1px solid #22282e;
+  background-color: #293038;
+}
+#menu-block .nav-pills > li > a,
+#menu-block .nav-pills > li > a:hover {
+  color: #fff;
+}
+
+#menu-block .nav .open>a,
+#menu-block .nav .open>a:hover,
+#menu-block .nav .open>a:focus,
+#menu-block .nav>li>a:hover,
+#menu-block .nav>li>a:focus {
+  background-color: #22282e;
+}

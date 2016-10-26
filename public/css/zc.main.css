@@ -7,16 +7,25 @@
     width: 350px;
   }
 }
+.navbar .icon-home {
+  position: fixed;
+  padding: 6px 0;
+}
 #top-search .search-tip {
   margin-top: -1px;
 
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-#header-block, .popover-content {
-  padding: 15px 0;
+.fav-list {
+  margin: 0 -14px;
+  padding-left: 22px;
 }
-
+.fav-list li {
+  width: 80px;
+  padding-left: 0;
+  padding-right: 20px;
+}
 
 #menu-block {
   position: fixed;

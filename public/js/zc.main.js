@@ -36,8 +36,8 @@
     /* 检测载入情况 */
     , loadBlock: function () {
         $( "#header-block" ).load( this.urlPath + this.opts.includeHeader + '?' + Math.random(), $.proxy(this.onLoadedBlock, this))
-        $( "#menu-block" ).load( this.urlPath + this.opts.includeMenu, $.proxy(this.onLoadedBlock, this))
-        $( "#right-block" ).load( this.urlPath + this.opts.includeRight, $.proxy(this.onLoadedBlock, this))
+        $( "#menu-block" ).load( this.urlPath + this.opts.includeMenu + '?' + Math.random(), $.proxy(this.onLoadedBlock, this))
+        $( "#right-block" ).load( this.urlPath + this.opts.includeRight + '?' + Math.random(), $.proxy(this.onLoadedBlock, this))
       }
     , onLoadedBlock: function(e) {
         this.loadCount++
@@ -135,10 +135,12 @@
         $('[data-toggle="popover-html"][data-html="true"]').each(function(idx, el){
           var cur = $(el)
           cur.data({
-            'content'   : $(cur.data('target')).html()
+            'content' : $(cur.data('target')).html()
           })
         }).popover()
-        $('[data-toggle="popover-html"][data-trigger="focus"]').on('mouseenter','.list-group-item',function(e){
+        console.log($('[data-toggle="popover"]').length)
+        $('[data-toggle="popover"]').popover()
+        $('[data-toggle="popover-html"][data-trigger="focus"]').bind('mouseenter', function(e){
           $(e.target).focus()
         })
       }
@@ -151,6 +153,9 @@
         $('#menu-block .txt').animate({width:'toggle'}, 0);
       }
     , onMenuToggleClick: function(e) {
+        console.log($('#menu-block .txt').width())
+        if ($('#menu-block .txt').css('display') == 'none') $('.btn-menu-toggle .glyphicon').css({"-webkit-transform":"rotate(90deg)"})
+        else $('.btn-menu-toggle .glyphicon').css({"-webkit-transform":"rotate(0deg)"})
         $('#menu-block .txt').animate({width:'toggle'}, 200)
       }
 
