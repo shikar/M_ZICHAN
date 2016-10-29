@@ -26,7 +26,7 @@
         this.opts.type = data.type
         for (i = 0; i < data.list.length; i++) {
           row = data.list[i]
-          list += $.sprintf(this.opts.tplThumbnail, row.pic, row.title, row.desc)
+          list += $.sprintf(this.opts.tplThumbnail, 'holder.js/253x140?random=yes', row.title, row.desc)
         }
         html = $.sprintf(this.opts.tplMain, list)
         this.el.html(html)
@@ -83,15 +83,7 @@
     , type             : 'all'
     , page             : 1
     , tplMain          : '<div class="container"><div class="row">%s</div><div class="row"><div class="col-sm-12 text-right page"></div></div></div>'
-    , tplThumbnail     : '<div class="col-sm-3">\
-  <div class="thumbnail">\
-    <img data-src="%s">\
-    <div class="caption">\
-      <h3>%s</h3>\
-      <p>%s</p>\
-    </div>\
-  </div>\
-</div>'
+    , tplThumbnail     : '<div class="col-sm-3"><div class="thumbnail"><img data-src="%s"><div class="caption"><h4>%s</h4><p>%s</p></div></div></div>'
   }
 
   $.fn.ZCTopSearch.Constructor = ZCTopSearch

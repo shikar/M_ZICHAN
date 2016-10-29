@@ -47,7 +47,7 @@
 
   white-space: nowrap;
 
-  padding-left: 8px;
+  padding-left: 10px;
 }
 #menu-block .nav-pills > li > a,
 #menu-block .nav-pills > li > a:hover {
@@ -88,6 +88,10 @@
 #main-block {
   min-height: 500px;
   margin-top: 110px;
+}
+
+#main-block .thumbnail {
+  height: 300px;
 }
 
 
@@ -135,6 +139,9 @@
 
   border-radius: 100%;
   background-color: #333;
+}
+#menu-block .sk-spinner-pulse {
+  background-color: #eee;
 }
 
 @-webkit-keyframes sk-pulseScaleOut {

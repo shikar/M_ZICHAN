@@ -22,7 +22,6 @@
         })
         Holder.run()
         this.initTopSearch()
-        this.initMenuBlock()
         this.initPopover()
 
 
@@ -36,12 +35,14 @@
     /* 检测载入情况 */
     , loadBlock: function () {
         $( "#header-block" ).load( this.urlPath + this.opts.includeHeader + '?' + Math.random(), $.proxy(this.onLoadedBlock, this))
-        $( "#menu-block" ).load( this.urlPath + this.opts.includeMenu + '?' + Math.random(), $.proxy(this.onLoadedBlock, this))
+        // $( "#menu-block" ).load( this.urlPath + this.opts.includeMenu + '?' + Math.random(), $.proxy(this.onLoadedBlock, this))
         $( "#right-block" ).load( this.urlPath + this.opts.includeRight + '?' + Math.random(), $.proxy(this.onLoadedBlock, this))
+
+        $( "#menu-block" ).ZCMenu()
       }
     , onLoadedBlock: function(e) {
         this.loadCount++
-        if (this.loadCount == 3) this.init()
+        if (this.loadCount == 2) this.init()
       }
 
 
@@ -138,25 +139,10 @@
             'content' : $(cur.data('target')).html()
           })
         }).popover()
-        console.log($('[data-toggle="popover"]').length)
-        $('[data-toggle="popover"]').popover()
+        // $('[data-toggle="popover"]').popover()
         $('[data-toggle="popover-html"][data-trigger="focus"]').bind('mouseenter', function(e){
           $(e.target).focus()
         })
-      }
-
-
-
-    /* 创建菜单控制 */
-    , initMenuBlock: function() {
-        $('.btn-menu-toggle').bind('click', $.proxy(this.onMenuToggleClick, this))
-        $('#menu-block .txt').animate({width:'toggle'}, 0);
-      }
-    , onMenuToggleClick: function(e) {
-        console.log($('#menu-block .txt').width())
-        if ($('#menu-block .txt').css('display') == 'none') $('.btn-menu-toggle .glyphicon').css({"-webkit-transform":"rotate(90deg)"})
-        else $('.btn-menu-toggle .glyphicon').css({"-webkit-transform":"rotate(0deg)"})
-        $('#menu-block .txt').animate({width:'toggle'}, 200)
       }
 
 
