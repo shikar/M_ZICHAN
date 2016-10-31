@@ -59,8 +59,8 @@
   background-color: #293038;
 }
 .main .menu .badge {
-  background-color: #fff;
   color: #333;
+  background-color: #fff;
 }
 .main .menu li a {
   line-height: 40px;
@@ -145,13 +145,22 @@
 
   background-color: #d9dee4;
 }
+.menu-content .sub-menu li.title .close-sub-menu {
+  margin-right: -10px;
+  padding: 0 15px;
+
+  cursor: pointer;
+
+  color: #fff;
+  background-color: #ccd6e0;
+}
 .menu-content .sub-menu li a:hover {
   background-color: #f4f6f8;
 }
 .menu-content .sub-menu li.active a {
   background-color: #fff;
 }
-.menu-content #main-block {
+.menu-content .sub-menu-content {
   position: absolute;
   top: 0;
   right: 0;
@@ -167,7 +176,7 @@
 .submenu-open .sub-menu {
   width: 170px;
 }
-.submenu-open  #main-block {
+.submenu-open .sub-menu-content {
   left: 170px;
 }
 

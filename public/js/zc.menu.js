@@ -55,11 +55,14 @@
           this.el.find('.menu').append($.sprintf(this.opts.tplItem, i, this.opts.icons[i], menu.name+badge))
         }
 
-        $('.btn-menu-toggle').bind('click', $.proxy(this.onMenuToggleClick, this))
+
 
         this.el.find('.sub-menu li').hide()
+
+        $('.btn-menu-toggle').bind('click', $.proxy(this.onMenuToggleClick, this))
         this.el.find('.menu li a').bind('click', $.proxy(this.onMenuClick, this))
         this.el.find('.sub-menu li a').bind('click', $.proxy(this.onSubMenuClick, this))
+        this.el.find('.sub-menu .close-sub-menu').bind('click', $.proxy(this.onSubMenuClose, this))
       }
     , onMenuToggleClick: function(e) {
         if (this.el.hasClass('menu-open')) {
@@ -92,6 +95,9 @@
         // console.log(menu,idx,sub)
         if (sub) this.createMainThumbnail(menu, idx)
       }
+    , onSubMenuClose: function(e) {
+        this.el.find('.menu-content').removeClass('submenu-open')
+      }
   }
 
   $.fn.ZCMenu = function (option) {
@@ -107,7 +113,7 @@
     , icons           : ['glyphpro glyphpro-sampler','glyphpro glyphpro-server','glyphpro glyphpro-charts','glyphicon glyphicon-inbox','glyphpro glyphpro-pie_chart','glyphpro glyphpro-settings','glyphpro glyphpro-global']
     , ajaxMenu        : 'json/menu.json'
     , tplItem         : '<li data-menu="%s"><a href="javascript:void(null)"><span class="%s"></span> %s</li>'
-    , tplSubItemTitle : '<li class="title" data-menu="%s">%s</li>'
+    , tplSubItemTitle : '<li class="title" data-menu="%s">%s<div class="close-sub-menu pull-right"><span class="glyphicon glyphicon-triangle-left"></span></div></li>'
     , tplSubItem      : '<li data-menu="%s" data-idx="%s" data-child="%s"><a href="javascript:void(null)">%s</a></li>'
     , tplBadge        : ' <span class="badge">99</span></a>'
 
