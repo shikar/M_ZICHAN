@@ -35,10 +35,9 @@
     /* 检测载入情况 */
     , loadBlock: function () {
         $( "#header-block" ).load( this.urlPath + this.opts.includeHeader + '?' + Math.random(), $.proxy(this.onLoadedBlock, this))
-        // $( "#menu-block" ).load( this.urlPath + this.opts.includeMenu + '?' + Math.random(), $.proxy(this.onLoadedBlock, this))
         $( "#right-block" ).load( this.urlPath + this.opts.includeRight + '?' + Math.random(), $.proxy(this.onLoadedBlock, this))
 
-        $( "#menu-block" ).ZCMenu()
+        $( ".main" ).ZCMenu()
       }
     , onLoadedBlock: function(e) {
         this.loadCount++

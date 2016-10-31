@@ -25,12 +25,11 @@
         })
       }
 
-    , createMainThumbnail: function(id) {
+    , createMainThumbnail: function(menu, idx) {
         var item,items = ''
-          , id = id.split('_')
-        console.log(this.menuData[id[0]]['list'][id[1]]['list'])
-        for (var i = 0; i < this.menuData[id[0]]['list'][id[1]]['list'].length; i++) {
-          item = this.menuData[id[0]]['list'][id[1]]['list'][i]
+        console.log(this.menuData[menu]['list'][idx]['list'])
+        for (var i = 0; i < this.menuData[menu]['list'][idx]['list'].length; i++) {
+          item = this.menuData[menu]['list'][idx]['list'][i]
           items += $.sprintf(this.opts.tplThumbnail, 'holder.js/253x140?random=yes&size=1&text=253x140 \\n '+item.name, item.name, item.ds)
         }
         $('#main-block').html($.sprintf(this.opts.tplMain, items))
@@ -39,40 +38,59 @@
       }
 
     , onAjaxMenuResult: function(json) {
-        var i,j,menu,subMenu,subMenuStr
+        var i,j,menu,subMenu,subMenuStr,badge
         this.menuData = json
-        this.el.html(this.opts.tplMemu)
+        this.el.find('.menu').empty()
+        this.el.find('.sub-menu').empty()
         for (i = 0; i < this.menuData.length; i++) {
           menu = this.menuData[i]
           subMenuStr = ''
+          this.el.find('.sub-menu').append($.sprintf(this.opts.tplSubItemTitle, i, menu.name))
           for (var j = 0; j < menu.list.length; j++) {
             subMenu = menu.list[j]
-            subMenuStr += $.sprintf(
-              this.opts.tplSubItem,
-              i+'_'+j,
-              ( subMenu.list.length > 0 ? 'true' : 'false' ),
-              subMenu.name + ( subMenu.list.length > 0 ? ' <span class="caret"></span>' : '' )
-            )
+            badge = (true?$.sprintf(this.opts.tplBadge, 99):'')
+            this.el.find('.sub-menu').append($.sprintf(this.opts.tplSubItem, i, j, ( subMenu.list.length > 0 ? 'true' : 'false' ), subMenu.name+badge))
           }
-          this.el.find('#menu').append($.sprintf(this.opts.tplItem, this.opts.icons[i], menu.name, subMenuStr))
+          badge = (true?$.sprintf(this.opts.tplBadge, 99):'')
+          this.el.find('.menu').append($.sprintf(this.opts.tplItem, i, this.opts.icons[i], menu.name+badge))
         }
-        this.el.find('.txt').animate({width:'toggle'}, 0)
 
         $('.btn-menu-toggle').bind('click', $.proxy(this.onMenuToggleClick, this))
-        this.el.find('.dropdown-menu li a').bind('click', $.proxy(this.onSubMenuClick, this))
+
+        this.el.find('.sub-menu li').hide()
+        this.el.find('.menu li a').bind('click', $.proxy(this.onMenuClick, this))
+        this.el.find('.sub-menu li a').bind('click', $.proxy(this.onSubMenuClick, this))
       }
     , onMenuToggleClick: function(e) {
-        if (this.el.find('.txt').css('display') == 'none') $('.btn-menu-toggle .glyphicon').css({"-webkit-transform":"rotate(90deg)"})
-        else $('.btn-menu-toggle .glyphicon').css({"-webkit-transform":"rotate(0deg)"})
-        this.el.find('.txt').animate({width:'toggle'}, 200)
+        if (this.el.hasClass('menu-open')) {
+          $('.btn-menu-toggle .glyphicon').css({"-webkit-transform":"rotate(0deg)"})
+          this.el.removeClass('menu-open')
+        } else {
+          $('.btn-menu-toggle .glyphicon').css({"-webkit-transform":"rotate(90deg)"})
+          this.el.addClass('menu-open')
+        }
+      }
+    , onMenuClick: function(e) {
+        var self = $(e.currentTarget).parent()
+          , menu = self.data('menu')
+        this.el.find('.menu li').removeClass('active')
+        self.addClass('active')
+
+        this.el.find('.sub-menu li').hide()
+        this.el.find('.sub-menu li[data-menu='+menu+']').show()
+
+        this.el.find('.menu-content').addClass('submenu-open')
       }
     , onSubMenuClick: function(e) {
-        var self = $(e.currentTarget)
-          , id = self.data('id')
-          , sub = self.data('sub')
+        var self = $(e.currentTarget).parent()
+          , menu = self.data('menu')
+          , idx = self.data('idx')
+          , sub = self.data('child')
 
-        console.log(id)
-        if (sub) this.createMainThumbnail(id)
+        this.el.find('.sub-menu li').removeClass('active')
+        self.addClass('active')
+        // console.log(menu,idx,sub)
+        if (sub) this.createMainThumbnail(menu, idx)
       }
   }
 
@@ -85,14 +103,16 @@
   }
 
   $.fn.ZCMenu.defs = {
-      localAccessUrl : 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/'
-    , icons          : ['glyphpro glyphpro-sampler','glyphpro glyphpro-server','glyphpro glyphpro-charts','glyphicon glyphicon-inbox','glyphpro glyphpro-pie_chart','glyphpro glyphpro-settings','glyphpro glyphpro-global']
-    , ajaxMenu       : 'json/menu.json'
-    , tplMemu        : '<ul id="menu" class="nav nav-pills nav-stacked"></ul>'
-    , tplItem        : '<li class="dropright"><a href="javascript:void(null)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="%s"></span> <span class="txt">%s <span class="caret"></span></span></a><ul class="dropdown-menu">%s</ul></li>'
-    , tplSubItem     : '<li><a href="javascript:void(null)" data-id="%s" data-sub="%s">%s</a></li>'
-    , tplMain        : '<div class="container"><div class="row">%s</div></div>'
-    , tplThumbnail   : '<div class="col-sm-3"><div class="thumbnail"><img data-src="%s"><div class="caption"><h4>%s</h4><p>%s</p></div></div></div>'
+      localAccessUrl  : 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/'
+    , icons           : ['glyphpro glyphpro-sampler','glyphpro glyphpro-server','glyphpro glyphpro-charts','glyphicon glyphicon-inbox','glyphpro glyphpro-pie_chart','glyphpro glyphpro-settings','glyphpro glyphpro-global']
+    , ajaxMenu        : 'json/menu.json'
+    , tplItem         : '<li data-menu="%s"><a href="javascript:void(null)"><span class="%s"></span> %s</li>'
+    , tplSubItemTitle : '<li class="title" data-menu="%s">%s</li>'
+    , tplSubItem      : '<li data-menu="%s" data-idx="%s" data-child="%s"><a href="javascript:void(null)">%s</a></li>'
+    , tplBadge        : ' <span class="badge">99</span></a>'
+
+    , tplMain         : '<div class="container"><div class="row">%s</div></div>'
+    , tplThumbnail    : '<div class="col-sm-3"><div class="thumbnail"><img data-src="%s"><div class="caption"><h4>%s</h4><p>%s</p></div></div></div>'
   }
 
   $.fn.ZCMenu.Constructor = ZCMenu

@@ -5,8 +5,6 @@
 }
 
 .navbar-default .icon-home {
-  position: fixed;
-
   padding: 0;
   padding-top: 1px;
 }
@@ -37,23 +35,6 @@
   background-color: #0088b0;
 }
 
-
-#menu-block {
-  border-right: 1px solid #22282e;
-  background-color: #293038;
-}
-#menu-block .nav-pills > li > a,
-#menu-block .nav-pills > li > a:hover {
-  color: #fff;
-}
-
-#menu-block .nav .open > a,
-#menu-block .nav .open > a:hover,
-#menu-block .nav .open > a:focus,
-#menu-block .nav > li > a:hover,
-#menu-block .nav > li > a:focus {
-  background-color: #22282e;
-}
 
 #right-block button.list-group-item:hover,
 #right-block a.list-group-item:focus,
