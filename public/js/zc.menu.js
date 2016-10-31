@@ -48,10 +48,10 @@
           this.el.find('.sub-menu').append($.sprintf(this.opts.tplSubItemTitle, i, menu.name))
           for (var j = 0; j < menu.list.length; j++) {
             subMenu = menu.list[j]
-            badge = (true?$.sprintf(this.opts.tplBadge, 99):'')
+            badge = (subMenu.count>0?$.sprintf(this.opts.tplBadge, 99):'')
             this.el.find('.sub-menu').append($.sprintf(this.opts.tplSubItem, i, j, ( subMenu.list.length > 0 ? 'true' : 'false' ), subMenu.name+badge))
           }
-          badge = (true?$.sprintf(this.opts.tplBadge, 99):'')
+          badge = (menu.count?$.sprintf(this.opts.tplBadge, 99):'')
           this.el.find('.menu').append($.sprintf(this.opts.tplItem, i, this.opts.icons[i], menu.name+badge))
         }
 
