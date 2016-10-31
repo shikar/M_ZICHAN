@@ -7,8 +7,10 @@
     width: 350px;
   }
 }
-.navbar-right {
-  margin-left: -15px;
+@media (min-width: 768px) {
+  .navbar .icon-home {
+    margin-left: -15px;
+  }
 }
 .navbar .icon-home {
   padding: 6px 0;
