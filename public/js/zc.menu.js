@@ -52,11 +52,18 @@
             this.el.find('.sub-menu').append($.sprintf(this.opts.tplSubItem, i, j, ( subMenu.list.length > 0 ? 'true' : 'false' ), subMenu.name+badge))
           }
           badge = (menu.count?$.sprintf(this.opts.tplBadge, 99):'')
-          this.el.find('.menu').append($.sprintf(this.opts.tplItem, i, this.opts.icons[i], menu.name+badge))
+          this.el.find('.menu').append($.sprintf(this.opts.tplItem, i, menu.name, this.opts.icons[i], menu.name+badge))
         }
 
 
-
+        $('[data-toggle="tooltip"]').tooltip({
+          container: 'body',
+          placement: 'right',
+          trigger: 'manual'
+        }).bind({
+          'mouseenter': $.proxy(this.onMenuMouseEnter, this),
+          'mouseleave': $.proxy(this.onMenuMouseLeave, this),
+        })
         this.el.find('.sub-menu li').hide()
 
         $('.btn-menu-toggle').bind('click', $.proxy(this.onMenuToggleClick, this))
@@ -72,6 +79,14 @@
           $('.btn-menu-toggle .glyphicon').css({"-webkit-transform":"rotate(90deg)"})
           this.el.addClass('menu-open')
         }
+      }
+    , onMenuMouseEnter: function(e) {
+        var self = $(e.currentTarget)
+        if (!self.parents('.main').hasClass('menu-open')) self.tooltip('show')
+      }
+    , onMenuMouseLeave: function(e) {
+        var self = $(e.currentTarget)
+        self.tooltip('hide')
       }
     , onMenuClick: function(e) {
         var self = $(e.currentTarget).parent()
@@ -112,7 +127,7 @@
       localAccessUrl  : 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/'
     , icons           : ['glyphpro glyphpro-sampler','glyphpro glyphpro-server','glyphpro glyphpro-charts','glyphicon glyphicon-inbox','glyphpro glyphpro-pie_chart','glyphpro glyphpro-settings','glyphpro glyphpro-global']
     , ajaxMenu        : 'json/menu.json'
-    , tplItem         : '<li data-menu="%s"><a href="javascript:void(null)"><span class="%s"></span> %s</li>'
+    , tplItem         : '<li data-menu="%s"><a href="javascript:void(null)" data-toggle="tooltip" title="%s"><span class="%s"></span> %s</li>'
     , tplSubItemTitle : '<li class="title" data-menu="%s">%s<div class="close-sub-menu pull-right"><span class="glyphicon glyphicon-triangle-left"></span></div></li>'
     , tplSubItem      : '<li data-menu="%s" data-idx="%s" data-child="%s"><a href="javascript:void(null)">%s</a></li>'
     , tplBadge        : ' <span class="badge">99</span></a>'
