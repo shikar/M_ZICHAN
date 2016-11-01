@@ -40,7 +40,8 @@
   left: 0;
 }
 .main a {
-  overflow:hidden;
+  overflow: hidden;
+
   white-space: nowrap;
   text-decoration: none;
   text-overflow: ellipsis;
@@ -201,7 +202,6 @@
 
 
 
-
 #right-block {
   position: fixed;
   z-index: 1020;
@@ -231,9 +231,19 @@
   background-color: #f5f5f5;
 }
 
-
+#main-block {
+  padding-top: 15px;
+}
 #main-block .thumbnail {
-  height: 300px;
+  display: block;
+
+  width: 160px;
+  height: 260px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+#main-block .thumbnail .caption {
+  padding: 0;
 }
 
 

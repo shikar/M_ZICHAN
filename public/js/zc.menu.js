@@ -29,7 +29,7 @@
         console.log(this.menuData[menu]['list'][idx]['list'])
         for (var i = 0; i < this.menuData[menu]['list'][idx]['list'].length; i++) {
           item = this.menuData[menu]['list'][idx]['list'][i]
-          items += $.sprintf(this.opts.tplThumbnail, 'holder.js/253x140?random=yes&size=1&text=253x140 \\n '+item.name, item.name, item.ds)
+          items += $.sprintf(this.opts.tplThumbnail, 'holder.js/150x150?random=yes&size=1&text=150x150 \\n '+item.name, item.name, item.ds)
         }
         $('#main-block').html($.sprintf(this.opts.tplMain, items))
 
@@ -132,7 +132,7 @@
     , tplBadge        : ' <span class="badge">%s</span></a>'
 
     , tplMain         : '<div class="container"><div class="row">%s</div></div>'
-    , tplThumbnail    : '<div class="col-sm-3"><div class="thumbnail"><img data-src="%s"><div class="caption"><h4>%s</h4><p>%s</p></div></div></div>'
+    , tplThumbnail    : '<div class="col-sm-3"><div class="thumbnail"><img data-src="%s"><div class="caption"><h5>%s</h5><p class="text-muted small">%s</p></div></div></div>'
   }
 
   $.fn.ZCMenu.Constructor = ZCMenu
