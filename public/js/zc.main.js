@@ -21,6 +21,7 @@
           dataType : "json"
         })
         Holder.run()
+        $( "#fav" ).ZCFav()
         this.initTopSearch()
         this.initPopover()
 

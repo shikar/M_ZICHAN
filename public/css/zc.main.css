@@ -21,15 +21,6 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-.fav-list {
-  margin: 0 -14px;
-  padding-left: 22px;
-}
-.fav-list li {
-  width: 80px;
-  padding-right: 20px;
-  padding-left: 0;
-}
 
 
 .main {
@@ -200,6 +191,48 @@
   left: 170px;
 }
 
+.dropdown-fav {
+  min-width: auto;
+  padding: 8px 0 0 8px;
+}
+.dropdown-fav li {
+  display: block;
+  float: left;
+
+  width: 80px;
+  margin: 0;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding: 0;
+}
+.dropdown-fav li a {
+  width: 80px;
+  margin: 0;
+  padding: 0;
+
+  white-space: normal;
+}
+.dropdown-fav li a .txt {
+  font-size: 12px;
+
+  display: block;
+  overflow: hidden;
+
+  width: 80px;
+  padding: 3px 0;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.dropdown-fav.col1 {
+  width: 98px;
+}
+.dropdown-fav.col2 {
+  width: 186px;
+}
+.dropdown-fav.col3 {
+  width: 274px;
+}
 
 
 #right-block {
