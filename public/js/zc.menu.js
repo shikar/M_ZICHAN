@@ -9,7 +9,6 @@
     this.urlPath = ''
 
     if (navigator.userAgent.toLowerCase().match(/chrome/) != null) this.urlPath = this.opts.localAccessUrl
-    console.log('ZCMenu')
     this.init()
   }
 
