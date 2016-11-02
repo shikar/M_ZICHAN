@@ -6,6 +6,9 @@ body {
   margin-top: 13px;
   margin-bottom: 0;
 }
+.search-hot {
+  margin-top: 5px;
+}
 @media (min-width: 991px) {
   #top-search .input-group .form-control {
     width: 350px;
@@ -147,6 +150,8 @@ body {
   padding-right: 30px;
 
   color: #333;
+
+  text-overflow: ellipsis;
 }
 .menu-content .sub-menu li.title {
   font-weight: bold;
