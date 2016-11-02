@@ -8,6 +8,7 @@ body {
 }
 .search-hot {
   margin-top: 5px;
+  margin-bottom: 0;
 }
 @media (min-width: 991px) {
   #top-search .input-group .form-control {
