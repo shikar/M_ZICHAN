@@ -30,7 +30,7 @@
         this.el.empty()
         for (i = 0; i < this.favData.length; i++) {
           item = this.favData[i]
-          this.el.append($.sprintf(this.opts.tplFavItem, 'holder.js/80x80?random=yes', item.name))
+          this.el.append($.sprintf(this.opts.tplFavItem, item.name, 'holder.js/80x80?random=yes', item.name))
         }
         if (this.favData.length >= 3)
           this.el.removeClass('col1').addClass('col3')
@@ -58,7 +58,7 @@
   $.fn.ZCFav.defs = {
       localAccessUrl   : 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/'
     , ajaxFav          : 'json/fav.json'
-    , tplFavItem       : '<li><a href="javascript:void(null)"><img src="%s"><span class="txt">%s</span></a></li>'
+    , tplFavItem       : '<li><a href="javascript:void(null)" title="%s"><img src="%s"><span class="txt">%s</span></a></li>'
   }
 
   $.fn.ZCFav.Constructor = ZCFav

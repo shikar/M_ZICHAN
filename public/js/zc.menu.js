@@ -65,7 +65,7 @@
         })
         this.el.find('.sub-menu li').hide()
 
-        $('.btn-menu-toggle').bind('click', $.proxy(this.onMenuToggleClick, this))
+        $('#header-block').on('click', '.btn-menu-toggle', $.proxy(this.onMenuToggleClick, this))
         this.el.find('.menu li a').bind('click', $.proxy(this.onMenuClick, this))
         this.el.find('.sub-menu li a').bind('click', $.proxy(this.onSubMenuClick, this))
         this.el.find('.sub-menu .close-sub-menu').bind('click', $.proxy(this.onSubMenuClose, this))
