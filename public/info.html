@@ -39,8 +39,21 @@
     }
     #content .panel-body {
       padding: 0;
+      position: relative;
+      min-height: 300px;
     }
+    .tab-pane {
+      padding: 10px;
+    }
+    .page-header {
+      margin-top: 0;
+    }
+
     .nav-left {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      background-color: #eee;
       float: left;
       width: 150px;
       border: 0;
@@ -91,7 +104,7 @@
     <div id="content">
       <div class="container">
         <div class="row">
-          <div class="col-xs-8 col-xs-offset-2">
+          <div class="col-xs-6 col-xs-offset-3">
             <div>
               <div class="panel panel-default">
                 <div class="panel-body">
@@ -99,14 +112,118 @@
                   <ul class="nav nav-tabs nav-left" role="tablist">
                     <li role="presentation" class="active"><a href="#signup" aria-controls="signup" role="tab" data-toggle="tab">用户注册</a></li>
                     <li role="presentation"><a href="#forget" aria-controls="forget" role="tab" data-toggle="tab">密码找回</a></li>
-                    <li role="presentation"><a href="#resetpwd" aria-controls="resetpwd" role="tab" data-toggle="tab">修改密码</a></li>
+                    <li role="presentation"><a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">修改信息</a></li>
                   </ul>
 
                   <!-- Tab panes -->
                   <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="signup">1...</div>
-                    <div role="tabpanel" class="tab-pane" id="forget">3...</div>
-                    <div role="tabpanel" class="tab-pane" id="resetpwd">4...</div>
+                    <div role="tabpanel" class="tab-pane active" id="signup">
+                      <div class="page-header">
+                        <h5>用户注册</h5>
+                      </div>
+                      <form>
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                            <input type="text" class="form-control" placeholder="账号">
+                          </div>
+                          <p class="help-block">请输入字符昵称, 不支持中文</p>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphpro glyphpro-keys"></span></span>
+                            <input type="password" class="form-control" placeholder="设置登录账号密码">
+                          </div>
+                          <p class="help-block">6-16个字符, 区分大小写</p>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphpro glyphpro-keys"></span></span>
+                            <input type="password" class="form-control" placeholder="再次输入密码">
+                          </div>
+                          <p class="help-block">请再次填写密码</p>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphpro glyphpro-thumbnails"></span></span>
+                            <input type="text" class="form-control" placeholder="验证码">
+                            <span class="input-group-btn">
+                              <img id="codeimg" data-src="holder.js/120x34?&text=120x34 \n 验证码">
+                            </span>
+                          </div>
+                          <p class="help-block">看不清楚, 换一下</p>
+                        </div>
+                        <button type="submit" class="btn btn-success">注 册</button>
+                      </form>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="forget">
+                      <div class="page-header">
+                        <h5>密码找回</h5>
+                      </div>
+                      <form>
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphpro glyphpro-iphone"></span></span>
+                            <input type="text" class="form-control" placeholder="请输入你的手机号码">
+                          </div>
+                          <p class="help-block">请输入正确的手机号码</p>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphpro glyphpro-keys"></span></span>
+                            <input type="password" class="form-control" placeholder="设置登录账号密码">
+                          </div>
+                          <p class="help-block">6-16个字符, 区分大小写</p>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphpro glyphpro-keys"></span></span>
+                            <input type="password" class="form-control" placeholder="再次输入密码">
+                          </div>
+                          <p class="help-block">请再次填写密码</p>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphpro glyphpro-thumbnails"></span></span>
+                            <input type="text" class="form-control" placeholder="验证码">
+                          </div>
+                          <p class="help-block">请收到短信后, 填写短信中的验证码</p>
+                        </div>
+                        <button type="submit" class="btn btn-success">密码找回</button>
+                      </form>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="edit">
+                      <div class="page-header">
+                        <h5>修改信息</h5>
+                      </div>
+                      <form>
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                            <input type="text" class="form-control" placeholder="账号">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphpro glyphpro-user_parents"></span></span>
+                            <input type="password" class="form-control" placeholder="性别">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphpro glyphpro-birthday_cake"></span></span>
+                            <input type="password" class="form-control" placeholder="生日">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphpro glyphpro-heart"></span></span>
+                            <input type="text" class="form-control" placeholder="兴趣爱好">
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">修改</button>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
