@@ -82,7 +82,7 @@
     , key              : ''
     , type             : 'all'
     , page             : 1
-    , tplMain          : '<div class="container"><div class="row">%s</div><div class="row"><div class="col-sm-12 text-center page"></div></div></div>'
+    , tplMain          : '<div class="container-fluid"><div class="row">%s</div><div class="row"><div class="col-sm-12 text-center page"></div></div></div>'
     , tplThumbnail     : '<div class="col-sm-3"><div class="thumbnail"><img data-src="%s"><div class="caption"><h4>%s</h4><p>%s</p></div></div></div>'
   }
 

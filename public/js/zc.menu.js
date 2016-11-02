@@ -131,7 +131,7 @@
     , tplSubItem      : '<li data-menu="%s" data-idx="%s" data-child="%s"><a href="javascript:void(null)">%s %s</a></li>'
     , tplBadge        : ' <span class="badge">%s</span></a>'
 
-    , tplMain         : '<div class="container"><div class="row">%s</div></div>'
+    , tplMain         : '<div class="container-fluid"><div class="row">%s</div></div>'
     , tplThumbnail    : '<div class="col-sm-3"><div class="thumbnail"><img data-src="%s"><div class="caption"><h5>%s</h5><p class="text-muted small">%s</p></div></div></div>'
   }
 

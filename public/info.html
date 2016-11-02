@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1024, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Demo</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap3/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap3/glyphicons.pro.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    body {
+      background-color: #EDF4F9;
+    }
+    header,
+    footer {
+      display: block;
+      height: 80px;
+    }
+    header img {
+      margin: 10px 0;
+    }
+    #content {
+      display: block;
+      height: 550px;
+      background: url('img/bg_blue.png') no-repeat center top;
+    }
+    #content .panel {
+      margin-top: 40px;
+    }
+    #content .panel-body {
+      padding: 0;
+    }
+    .nav-left {
+      width: 150px;
+      border: 0;
+      border-right: 1px solid #ddd;
+    }
+    .nav-left>li {
+      float: none;
+      padding-left: 6px;
+    }
+    .nav-left>li>a {
+      border-radius: 4px 0 0 4px;
+      margin-right: 0;
+      margin-top: 5px;
+    }
+
+    .nav-left>li.active {
+      margin-bottom: 0;
+      margin-right: -1px;
+    }
+    .nav-left>li>a:hover,
+    .nav-left>li.active>a:focus {
+      border-bottom-color: transparent;
+    }
+    .nav-left>li.active>a,
+    .nav-left>li.active>a:hover,
+    .nav-left>li.active>a:focus {
+      border: 1px solid #ddd;
+      border-right-color: transparent;
+    }
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <img data-src="holder.js/120x60?theme=sky&text=120x60 \n LOGO">
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div id="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-8 col-xs-offset-2">
+            <div>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs nav-left" role="tablist">
+                    <li role="presentation" class="active"><a href="#signup" aria-controls="signup" role="tab" data-toggle="tab">用户注册</a></li>
+                    <li role="presentation"><a href="#forget" aria-controls="forget" role="tab" data-toggle="tab">密码找回</a></li>
+                    <li role="presentation"><a href="#resetpwd" aria-controls="resetpwd" role="tab" data-toggle="tab">修改密码</a></li>
+                  </ul>
+
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="signup">...</div>
+                    <div role="tabpanel" class="tab-pane" id="forget">...</div>
+                    <div role="tabpanel" class="tab-pane" id="resetpwd">...</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 text-center text-muted">
+            Copyright © 2016 Shanghai Data Magic Information Technology Co., ltd. All Rights Reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery3.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap3.min.js"></script>
+
+    <script src="js/holder.min.js"></script>
+    <script type="text/javascript">
+    <!--
+    $(document).ready(function(){
+      Holder.run()
+    });
+    //-->
+    </script>
+  </body>
+</html>

@@ -1,3 +1,7 @@
+body {
+  font-family: "微软雅黑","Microsoft Yahei","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
 #top-search {
   margin-top: 13px;
   margin-bottom: 0;
@@ -35,7 +39,6 @@
 
   white-space: nowrap;
   text-decoration: none;
-  text-overflow: ellipsis;
 }
 .main ul {
   margin: 0;
@@ -175,7 +178,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  bottom: 0;
+  bottom: 20px;
   left: 0;
 
   overflow: hidden;
@@ -184,10 +187,26 @@
   width: auto;
   padding-right: 50px;
 }
+.menu-content .sub-menu-footer {
+  position: absolute;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  overflow: hidden;
+  overflow-y: auto;
+
+  width: auto;
+  height: 20px;
+}
 .submenu-open .sub-menu {
   width: 170px;
 }
 .submenu-open .sub-menu-content {
+  left: 170px;
+}
+.submenu-open .sub-menu-footer {
   left: 170px;
 }
 
