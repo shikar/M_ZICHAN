@@ -26,14 +26,7 @@
 
     , createMainThumbnail: function(menu, idx) {
         var item,items = ''
-        console.log(this.menuData[menu]['list'][idx]['list'])
-        for (var i = 0; i < this.menuData[menu]['list'][idx]['list'].length; i++) {
-          item = this.menuData[menu]['list'][idx]['list'][i]
-          items += $.sprintf(this.opts.tplThumbnail, 'holder.js/150x150?random=yes&size=1&text=150x150 \\n '+item.name, item.name, item.ds)
-        }
-        $('#main-block').html($.sprintf(this.opts.tplMain, items))
-
-        Holder.run()
+        $('#main-block').ZCItemList('show', this.menuData[menu]['list'][idx]['list'])
       }
 
     , onAjaxMenuResult: function(json) {
@@ -130,9 +123,6 @@
     , tplSubItemTitle : '<li class="title" data-menu="%s">%s<div class="close-sub-menu pull-right"><span class="glyphicon glyphicon-triangle-left"></span></div></li>'
     , tplSubItem      : '<li data-menu="%s" data-idx="%s" data-child="%s"><a href="javascript:void(null)" title="%s">%s %s</a></li>'
     , tplBadge        : ' <span class="badge">%s</span></a>'
-
-    , tplMain         : '<div class="container-fluid"><div class="row">%s</div></div>'
-    , tplThumbnail    : '<div class="col-sm-3"><div class="thumbnail"><img data-src="%s"><div class="caption"><h5>%s</h5><p class="text-muted small">%s</p></div></div></div>'
   }
 
   $.fn.ZCMenu.Constructor = ZCMenu
