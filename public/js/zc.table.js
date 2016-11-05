@@ -35,9 +35,15 @@
             if (!data.fields[j]['hidden'])
               this.el.find('tbody tr:last').append('<td>'+item[j]+'</td>')
           }
-          this.el.find('tbody tr:last').append('<td class="text-center">'+this.opts.tplActBtns+'</td>')
+          this.el.find('tbody tr:last').append('<td class="text-center act-btn">'+this.opts.tplActBtns+'</td>')
         }
-
+        this.el.find('tbody .act-btn a').bind('click', $.proxy(this.onBtnActClick, this))
+      }
+    , onBtnActClick: function(e) {
+        var self = $(e.currentTarget)
+          , id = self.parents('tr').data('id')
+          , idx = self.index()
+        this.el.trigger('onAct', [id, idx])
       }
   }
 

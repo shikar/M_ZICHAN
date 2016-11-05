@@ -30,7 +30,6 @@
       }
 
     , onThumbnailShowResult: function(json) {
-
         var i,item
         this.ajaxData = json
         this.el.empty().append(this.opts.tplMain)
@@ -39,10 +38,14 @@
           .ZCTable('create', json.table)
           .ZCPagination2('create', json.page)
           .bind('onSort', $.proxy(this.onSortResult, this))
+          .bind('onAct', $.proxy(this.onActResult, this))
           .bind('onPage', $.proxy(this.onPageClick, this))
       }
     , onSortResult: function(e, sort) {
         console.log(sort.list)
+      }
+    , onActResult: function(e, id, idx) {
+        console.log(id, idx)
       }
     , onPageClick: function(e, pNum) {
         console.log(pNum)
