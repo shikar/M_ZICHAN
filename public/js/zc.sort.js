@@ -6,6 +6,7 @@
     this.el = el
     this.opts = opts
     this.urlPath = ''
+    this.prevRet = []
 
     if (navigator.userAgent.toLowerCase().match(/chrome/) != null) this.urlPath = this.opts.localAccessUrl
     this.init()
@@ -19,13 +20,13 @@
         this.el.find('[data-toggle=tooltip]').tooltip()
       }
     , create: function(data) {
-        var i,item
+        var key,val
           , list = this.el.find('.list-sort')
         this.data = data
         list.empty()
-        for (i = 0; i < data.length; i++) {
-          item = data[i]
-          list.append($.sprintf(this.opts.tplItem, item.type, item.name, item.name))
+        for (key in data) {
+          val = data[key]
+          list.append($.sprintf(this.opts.tplItem, key, val, val))
         }
 
         list.sortable({
@@ -48,14 +49,13 @@
           item = $(el)
           if (item.data('sort') != 'none') {
             arr.push(item)
-            ret.push({
-              type : item.data('type'),
-              sort : item.data('sort')
-            })
+            ret.push(item.data('key') + ' ' + item.data('sort'))
           }
         })
+
         list.prepend(arr)
-        if (ret.length > 0) this.el.trigger("onSort", {list:ret})
+        if (this.prevRet.toString() != ret.toString()) this.el.trigger("onSort", {list:ret})
+        this.prevRet = ret
       }
     , onResetClick: function(e) {
         this.create(this.data)
@@ -66,15 +66,15 @@
           , sort = self.data('sort')
           , icon = self.find('.glyphpro')
         if (sort == 'none') {
-          self.data('sort', 'desc')
+          self.data('sort', 'DESC')
           icon.removeClass(this.opts.iconDef)
               .removeClass('text-muted')
               .addClass(this.opts.iconDesc)
-        } else if (sort == 'desc') {
-          self.data('sort', 'asc')
+        } else if (sort == 'DESC') {
+          self.data('sort', 'ASC')
           icon.removeClass(this.opts.iconDesc)
               .addClass(this.opts.iconAsc)
-        } else if (sort == 'asc') {
+        } else if (sort == 'ASC') {
           self.data('sort', 'none')
           icon.removeClass(this.opts.iconAsc)
               .addClass(this.opts.iconDef)
@@ -106,7 +106,7 @@
   $.fn.ZCSort.defs = {
       data     : [{"name":"name1", "type":"type1"},{"name":"name2", "type":"type2"}]
     , tplMain  : '<ul class="list-unstyled list-inline sort-bar clearfix" data-toggle="tooltip" data-placement="top" title="点击更换升降序,拖动变换次序"><li class="pull-left">排序:</li><li class="pull-left"><ul class="list-unstyled list-inline list-sort"></ul></li><li class=" pull-right"><botton type="button" class="btn btn-info btn-xs btn-reset"><span class="glyphpro glyphpro-redo"></span> 重置</botton></li></ul>'
-    , tplItem  : '<li data-type="%s" data-sort="none"><a href="javascript:void(null)" class="btn btn-default btn-xs" title="%s">%s <span class="glyphpro glyphpro-sorting text-muted"></span></a></li>'
+    , tplItem  : '<li data-key="%s" data-sort="none"><a href="javascript:void(null)" class="btn btn-default btn-xs" title="%s">%s <span class="glyphpro glyphpro-sorting text-muted"></span></a></li>'
     , iconDef  : 'glyphpro-sorting'
     , iconAsc  : 'glyphpro-sort_attributes'
     , iconDesc : 'glyphpro-sort_attributes_alt'

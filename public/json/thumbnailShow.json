@@ -1,11 +1,12 @@
 {
   "breadcrumb":["一级目录","二级目录","三级目录"],
-  "sort" : [
-    {"name":"name1", "type":"type1"},
-    {"name":"name2", "type":"type2"},
-    {"name":"name3", "type":"type3"},
-    {"name":"name4", "type":"type4"}
-  ],
+  "sort" : {
+    "key1":"排序1",
+    "key2":"排序2",
+    "key3":"排序3",
+    "key4":"排序4",
+    "key5":"排序5"
+  },
   "table" : {
     "info":{},
     "fields":[
