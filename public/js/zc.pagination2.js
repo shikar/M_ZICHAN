@@ -12,13 +12,19 @@
   ZCPagination2.prototype = {
 
       constructor: ZCPagination2
-    , init: function(data) {
+    , init: function() {
+        this.el.append(this.opts.tplMain)
+      }
+    , create: function(data) {
         var $pagination
-        this.el.empty()
 
+        this.opts.pageTotal = data.totalPage
+        this.opts.pageCur   = data.curPage
+        this.opts.count     = data.count
+
+        $pagination = this.el.find('nav')
+        $pagination.empty()
         if (this.opts.pageTotal > 1) {
-          this.el.html(this.opts.tplMain)
-          $pagination = this.el.find('nav')
           if (this.opts.pageCur == 1) {
             $pagination.append($.sprintf(this.opts.tplPageFrist, ' disabled'))
             $pagination.append($.sprintf(this.opts.tplPagePrev, ' disabled'))
@@ -59,7 +65,7 @@
             num = this.opts.pageTotal;
             break;
         }
-        this.el.trigger( "page", [ num ] )
+        this.el.trigger( "onPage", [ num ] )
       }
     , onPageKeypress: function(e) {
         var keycode = (e.keyCode ? e.keyCode : e.which)
@@ -67,7 +73,7 @@
         if(keycode == '13'){
           if (num < 1) num = 1
           else if(num > this.opts.pageTotal) num = this.opts.pageTotal
-          this.el.trigger( "page", [ num ] )
+          this.el.trigger( "onPage", num )
         }
       }
 
@@ -75,18 +81,25 @@
 
   $.fn.ZCPagination2 = function () {
     var $this = $(this)
+      , args = []
       , option = arguments[0]
       , data = $this.data('ZCPagination2')
       , opts = $.extend({}, $.fn.ZCPagination2.defs, typeof option == 'object' && option)
     if (!data) $this.data('ZCPagination2', (data = new ZCPagination2($this, opts)))
-    if (typeof option == 'string') data[option]()
+
+    if (typeof option == 'string') {
+      for (var i = 1; i < arguments.length; i++) args.push(arguments[i])
+      data[option].apply(data, args)
+    }
+    return $this
   }
 
 
   $.fn.ZCPagination2.defs = {
       pageTotal    : 10
     , pageCur      : 1
-    , tplMain      : '<nav class="form-inline" aria-label="Page navigation"></nav>'
+    , count        : 9999
+    , tplMain      : '<div class="text-center"><nav class="form-inline" aria-label="Page navigation"></nav></div>'
     , tplPageFrist : '<a href="javascript:void(null)" class="btn btn-link%s" aria-label="Frist"><span class="glyphicon glyphicon-step-backward"></span></a>'
     , tplPagePrev  : '<a href="javascript:void(null)" class="btn btn-link%s" aria-label="Prev"><span class="glyphicon glyphicon-triangle-left"></span></a>'
     , tplPageNext  : '<a href="javascript:void(null)" class="btn btn-link%s" aria-label="Next"><span class="glyphicon glyphicon-triangle-right"></span></a>'

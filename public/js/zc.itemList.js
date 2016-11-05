@@ -20,7 +20,7 @@
         }
         Holder.run()
 
-        this.el.on('click', '.thumbnail', $.proxy(this.onThumbnailClick, this))
+        this.el.find('.thumbnail').bind('click', $.proxy(this.onThumbnailClick, this))
       }
     , onThumbnailClick: function(e) {
         var self = $(e.currentTarget)
@@ -43,7 +43,7 @@
   }
 
   $.fn.ZCItemList.defs = {
-      tplMain      : '<div class="container-fluid"><div class="row item-list"></div><div class="col-sm-12 text-center page"></div></div>'
+      tplMain      : '<div class="container-fluid"><div class="row item-list"></div><div class="row"><div class="col-xs-12 page"></div></div></div>'
     , tplThumbnail : '<div class="col-sm-3"><div class="thumbnail" data-id="%s"><img data-src="%s"><div class="caption"><h5>%s</h5><p class="text-muted small">%s</p></div></div></div>'
   }
 

@@ -12,11 +12,17 @@
   ZCPagination1.prototype = {
 
       constructor: ZCPagination1
-    , init: function(data) {
+    , init: function() {
+        this.el.append(this.opts.tplMain)
+      }
+    , create: function(data) {
         var i,pagesRange,pagesRangeMin
           , pagesRangeMax = -1
           , $pagination
-        this.el.empty()
+
+        this.opts.pageTotal = data.totalPage
+        this.opts.pageCur   = data.curPage
+        this.opts.count     = data.count
 
         if (this.opts.pageTotal > 1) {
 
@@ -42,7 +48,8 @@
             pagesRangeMax = this.opts.pageTotal
 
           this.el.html(this.opts.tplMain)
-          $pagination = this.el.find('.pagination')
+          $pagination = this.el.find('nav .pagination')
+          $pagination.empty()
           if (this.opts.pageCur == 1)
             $pagination.append($.sprintf(this.opts.tplPagePrev, ' class="disabled"'))
           else
@@ -68,24 +75,31 @@
           , num = self.text()
         if (num == '«') num = parseInt(this.opts.pageCur)-1
         if (num == '»') num = parseInt(this.opts.pageCur)+1
-        this.el.trigger( "page", [ num ] )
+        this.el.trigger( "onPage", num )
       }
 
   }
 
   $.fn.ZCPagination1 = function () {
     var $this = $(this)
+      , args = []
       , option = arguments[0]
       , data = $this.data('ZCPagination1')
       , opts = $.extend({}, $.fn.ZCPagination1.defs, typeof option == 'object' && option)
     if (!data) $this.data('ZCPagination1', (data = new ZCPagination1($this, opts)))
-    if (typeof option == 'string') data[option]()
+
+    if (typeof option == 'string') {
+      for (var i = 1; i < arguments.length; i++) args.push(arguments[i])
+      data[option].apply(data, args)
+    }
+    return $this
   }
 
   $.fn.ZCPagination1.defs = {
       pageRange   : 7
     , pageTotal   : 10
     , pageCur     : 1
+    , count       : 9999
     , tplMain     : '<nav aria-label="Page navigation"><ul class="pagination"></ul></nav>'
     , tplPagePrev : '<li%s><a href="javascript:void(null)" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>'
     , tplPageNext : '<li%s><a href="javascript:void(null)" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>'

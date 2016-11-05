@@ -158,6 +158,7 @@
       , opts = $.extend({}, $.fn.ZCMain.defs, typeof option == 'object' && option)
     if (!data) $this.data('ZCMain', (data = new ZCMain(this, opts)))
     if (typeof option == 'string') data[option]()
+    return $this
   }
 
   $.fn.ZCMain.defs = {
