@@ -41,7 +41,7 @@
           for (var j = 0; j < menu.list.length; j++) {
             subMenu = menu.list[j]
             badge = (subMenu.count>0?$.sprintf(this.opts.tplBadge, subMenu.count):'')
-            this.el.find('.sub-menu').append($.sprintf(this.opts.tplSubItem, i, j, ( subMenu.list.length > 0 ? 'true' : 'false' ), subMenu.name, subMenu.name, badge))
+            this.el.find('.sub-menu').append($.sprintf(this.opts.tplSubItem, subMenu.id, i, j, ( subMenu.list.length > 0 ? 'true' : 'false' ), subMenu.name, subMenu.name, badge))
           }
           badge = (menu.count>0?$.sprintf(this.opts.tplBadge, menu.count):'')
           this.el.find('.menu').append($.sprintf(this.opts.tplItem, i, menu.name, this.opts.icons[i], menu.name+badge))
@@ -100,7 +100,10 @@
         this.el.find('.sub-menu li').removeClass('active')
         self.addClass('active')
         // console.log(menu,idx,sub)
-        if (sub) this.createMainThumbnail(menu, idx)
+        if (sub)
+          this.createMainThumbnail(menu, idx)
+        else
+          $(document).trigger("thumbnailShow", self.data('id'))
       }
     , onSubMenuClose: function(e) {
         this.el.find('.menu-content').removeClass('submenu-open')
@@ -113,6 +116,7 @@
       , opts = $.extend({}, $.fn.ZCMenu.defs, typeof option == 'object' && option)
     if (!data) $this.data('ZCMenu', (data = new ZCMenu(this, opts)))
     if (typeof option == 'string') data[option]()
+    return $this
   }
 
   $.fn.ZCMenu.defs = {
@@ -121,7 +125,7 @@
     , ajaxMenu        : 'json/menu.json'
     , tplItem         : '<li data-menu="%s"><a href="javascript:void(null)" data-toggle="tooltip" title="%s"><span class="%s"></span> %s</li>'
     , tplSubItemTitle : '<li class="title" data-menu="%s">%s<div class="close-sub-menu pull-right"><span class="glyphicon glyphicon-triangle-left"></span></div></li>'
-    , tplSubItem      : '<li data-menu="%s" data-idx="%s" data-child="%s"><a href="javascript:void(null)" title="%s">%s %s</a></li>'
+    , tplSubItem      : '<li data-id="%s" data-menu="%s" data-idx="%s" data-child="%s"><a href="javascript:void(null)" title="%s">%s %s</a></li>'
     , tplBadge        : ' <span class="badge">%s</span></a>'
   }
 

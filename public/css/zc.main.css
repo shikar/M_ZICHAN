@@ -1,5 +1,5 @@
 body {
-  font-family: "微软雅黑","Microsoft Yahei","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: '微软雅黑','Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 
 #top-search {
@@ -150,9 +150,9 @@ body {
   padding: 0 15px;
   padding-right: 30px;
 
-  color: #333;
-
   text-overflow: ellipsis;
+
+  color: #333;
 }
 .menu-content .sub-menu li.title {
   font-weight: bold;
@@ -299,6 +299,8 @@ body {
   height: 260px;
   margin: 0 auto;
   margin-bottom: 20px;
+
+  cursor: pointer;
 }
 #main-block .thumbnail .caption {
   padding: 0;
@@ -336,6 +338,39 @@ body {
   -webkit-box-shadow: 5px 5px 12px rgba(0, 0, 0, .175);
           box-shadow: 5px 5px 12px rgba(0, 0, 0, .175);
 }
+
+
+ul.sort-bar {
+  padding: 5px;
+
+  background-color: #eee;
+}
+
+
+
+
+body.dragging,
+body.dragging * {
+  cursor: move !important;
+}
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 3000;
+}
+ul li.placeholder {
+  position: relative;
+  /** More li styles **/
+}
+ul li.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
+}
+ul li.placeholder .btn {
+  border-style: dashed;
+}
+
+
 
 
 

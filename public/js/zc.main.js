@@ -26,9 +26,9 @@
         this.initPopover()
 
 
-        $('#main-block').bind({
-            go1 : $.proxy(this.onResultSearch, this)
-          , go1 : $.proxy(this.onResult, this)
+        $(document).bind({
+            thumbnailShow : $.proxy(this.mainThumbnailShow, this)
+          // , go1 : $.proxy(this.onResult, this)
         })
       }
 
@@ -147,13 +147,8 @@
 
 
 
-    , onMainResult: function(e) {
-        switch (e.type) {
-          case 'go1':
-            break;
-          case 'go1':
-            break;
-        }
+    , mainThumbnailShow: function(e, id) {
+        $('#main-block').ZCThumbnailShow('create', id)
       }
   }
 

@@ -1,0 +1,8 @@
+{
+  "sort" : [
+    {"name":"name1", "type":"type1"},
+    {"name":"name2", "type":"type2"},
+    {"name":"name3", "type":"type3"},
+    {"name":"name4", "type":"type4"}
+  ]
+}

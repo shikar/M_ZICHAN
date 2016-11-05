@@ -30,7 +30,7 @@
         this.el.empty()
         for (i = 0; i < this.favData.length; i++) {
           item = this.favData[i]
-          this.el.append($.sprintf(this.opts.tplFavItem, item.name, 'holder.js/80x80?random=yes', item.name))
+          this.el.append($.sprintf(this.opts.tplFavItem, item.id, item.name, 'holder.js/80x80?random=yes', item.name))
         }
         if (this.favData.length >= 3)
           this.el.removeClass('col1').addClass('col3')
@@ -38,6 +38,12 @@
           this.el.removeClass('col1').addClass('col2')
 
         Holder.run()
+
+        this.el.find('li').bind('click', $.proxy(this.onFavClick, this))
+      }
+    , onFavClick: function(e) {
+        var self = $(e.currentTarget)
+        $(document).trigger("thumbnailShow", self.data('id'))
       }
   }
 
@@ -58,7 +64,7 @@
   $.fn.ZCFav.defs = {
       localAccessUrl   : 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/'
     , ajaxFav          : 'json/fav.json'
-    , tplFavItem       : '<li><a href="javascript:void(null)" title="%s"><img src="%s"><span class="txt">%s</span></a></li>'
+    , tplFavItem       : '<li data-id="%s"><a href="javascript:void(null)" title="%s"><img src="%s"><span class="txt">%s</span></a></li>'
   }
 
   $.fn.ZCFav.Constructor = ZCFav
