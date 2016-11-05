@@ -59,6 +59,7 @@
       }
     , onResetClick: function(e) {
         this.create(this.data)
+        this.el.trigger("onSort", {list:[]})
       }
     , onSortItemClick: function(e) {
         var self = $(e.currentTarget)
