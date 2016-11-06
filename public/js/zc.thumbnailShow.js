@@ -9,16 +9,13 @@
     this.ajaxData = null
 
     if (navigator.userAgent.toLowerCase().match(/chrome/) != null) this.urlPath = this.opts.localAccessUrl
-    this.init()
   }
 
   ZCThumbnailShow.prototype = {
 
       constructor: ZCThumbnailShow
-    , init: function() {
-        this.el.empty().append(this.opts.loadhtml)
-      }
     , create: function(id) {
+        this.el.empty().append(this.opts.loadHtml)
         this.id = id
         $.ajax({
           cache    : false,
@@ -35,6 +32,7 @@
         this.el.empty().append(this.opts.tplMain)
         this.el.find('.row>div')
           .ZCBreadcrumb('create', json.breadcrumb)
+          .ZCFilter('create', json.sort)
           .ZCSort('create', json.sort)
           .ZCTable('create', json.table)
           .ZCPagination2('create', json.page)

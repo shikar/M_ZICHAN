@@ -44,7 +44,8 @@ body {
   white-space: nowrap;
   text-decoration: none;
 }
-.main ul {
+.main .menu,
+.main .sub-menu {
   margin: 0;
   padding: 0;
 }
@@ -340,14 +341,40 @@ body {
 }
 
 
-ul.sort-bar {
+dl.filter-bar,
+dl.sort-bar {
   margin-bottom: 10px;
-  padding: 8px 10px;
+  margin-left: 0;
+  padding: 8px 10px 0 10px;
 
   border-radius: 4px;
   background-color: #eee;
 }
+.filter-bar > dt,
+.sort-bar > dt {
+  width: 80px;
+}
+.filter-bar > dd,
+.sort-bar > dd {
+  margin-left: 90px;
+}
 
+.filter-bar > dt.title,
+.sort-bar > dt.title {
+  width: 40px;
+}
+.filter-bar > dd.title,
+.sort-bar > dd.title {
+  margin-left: 50px;
+}
+.sort-bar ul {
+  margin-bottom: 0;
+}
+.filter-bar input,
+.filter-bar .btn,
+.sort-bar ul li {
+  margin-bottom: 8px;
+}
 
 
 

@@ -2,7 +2,7 @@
 
   "use strict"
 
-  var ZCSort = function (el, opts) {
+  var ZCFilter = function (el, opts) {
     this.el = el
     this.opts = opts
     this.urlPath = ''
@@ -12,14 +12,14 @@
     this.init()
   }
 
-  ZCSort.prototype = {
+  ZCFilter.prototype = {
 
-      constructor: ZCSort
+      constructor: ZCFilter
     , init: function() {
         this.el.append(this.opts.tplMain)
-        this.el.find('[data-toggle=tooltip]').tooltip()
       }
     , create: function(data) {
+      /*
         var key,val
           , list = this.el.find('.sort-bar .list-sort')
         this.data = data
@@ -38,6 +38,7 @@
 
         this.el.find('.btn-reset').bind('click', $.proxy(this.onResetClick, this))
         list.find('li').bind('click', $.proxy(this.onSortItemClick, this))
+        */
       }
 
     , sortSortList: function() {
@@ -88,13 +89,13 @@
       }
   }
 
-  $.fn.ZCSort = function () {
+  $.fn.ZCFilter = function () {
     var $this = $(this)
       , args = []
       , option = arguments[0]
-      , data = $this.data('ZCSort')
-      , opts = $.extend({}, $.fn.ZCSort.defs, typeof option == 'object' && option)
-    if (!data) $this.data('ZCSort', (data = new ZCSort($this, opts)))
+      , data = $this.data('ZCFilter')
+      , opts = $.extend({}, $.fn.ZCFilter.defs, typeof option == 'object' && option)
+    if (!data) $this.data('ZCFilter', (data = new ZCFilter($this, opts)))
 
     if (typeof option == 'string') {
       for (var i = 1; i < arguments.length; i++) args.push(arguments[i])
@@ -103,16 +104,15 @@
     return $this
   }
 
-  $.fn.ZCSort.defs = {
+  $.fn.ZCFilter.defs = {
       data     : [{"name":"name1", "type":"type1"},{"name":"name2", "type":"type2"}]
-    , tplMain  : '<dl class="dl-horizontal sort-bar clearfix" data-toggle="tooltip" data-placement="top" title="点击更换升降序,拖动变换次序"><dt class="title">排序:</dt><dd class="title"><botton type="button" class="btn btn-info btn-xs btn-reset pull-right"><span class="glyphpro glyphpro-redo"></span> 重置</botton><ul class="list-unstyled list-inline list-sort"></ul></dd></dl>'
-    // , tplMain  : '<ul class="list-unstyled list-inline sort-bar clearfix" data-toggle="tooltip" data-placement="top" title="点击更换升降序,拖动变换次序"><li class="pull-left">排序:</li><li class="pull-left"><ul class="list-unstyled list-inline list-sort"></ul></li><li class=" pull-right"><botton type="button" class="btn btn-info btn-xs btn-reset"><span class="glyphpro glyphpro-redo"></span> 重置</botton></li></ul>'
+    , tplMain  : '<ul class="list-unstyled list-inline filter-bar clearfix"><li class="pull-left">筛选:</li><li class="pull-left"><ul class="list-unstyled list-inline list-filter"></ul></li><li class=" pull-right"><botton type="button" class="btn btn-info btn-xs btn-reset"><span class="glyphpro glyphpro-redo"></span> 重置</botton></li></ul>'
     , tplItem  : '<li data-key="%s" data-sort="none"><a href="javascript:void(null)" class="btn btn-default btn-xs" title="%s">%s <span class="glyphpro glyphpro-sorting text-muted"></span></a></li>'
     , iconDef  : 'glyphpro-sorting'
     , iconAsc  : 'glyphpro-sort_attributes'
     , iconDesc : 'glyphpro-sort_attributes_alt'
   }
 
-  $.fn.ZCSort.Constructor = ZCSort
+  $.fn.ZCFilter.Constructor = ZCFilter
 
 }(window.jQuery);
