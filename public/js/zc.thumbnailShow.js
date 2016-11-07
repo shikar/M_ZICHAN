@@ -31,7 +31,9 @@
         this.ajaxData = json
         this.el.empty().append(this.opts.tplMain)
         this.el.find('.row>div')
+          .ZCCatalog('create', json.breadcrumb)
           .ZCBreadcrumb('create', json.breadcrumb)
+        this.el.find('.thumbnail-main')
           .ZCFilter('create', json.sort)
           .ZCSort('create', json.sort)
           .ZCTable('create', json.table)
@@ -71,7 +73,7 @@
     , ajaxTable      : 'json/table.json'
     , id             : 0
     , loadHtml       : '<div class="sk-wave"><div class="sk-rect sk-rect1"></div><div class="sk-rect sk-rect2"></div><div class="sk-rect sk-rect3"></div><div class="sk-rect sk-rect4"></div><div class="sk-rect sk-rect5"></div></div>'
-    , tplMain        : '<div class="container-fluid"><div class="row"><div class="col-xs-12"></div></div></div>'
+    , tplMain        : '<div class="container-fluid"><div class="row"><div class="col-xs-12"><div class="thumbnail-main"></div></div></div></div>'
   }
 
   $.fn.ZCThumbnailShow.Constructor = ZCThumbnailShow

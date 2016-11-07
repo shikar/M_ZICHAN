@@ -13,15 +13,16 @@
 
       constructor: ZCBreadcrumb
     , init: function() {
-        this.el.append(this.opts.tplMain)
+        this.el.prepend(this.opts.tplMain)
       }
     , create: function(data) {
         var i,item
-        this.el.empty().append(this.opts.tplMain)
         for (i = 0; i < data.length; i++) {
           item = data[i]
-          this.el.find('.breadcrumb').append($.sprintf(this.opts.tplItem, (i < data.length-1?this.opts.tplActive:''), item))
+          this.el.find('.thumbnail-breadcrumb ul').append($.sprintf(this.opts.tplItem, item))
         }
+        this.el.find('.thumbnail-breadcrumb ul').append(this.opts.tplSelect)
+        this.el.find('.thumbnail-breadcrumb ul').append(this.opts.tplSearch)
       }
   }
 
@@ -41,9 +42,10 @@
   }
 
   $.fn.ZCBreadcrumb.defs = {
-      tplMain   : '<ol class="breadcrumb"></ol>'
-    , tplItem   : '<li%s>%s</li>'
-    , tplActive : ' class="active"'
+      tplMain   : '<div class="thumbnail-breadcrumb"><a href="javascript:void(null)" class="ctrl-left hidden"><span class="glyphicon glyphicon-chevron-left"></span></a><a href="javascript:void(null)" class="ctrl-right hidden"><span class="glyphicon glyphicon-chevron-right"></span></a><ul class="list-unstyled"></ul></div>'
+    , tplItem   : '<li>%s</li>'
+    , tplSelect : '<li class="filter-selects hidden"></li>'
+    , tplSearch : '<li class="form-inline"><div class="input-group input-group-sm"><input type="text" class="form-control" placeholder="搜索当前目录下"><span class="input-group-btn"><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button></span></div></li>'
   }
 
   $.fn.ZCBreadcrumb.Constructor = ZCBreadcrumb
