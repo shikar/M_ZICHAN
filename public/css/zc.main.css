@@ -469,7 +469,8 @@ dl.sort-bar {
   margin-bottom: 8px;
 }
 .filter-selects .btn,
-.selected {
+.selected,
+.selected:hover {
   color: #0099cb;
   border-color: #0099cb;
 }
@@ -484,6 +485,9 @@ dl.sort-bar {
   vertical-align: middle;
 
   color: #0099cb;
+}
+.filter-bar dd .btn-open {
+  display: none;
 }
 
 

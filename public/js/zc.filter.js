@@ -17,75 +17,73 @@
       constructor: ZCFilter
     , init: function() {
         this.el.append(this.opts.tplMain)
+        $(window).bind('resize', $.proxy(this.onDocResize, this))
       }
     , create: function(data) {
-      /*
-        var key,val
-          , list = this.el.find('.sort-bar .list-sort')
-        this.data = data
-        list.empty()
-        for (key in data) {
-          val = data[key]
-          list.append($.sprintf(this.opts.tplItem, key, val, val))
+        var i,j
+        for (i = 0; i < 4; i++) {
+          this.el.find('.filter-bar').append($.sprintf(this.opts.tplList, '类别'+i))
+          for (j = 0; j < 12; j++) {
+            this.el.find('.filter-bar dd:last').append($.sprintf(this.opts.tplItem, j, '类别'+i, '类别_子类'+j))
+          }
         }
-
-        list.sortable({
-          placeholder : '<li class="placeholder"><a href="#" class="btn btn-default btn-xs disabled" role="button"> 插 入 </a></li>',
-          distance    : 3,
-          delay       : 100,
-          onDrop      : $.proxy(this.onDrop, this)
-        })
-
-        this.el.find('.btn-reset').bind('click', $.proxy(this.onResetClick, this))
-        list.find('li').bind('click', $.proxy(this.onSortItemClick, this))
-        */
+        this.el.find('.filter-bar .btn-open').bind('click', $.proxy(this.onOpenClick, this))
+        this.el.find('.filter-bar .filter-item').bind('click', $.proxy(this.onFilterBtnClick, this))
+        this.checkOpenBtn()
       }
-
-    , sortSortList: function() {
-        var arr = []
-          , ret = []
-          , item = null
-          , list = this.el.find('.list-sort')
-        list.find('li').each(function(idx, el) {
-          item = $(el)
-          if (item.data('sort') != 'none') {
-            arr.push(item)
-            ret.push(item.data('key') + ' ' + item.data('sort'))
+    , checkOpenBtn: function() {
+        this.el.find('.filter-bar dd').each(function(idx, el){
+          var $el = $(el)
+          $el.attr('style', '').find('.btn-open').hide()
+          if ($el.height() > 30) {
+            $el.css({'height':'30px','overflow':'hidden'}).find('.btn-open').show()
           }
         })
-
-        list.prepend(arr)
-        if (this.prevRet.toString() != ret.toString()) this.el.trigger("onSort", {list:ret})
-        this.prevRet = ret
       }
-    , onResetClick: function(e) {
-        this.create(this.data)
-        this.el.trigger("onSort", {list:[]})
-      }
-    , onSortItemClick: function(e) {
-        var self = $(e.currentTarget)
-          , sort = self.data('sort')
-          , icon = self.find('.glyphpro')
-        if (sort == 'none') {
-          self.data('sort', 'DESC')
-          icon.removeClass(this.opts.iconDef)
-              .removeClass('text-muted')
-              .addClass(this.opts.iconDesc)
-        } else if (sort == 'DESC') {
-          self.data('sort', 'ASC')
-          icon.removeClass(this.opts.iconDesc)
-              .addClass(this.opts.iconAsc)
-        } else if (sort == 'ASC') {
-          self.data('sort', 'none')
-          icon.removeClass(this.opts.iconAsc)
-              .addClass(this.opts.iconDef)
-              .addClass('text-muted')
+    , makeSelectedBtns: function() {
+        $('.thumbnail-breadcrumb .filter-selects').empty()
+        this.el.find('.filter-bar .filter-item.selected').each($.proxy(this.onSelectEach, this))
+        if ($('.thumbnail-breadcrumb .filter-selects button').length > 0) {
+          $('.thumbnail-breadcrumb .filter-selects').removeClass('hide')
+          $('.thumbnail-breadcrumb .filter-selects button').bind('click', $.proxy(this.onBreadcrumbFilterClick, this))
+        } else {
+          $('.thumbnail-breadcrumb .filter-selects').addClass('hide')
         }
-        this.sortSortList()
       }
-    , onDrop: function($item, position, _super, event) {
-        _super($item, position);
-        this.sortSortList()
+    , onSelectEach: function(idx, el, e) {
+        var $el = $(el)
+          , key = $el.data('key')
+          , type = $el.data('type')
+          , text = $el.text()
+        $('.thumbnail-breadcrumb .filter-selects').append($.sprintf(this.opts.tplItem, key, type, type+':'+text))
+      }
+    , onBreadcrumbFilterClick: function(e) {
+        var self = $(e.currentTarget)
+          , key = self.data('key')
+          , type = self.data('type')
+        this.el.find('.filter-bar .filter-item.selected[data-key="'+key+'"][data-type="'+type+'"]').trigger('click')
+      }
+
+    , onOpenClick: function(e) {
+        var self = $(e.currentTarget)
+          , dd = self.parents('dd')
+          , icon = self.find('.glyphicon')
+        if (icon.hasClass('glyphicon-plus')) {
+          dd.attr('style', '')
+          icon.removeClass('glyphicon-plus').addClass('glyphicon-minus')
+        } else {
+          dd.css({'height':'30px','overflow':'hidden'})
+          icon.removeClass('glyphicon-minus').addClass('glyphicon-plus')
+        }
+
+      }
+    , onDocResize: function(e) {
+        this.checkOpenBtn()
+      }
+    , onFilterBtnClick: function(e) {
+        var self = $(e.currentTarget)
+        self.toggleClass(this.opts.clsSeleted)
+        this.makeSelectedBtns()
       }
   }
 
@@ -105,12 +103,12 @@
   }
 
   $.fn.ZCFilter.defs = {
-      data     : [{"name":"name1", "type":"type1"},{"name":"name2", "type":"type2"}]
-    , tplMain  : '<ul class="list-unstyled list-inline filter-bar clearfix"><li class="pull-left">筛选:</li><li class="pull-left"><ul class="list-unstyled list-inline list-filter"></ul></li><li class=" pull-right"><botton type="button" class="btn btn-info btn-xs btn-reset"><span class="glyphpro glyphpro-redo"></span> 重置</botton></li></ul>'
-    , tplItem  : '<li data-key="%s" data-sort="none"><a href="javascript:void(null)" class="btn btn-default btn-xs" title="%s">%s <span class="glyphpro glyphpro-sorting text-muted"></span></a></li>'
-    , iconDef  : 'glyphpro-sorting'
-    , iconAsc  : 'glyphpro-sort_attributes'
-    , iconDesc : 'glyphpro-sort_attributes_alt'
+      data       : [{"name":"name1", "type":"type1"},{"name":"name2", "type":"type2"}]
+    , tplMain    : '<dl class="dl-horizontal filter-bar clearfix"></dl>'
+    , tplList    : '<dt>%s</dt><dd><button type="button" class="btn btn-default btn-xs btn-open pull-right"><span class="glyphicon glyphicon-plus"></span></button></dd>'
+    , tplItem    : '<button type="button" class="btn btn-default btn-xs filter-item" data-key="%s" data-type="%s">%s</button> '
+    , clsSeleted : 'selected'
+    , iconDesc   : 'glyphpro-sort_attributes_alt'
   }
 
   $.fn.ZCFilter.Constructor = ZCFilter

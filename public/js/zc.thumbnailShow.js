@@ -9,11 +9,20 @@
     this.ajaxData = null
 
     if (navigator.userAgent.toLowerCase().match(/chrome/) != null) this.urlPath = this.opts.localAccessUrl
+
+    this.init()
   }
 
   ZCThumbnailShow.prototype = {
 
       constructor: ZCThumbnailShow
+    , init: function() {
+        this.el.bind({
+          'onSort' : $.proxy(this.onSortResult, this),
+          'onAct'  : $.proxy(this.onActResult, this),
+          'onPage' : $.proxy(this.onPageClick, this)
+        })
+      }
     , create: function(id) {
         this.el.empty().append(this.opts.loadHtml)
         this.id = id
@@ -38,18 +47,19 @@
           .ZCSort('create', json.sort)
           .ZCTable('create', json.table)
           .ZCPagination2('create', json.page)
-          .bind('onSort', $.proxy(this.onSortResult, this))
-          .bind('onAct', $.proxy(this.onActResult, this))
-          .bind('onPage', $.proxy(this.onPageClick, this))
+
       }
     , onSortResult: function(e, sort) {
         console.log(sort.list)
+        e.stopPropagation()
       }
     , onActResult: function(e, id, idx) {
         console.log(id, idx)
+        e.stopPropagation()
       }
     , onPageClick: function(e, pNum) {
         console.log(pNum)
+        e.stopPropagation()
       }
   }
 
