@@ -16,14 +16,15 @@
         this.el.prepend(this.opts.tplMain)
       }
     , create: function(data) {
-        var i,j,item
-        for (i = 0; i < 3; i++) {
-          // item = data[i]
+        var i,j,item,subitem
+        for (i = 0; i < data.length; i++) {
+          item = data[i]
           this.el.find('.thumbnail-menu')
-            .append($.sprintf(this.opts.tplItem, i, '目录'+i))
+            .append($.sprintf(this.opts.tplItem, item.id, item.name))
             .find('li:last').append('<ul></ul>')
-          for (j = 0; j < 3; j++) {
-            this.el.find('.thumbnail-menu>li:last>ul').append($.sprintf(this.opts.tplItem, j, '目录'+i+'_'+j))
+          for (j = 0; j < item.list.length; j++) {
+            subitem = item.list[j]
+            this.el.find('.thumbnail-menu>li:last>ul').append($.sprintf(this.opts.tplItem, subitem.id, subitem.name))
           }
         }
         this.el.find('.thumbnail-menu>li').bind('click', $.proxy(this.onOpenClick, this))
@@ -52,7 +53,7 @@
 
   $.fn.ZCCatalog.defs = {
       tplMain   : '<ul class="thumbnail-menu"></ul>'
-    , tplItem   : '<li data-id="%s"><a href="javascript:void">%s</a></li>'
+    , tplItem   : '<li data-id="%s"><a href="javascript:void(null)">%s</a></li>'
   }
 
   $.fn.ZCCatalog.Constructor = ZCCatalog

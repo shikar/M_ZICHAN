@@ -40,10 +40,10 @@
         this.ajaxData = json
         this.el.empty().append(this.opts.tplMain)
         this.el.find('.row>div')
-          .ZCCatalog('create', json.breadcrumb)
+          .ZCCatalog('create', json.menu)
           .ZCBreadcrumb('create', json.breadcrumb)
         this.el.find('.thumbnail-main')
-          .ZCFilter('create', json.sort)
+          .ZCFilter('create', json.filter)
           .ZCSort('create', json.sort)
           .ZCTable('create', json.table)
           .ZCPagination2('create', json.page)

@@ -20,11 +20,13 @@
         $(window).bind('resize', $.proxy(this.onDocResize, this))
       }
     , create: function(data) {
-        var i,j
-        for (i = 0; i < 4; i++) {
-          this.el.find('.filter-bar').append($.sprintf(this.opts.tplList, '类别'+i))
-          for (j = 0; j < 12; j++) {
-            this.el.find('.filter-bar dd:last').append($.sprintf(this.opts.tplItem, j, '类别'+i, '类别_子类'+j))
+        var i,j,item,subitem
+        for (i = 0; i < data.length; i++) {
+          item = data[i]
+          this.el.find('.filter-bar').append($.sprintf(this.opts.tplList, item.name))
+          for (j = 0; j < item.list.length; j++) {
+            subitem = item.list[j]
+            this.el.find('.filter-bar dd:last').append($.sprintf(this.opts.tplItem, subitem.id, item.name, subitem.name))
           }
         }
         this.el.find('.filter-bar .btn-open').bind('click', $.proxy(this.onOpenClick, this))
