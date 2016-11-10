@@ -434,7 +434,7 @@ body {
 }
 
 .thumbnail-main {
-  margin-left: 215px;
+  margin-left: 210px;
 }
 
 
@@ -475,7 +475,7 @@ dl.sort-bar {
   border-color: #0099cb;
 }
 .filter-selects .btn:after,
-.selected:after {
+.filter-bar .selected:after {
   font-family: 'Glyphicons Halflings';
   font-size: 10px;
 

@@ -63,19 +63,23 @@
       }
     , onSortItemClick: function(e) {
         var self = $(e.currentTarget)
+          , btn = self.find('.btn')
           , sort = self.data('sort')
           , icon = self.find('.glyphpro')
         if (sort == 'none') {
           self.data('sort', 'DESC')
+          btn.addClass('selected')
           icon.removeClass(this.opts.iconDef)
               .removeClass('text-muted')
               .addClass(this.opts.iconDesc)
         } else if (sort == 'DESC') {
           self.data('sort', 'ASC')
+          btn.addClass('selected')
           icon.removeClass(this.opts.iconDesc)
               .addClass(this.opts.iconAsc)
         } else if (sort == 'ASC') {
           self.data('sort', 'none')
+          btn.removeClass('selected')
           icon.removeClass(this.opts.iconAsc)
               .addClass(this.opts.iconDef)
               .addClass('text-muted')

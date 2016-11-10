@@ -107,7 +107,7 @@
   $.fn.ZCFilter.defs = {
       data       : [{"name":"name1", "type":"type1"},{"name":"name2", "type":"type2"}]
     , tplMain    : '<dl class="dl-horizontal filter-bar clearfix"></dl>'
-    , tplList    : '<dt>%s</dt><dd><button type="button" class="btn btn-default btn-xs btn-open pull-right"><span class="glyphicon glyphicon-plus"></span></button></dd>'
+    , tplList    : '<dt>%s</dt><dd><button type="button" class="btn btn-link btn-xs btn-open pull-right"><span class="glyphicon glyphicon-plus"></span></button></dd>'
     , tplItem    : '<button type="button" class="btn btn-default btn-xs filter-item" data-key="%s" data-type="%s">%s</button> '
     , clsSeleted : 'selected'
     , iconDesc   : 'glyphpro-sort_attributes_alt'
