@@ -453,11 +453,17 @@ ul li.placeholder .btn {
   border-style: dashed;
 }
 
+
 .thumbnail-main .panel {
   margin-bottom: 10px;
 }
 .thumbnail-main .panel .panel-body {
   padding: 8px;
+}
+.thumbnail-main .panel .panel-body.panel-close {
+  display: block;
+  overflow: hidden;
+  height: 31px;
 }
 .thumbnail-main .panel .dl-horizontal {
   margin-bottom: 0;
@@ -467,6 +473,11 @@ ul li.placeholder .btn {
 }
 .thumbnail-main .panel .dl-horizontal dd {
   margin-left: 120px;
+}
+.thumbnail-main .panel .btn-open {
+  position: absolute;
+  top: -8px;
+  right: 10px;
 }
 
 

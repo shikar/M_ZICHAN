@@ -17,6 +17,7 @@
       constructor: ZCTopInfo
     , init: function() {
         this.el.append(this.opts.tplMain)
+        this.el.find('.btn-open').bind('click', $.proxy(this.onOpenClick, this))
       }
     , create: function(data) {
         var key,curDl
@@ -29,6 +30,21 @@
           curDl.append($.sprintf(this.opts.tplItem, key+':', this.data[key]))
           i++
         }
+      }
+
+    , onOpenClick: function(e) {
+        var self = $(e.currentTarget)
+          , icon = self.find('span')
+        if (icon.hasClass(this.opts.iconOpen)) {
+          icon.removeClass(this.opts.iconOpen)
+              .addClass(this.opts.iconClose)
+          this.el.find('.panel-body').removeClass(this.opts.clsClose)
+        } else {
+          icon.removeClass(this.opts.iconClose)
+              .addClass(this.opts.iconOpen)
+          this.el.find('.panel-body').addClass(this.opts.clsClose)
+        }
+
       }
   }
 
@@ -48,9 +64,12 @@
   }
 
   $.fn.ZCTopInfo.defs = {
-      data        : null
-    , tplMain     : '<div class="panel panel-default"><div class="panel-body container-fluid"><div class="row"><div class="col-xs-6"><dl class="dl-horizontal"></dl></div><div class="col-xs-6"><dl class="dl-horizontal"></dl></div></div></div></div>'
-    , tplItem     : '<dt>%s</dt><dd>%s</dd>'
+      data      : null
+    , tplMain   : '<div class="panel panel-default"><div class="panel-body panel-close container-fluid"><div class="row"><div class="col-xs-6"><dl class="dl-horizontal"></dl></div><div class="col-xs-6"><button type="button" class="btn btn-link btn-open"><span class="glyphicon glyphicon-menu-down"></span></button><dl class="dl-horizontal"></dl></div></div></div></div>'
+    , tplItem   : '<dt>%s</dt><dd>%s</dd>'
+    , iconOpen  : 'glyphicon-menu-down'
+    , iconClose : 'glyphicon-menu-up'
+    , clsClose  : 'panel-close'
   }
 
   $.fn.ZCTopInfo.Constructor = ZCTopInfo

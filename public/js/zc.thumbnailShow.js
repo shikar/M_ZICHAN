@@ -28,7 +28,8 @@
           'onAct'     : $.proxy(this.onActResult, this),
           'onPage'    : $.proxy(this.onPageResult, this),
           'onFilter'  : $.proxy(this.onFilterResult, this),
-          'onCatalog' : $.proxy(this.onCatalogResult, this)
+          'onCatalog' : $.proxy(this.onCatalogResult, this),
+          'onSearch'  : $.proxy(this.onSearchResult, this)
         })
       }
     , create: function(id) {
@@ -103,6 +104,12 @@
     , onFilterResult: function(e) {
         console.log(e.selected)
         this.filter = e.selected
+        this.refreshTable()
+        e.stopPropagation()
+      }
+    , onSearchResult: function(e) {
+        console.log(e.search)
+        this.search = e.search
         this.refreshTable()
         e.stopPropagation()
       }
