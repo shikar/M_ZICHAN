@@ -32,8 +32,12 @@
       }
     , onOpenClick: function(e) {
         var self = $(e.currentTarget)
-        this.el.find('.thumbnail-menu>li').removeClass('act')
-        self.addClass('act')
+        if (self.hasClass('act')) {
+          this.el.find('.thumbnail-menu>li').removeClass('act')
+        } else {
+          this.el.find('.thumbnail-menu>li').removeClass('act')
+          self.addClass('act')
+        }
       }
     , onGoClick: function(e) {
         var self = $(e.currentTarget)

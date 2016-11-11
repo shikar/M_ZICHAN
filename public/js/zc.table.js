@@ -48,7 +48,7 @@
       }
     , checkKeyword: function(str) {
         str = str + ''
-        str = str.replace(new RegExp('('+this.data.info.keyword+')', 'ig'), '<b class="text-danger">$1</b>')
+        str = str.replace(new RegExp('('+this.data.info.keyword+')', 'ig'), '<b class="'+this.opts.clsKeyword+'">$1</b>')
         return str
       }
     , onBtnActClick: function(e) {
@@ -93,6 +93,7 @@
     , loadHtml    : '<div class="sk-wave"><div class="sk-rect sk-rect1"></div><div class="sk-rect sk-rect2"></div><div class="sk-rect sk-rect3"></div><div class="sk-rect sk-rect4"></div><div class="sk-rect sk-rect5"></div></div>'
     , tplMain     : '<table class="table table-striped table-hover"><thead></thead><tbody></tbody></table>'
     , tplActBtns  : '<a href="javascript:void(null)"><span class="glyphicon glyphicon-heart"></span></a> <a href="javascript:void(null)"><span class="glyphicon glyphicon-edit"></span></a>'
+    , clsKeyword  : 'red'
     , clsSelected : 'info'
   }
 

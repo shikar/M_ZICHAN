@@ -4,6 +4,9 @@ body {
 .breadcrumb > li + li:before {
   content: '>';
 }
+.red {
+  color: #f00;
+}
 
 #top-search {
   margin-top: 13px;
@@ -453,12 +456,18 @@ ul li.placeholder .btn {
 .thumbnail-main .panel {
   margin-bottom: 10px;
 }
+.thumbnail-main .panel .panel-body {
+  padding: 8px;
+}
 .thumbnail-main .panel .dl-horizontal {
   margin-bottom: 0;
 }
-
-
-
+.thumbnail-main .panel .dl-horizontal dt {
+  width: 110px;
+}
+.thumbnail-main .panel .dl-horizontal dd {
+  margin-left: 120px;
+}
 
 
 .sk-spinner-pulse {

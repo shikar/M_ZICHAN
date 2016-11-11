@@ -120,8 +120,8 @@
     // , tplMain  : '<ul class="list-unstyled list-inline sort-bar clearfix" data-toggle="tooltip" data-placement="top" title="点击更换升降序,拖动变换次序"><li class="pull-left">排序:</li><li class="pull-left"><ul class="list-unstyled list-inline list-sort"></ul></li><li class=" pull-right"><botton type="button" class="btn btn-info btn-xs btn-reset"><span class="glyphpro glyphpro-redo"></span> 重置</botton></li></ul>'
     , tplItem  : '<li data-key="%s" data-sort="none"><a href="javascript:void(null)" class="btn btn-default btn-xs" title="%s">%s <span class="glyphpro glyphpro-sorting text-muted"></span></a></li>'
     , iconDef  : 'glyphpro-sorting'
-    , iconAsc  : 'glyphpro-sort_attributes'
-    , iconDesc : 'glyphpro-sort_attributes_alt'
+    , iconAsc  : 'glyphpro-arrow_down'
+    , iconDesc : 'glyphpro-arrow_up'
   }
 
   $.fn.ZCSort.Constructor = ZCSort
