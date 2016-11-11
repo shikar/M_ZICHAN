@@ -42,6 +42,8 @@
             $pagination.append($.sprintf(this.opts.tplPageNext, ''))
             $pagination.append($.sprintf(this.opts.tplPageLast, ''))
           }
+
+          $pagination.append($.sprintf(this.opts.tplPageTotal, this.opts.count))
         }
         $pagination.find('a').bind('click', $.proxy(this.onPageClick, this))
         $pagination.find('.page-ipt').bind('keypress', $.proxy(this.onPageKeypress, this))
