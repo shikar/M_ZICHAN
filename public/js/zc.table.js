@@ -23,6 +23,7 @@
         this.data = data
         this.el.find('tbody').empty()
         this.el.find('thead').append('<tr></tr>')
+        if (this.data.info.checkbox == true) this.el.find('thead tr').append('<th class="text-center">#</th>')
         for (i = 0; i < data.fields.length; i++) {
           if (!data.fields[i]['hidden']) this.el.find('thead tr').append('<th>'+data.fields[i]['name']+'</th>')
         }
@@ -30,20 +31,44 @@
 
         for (i = 0; i < data.lists.length; i++) {
           item = data.lists[i]
-          this.el.find('tbody').append($.sprintf('<tr data-id="%s"></tr>', item[0]))
+          this.el.find('tbody').append($.sprintf('<tr data-key="%s"></tr>', item[0]))
+          if (this.data.info.checkbox == true) {
+            this.el.find('tbody tr:last').append('<td class="text-center"><input type="checkbox" name="ids[]" value="'+item[0]+'"></td>')
+          }
           for (j = 0; j < item.length; j++) {
             if (!data.fields[j]['hidden'])
-              this.el.find('tbody tr:last').append('<td>'+item[j]+'</td>')
+              this.el.find('tbody tr:last').append('<td>'+this.checkKeyword(item[j])+'</td>')
           }
           this.el.find('tbody tr:last').append('<td class="text-center act-btn">'+this.opts.tplActBtns+'</td>')
         }
+
         this.el.find('tbody .act-btn a').bind('click', $.proxy(this.onBtnActClick, this))
+        this.el.find('tbody tr').bind('click', $.proxy(this.onTrClick, this))
+      }
+    , checkKeyword: function(str) {
+        str = str + ''
+        str = str.replace(new RegExp('('+this.data.info.keyword+')', 'ig'), '<b class="text-danger">$1</b>')
+        return str
       }
     , onBtnActClick: function(e) {
         var self = $(e.currentTarget)
-          , id = self.parents('tr').data('id')
+          , key = self.parents('tr').data('key')
           , idx = self.index()
-        this.el.trigger('onAct', [id, idx])
+        this.el.trigger({
+          type : 'onAct',
+          key  : key,
+          idx  : idx
+        })
+      }
+    , onTrClick: function(e) {
+        var self = $(e.currentTarget)
+        if (this.data.info.checkbox == false)
+          this.el.find('tbody tr').removeClass(this.opts.clsSelected)
+        self.toggleClass(this.opts.clsSelected)
+        if (self.hasClass(this.opts.clsSelected))
+          self.find('input[type=checkbox]').prop('checked',true)
+        else
+          self.find('input[type=checkbox]').prop('checked',false)
       }
   }
 
@@ -63,10 +88,11 @@
   }
 
   $.fn.ZCTable.defs = {
-      data       : null
-    , loadHtml   : '<div class="sk-wave"><div class="sk-rect sk-rect1"></div><div class="sk-rect sk-rect2"></div><div class="sk-rect sk-rect3"></div><div class="sk-rect sk-rect4"></div><div class="sk-rect sk-rect5"></div></div>'
-    , tplMain    : '<table class="table table-striped table-hover"><thead></thead><tbody></tbody></table>'
-    , tplActBtns : '<a href="javascript:void(null)"><span class="glyphicon glyphicon-heart"></span></a> <a href="javascript:void(null)"><span class="glyphicon glyphicon-edit"></span></a>'
+      data        : null
+    , loadHtml    : '<div class="sk-wave"><div class="sk-rect sk-rect1"></div><div class="sk-rect sk-rect2"></div><div class="sk-rect sk-rect3"></div><div class="sk-rect sk-rect4"></div><div class="sk-rect sk-rect5"></div></div>'
+    , tplMain     : '<table class="table table-striped table-hover"><thead></thead><tbody></tbody></table>'
+    , tplActBtns  : '<a href="javascript:void(null)"><span class="glyphicon glyphicon-heart"></span></a> <a href="javascript:void(null)"><span class="glyphicon glyphicon-edit"></span></a>'
+    , clsSelected : 'info'
   }
 
   $.fn.ZCTable.Constructor = ZCTable

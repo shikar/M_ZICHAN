@@ -54,12 +54,19 @@
         })
 
         list.prepend(arr)
-        if (this.prevRet.toString() != ret.toString()) this.el.trigger("onSort", {list:ret})
+        if (this.prevRet.toString() != ret.toString())
+          this.el.trigger({
+          type : "onSort",
+          list : ret
+        })
         this.prevRet = ret
       }
     , onResetClick: function(e) {
         this.create(this.data)
-        this.el.trigger("onSort", {list:[]})
+        this.el.trigger({
+          type : "onSort",
+          list : []
+        })
       }
     , onSortItemClick: function(e) {
         var self = $(e.currentTarget)

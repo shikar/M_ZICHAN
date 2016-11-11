@@ -43,10 +43,10 @@
   }
 
   $.fn.ZCBreadcrumb.defs = {
-      tplMain   : '<div class="thumbnail-breadcrumb"><a href="javascript:void(null)" class="ctrl-left hide"><span class="glyphicon glyphicon-chevron-left"></span></a><a href="javascript:void(null)" class="ctrl-right hide"><span class="glyphicon glyphicon-chevron-right"></span></a><ul class="list-unstyled"></ul></div>'
+      tplMain   : '<div class="thumbnail-breadcrumb"><a href="javascript:void(null)" class="ctrl-left hide"><span class="glyphicon glyphicon-chevron-left"></span></a><a href="javascript:void(null)" class="ctrl-right hide"><span class="glyphicon glyphicon-chevron-right"></span></a><div class="overflow"><ul class="list-unstyled"></ul></div></div>'
     , tplItem   : '<li>%s</li>'
     , tplSelect : '<li class="filter-selects hide"></li>'
-    , tplSearch : '<li class="form-inline"><div class="input-group input-group-sm"><input type="text" class="form-control" placeholder="搜索当前目录下"><span class="input-group-btn"><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button></span></div></li>'
+    , tplSearch : '<li class="form-inline"><div class="input-group input-group-sm" style="width:190px;"><input type="text" class="form-control" placeholder="搜索当前目录下"><span class="input-group-btn"><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button></span></div></li>'
   }
 
   $.fn.ZCBreadcrumb.Constructor = ZCBreadcrumb

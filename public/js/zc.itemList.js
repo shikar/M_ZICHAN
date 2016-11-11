@@ -24,7 +24,10 @@
       }
     , onThumbnailClick: function(e) {
         var self = $(e.currentTarget)
-        $(document).trigger("thumbnailShow", self.data('id'))
+        $(document).trigger({
+          type : "thumbnailShow",
+          key  : self.data('id')
+        })
       }
   }
 

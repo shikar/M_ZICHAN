@@ -53,8 +53,8 @@
     , onAjaxSearchResult: function(json) {
         this.create(json)
       }
-    , onPageClick:function(e, pNum) {
-        this.goSearch(this.opts.key, this.opts.type, pNum)
+    , onPageClick:function(e) {
+        this.goSearch(this.opts.key, this.opts.type, e.page)
       }
 
   }

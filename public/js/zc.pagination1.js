@@ -75,7 +75,10 @@
           , num = self.text()
         if (num == '«') num = parseInt(this.opts.pageCur)-1
         if (num == '»') num = parseInt(this.opts.pageCur)+1
-        this.el.trigger( "onPage", num )
+        this.el.trigger({
+          type : "onPage",
+          page : num
+        })
       }
 
   }

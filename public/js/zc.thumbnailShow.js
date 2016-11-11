@@ -18,9 +18,10 @@
       constructor: ZCThumbnailShow
     , init: function() {
         this.el.bind({
-          'onSort' : $.proxy(this.onSortResult, this),
-          'onAct'  : $.proxy(this.onActResult, this),
-          'onPage' : $.proxy(this.onPageClick, this)
+          'onSort'   : $.proxy(this.onSortResult, this),
+          'onAct'    : $.proxy(this.onActResult, this),
+          'onPage'   : $.proxy(this.onPageResult, this),
+          'onFilter' : $.proxy(this.onFilterResult, this)
         })
       }
     , create: function(id) {
@@ -43,22 +44,27 @@
           .ZCCatalog('create', json.menu)
           .ZCBreadcrumb('create', json.breadcrumb)
         this.el.find('.thumbnail-main')
+          .ZCTopInfo('create', json.info)
           .ZCFilter('create', json.filter)
           .ZCSort('create', json.sort)
           .ZCTable('create', json.table)
           .ZCPagination2('create', json.page)
 
       }
-    , onSortResult: function(e, sort) {
-        console.log(sort.list)
+    , onSortResult: function(e) {
+        console.log(e.list)
         e.stopPropagation()
       }
-    , onActResult: function(e, id, idx) {
-        console.log(id, idx)
+    , onActResult: function(e) {
+        console.log(e.key, e.idx)
         e.stopPropagation()
       }
-    , onPageClick: function(e, pNum) {
-        console.log(pNum)
+    , onPageResult: function(e) {
+        console.log(e.page)
+        e.stopPropagation()
+      }
+    , onFilterResult: function(e) {
+        console.log(e.selected)
         e.stopPropagation()
       }
   }

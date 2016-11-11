@@ -65,7 +65,10 @@
             num = this.opts.pageTotal;
             break;
         }
-        this.el.trigger( "onPage", [ num ] )
+        this.el.trigger({
+          type : "onPage",
+          page : num
+        })
       }
     , onPageKeypress: function(e) {
         var keycode = (e.keyCode ? e.keyCode : e.which)
@@ -73,7 +76,10 @@
         if(keycode == '13'){
           if (num < 1) num = 1
           else if(num > this.opts.pageTotal) num = this.opts.pageTotal
-          this.el.trigger( "onPage", num )
+          this.el.trigger({
+            type : "onPage",
+            page : num
+          })
         }
       }
 

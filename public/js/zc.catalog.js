@@ -28,11 +28,20 @@
           }
         }
         this.el.find('.thumbnail-menu>li').bind('click', $.proxy(this.onOpenClick, this))
+        this.el.find('.thumbnail-menu>li>li').bind('click', $.proxy(this.onGoClick, this))
       }
     , onOpenClick: function(e) {
         var self = $(e.currentTarget)
         this.el.find('.thumbnail-menu>li').removeClass('act')
         self.addClass('act')
+      }
+    , onGoClick: function(e) {
+        var self = $(e.currentTarget)
+          , key = self.data('key')
+        this.el.trigger({
+          type : 'onCatalog',
+          key  : key
+        })
       }
   }
 
@@ -53,7 +62,7 @@
 
   $.fn.ZCCatalog.defs = {
       tplMain   : '<ul class="thumbnail-menu"></ul>'
-    , tplItem   : '<li data-id="%s"><a href="javascript:void(null)">%s</a></li>'
+    , tplItem   : '<li data-key="%s"><a href="javascript:void(null)">%s</a></li>'
   }
 
   $.fn.ZCCatalog.Constructor = ZCCatalog

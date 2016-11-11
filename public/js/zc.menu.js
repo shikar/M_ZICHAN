@@ -103,7 +103,10 @@
         if (sub)
           this.createMainThumbnail(menu, idx)
         else
-          $(document).trigger("thumbnailShow", self.data('id'))
+          $(document).trigger({
+            type : "thumbnailShow",
+            key  : self.data('key')
+          })
       }
     , onSubMenuClose: function(e) {
         this.el.find('.menu-content').removeClass('submenu-open')
@@ -125,7 +128,7 @@
     , ajaxMenu        : 'json/menu.json'
     , tplItem         : '<li data-menu="%s"><a href="javascript:void(null)" data-toggle="tooltip" title="%s"><span class="%s"></span> %s</li>'
     , tplSubItemTitle : '<li class="title" data-menu="%s">%s<div class="close-sub-menu pull-right"><span class="glyphicon glyphicon-triangle-left"></span></div></li>'
-    , tplSubItem      : '<li data-id="%s" data-menu="%s" data-idx="%s" data-child="%s"><a href="javascript:void(null)" title="%s">%s %s</a></li>'
+    , tplSubItem      : '<li data-key="%s" data-menu="%s" data-idx="%s" data-child="%s"><a href="javascript:void(null)" title="%s">%s %s</a></li>'
     , tplBadge        : ' <span class="badge">%s</span></a>'
   }
 

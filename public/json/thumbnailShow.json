@@ -355,8 +355,8 @@
   },
   "table" : {
     "info":{
-      "checkbox":0,
-      "keyword" : "飘红"
+      "checkbox": 1,
+      "keyword" : "医院"
     },
     "fields":[
       {"name":"id","hidden":true},

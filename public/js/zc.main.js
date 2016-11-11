@@ -147,8 +147,8 @@
 
 
 
-    , mainThumbnailShow: function(e, id) {
-        $('#main-block').ZCThumbnailShow('create', id)
+    , mainThumbnailShow: function(e) {
+        $('#main-block').ZCThumbnailShow('create', e.key)
       }
   }
 

@@ -6,7 +6,7 @@
     this.el = el
     this.opts = opts
     this.urlPath = ''
-    this.prevRet = []
+    this.selected = []
 
     if (navigator.userAgent.toLowerCase().match(/chrome/) != null) this.urlPath = this.opts.localAccessUrl
     this.init()
@@ -18,6 +18,7 @@
     , init: function() {
         this.el.append(this.opts.tplMain)
         $(window).bind('resize', $.proxy(this.onDocResize, this))
+        $('.thumbnail-breadcrumb').find('.ctrl-left, .ctrl-right').bind('click', $.proxy(this.onBreadcrumbCtrlClick, this))
       }
     , create: function(data) {
         var i,j,item,subitem
@@ -42,22 +43,40 @@
           }
         })
       }
+    , checkBreadcrumbOver: function() {
+        var breadcrumbFilter = $('.thumbnail-breadcrumb>.overflow>ul')
+          , overflow = $('.thumbnail-breadcrumb>.overflow')
+        if (breadcrumbFilter.width() > overflow.width()) {
+          $('.thumbnail-breadcrumb').find('.ctrl-left, .ctrl-right').removeClass('hide')
+        } else {
+          $('.thumbnail-breadcrumb').find('.ctrl-left, .ctrl-right').addClass('hide')
+        }
+      }
     , makeSelectedBtns: function() {
+        this.selected = []
         $('.thumbnail-breadcrumb .filter-selects').empty()
         this.el.find('.filter-bar .filter-item.selected').each($.proxy(this.onSelectEach, this))
+        $('.thumbnail-breadcrumb .overflow > ul').attr('style', '')
         if ($('.thumbnail-breadcrumb .filter-selects button').length > 0) {
           $('.thumbnail-breadcrumb .filter-selects').removeClass('hide')
           $('.thumbnail-breadcrumb .filter-selects button').bind('click', $.proxy(this.onBreadcrumbFilterClick, this))
         } else {
           $('.thumbnail-breadcrumb .filter-selects').addClass('hide')
         }
+        this.el.trigger({
+          type     : 'onFilter',
+          selected : this.selected
+        })
       }
     , onSelectEach: function(idx, el, e) {
         var $el = $(el)
           , key = $el.data('key')
           , type = $el.data('type')
           , text = $el.text()
+          , obj = {}
         $('.thumbnail-breadcrumb .filter-selects').append($.sprintf(this.opts.tplItem, key, type, type+':'+text))
+        obj[key] = type
+        this.selected.push(obj)
       }
     , onBreadcrumbFilterClick: function(e) {
         var self = $(e.currentTarget)
@@ -81,11 +100,34 @@
       }
     , onDocResize: function(e) {
         this.checkOpenBtn()
+        this.checkBreadcrumbOver()
       }
     , onFilterBtnClick: function(e) {
         var self = $(e.currentTarget)
         self.toggleClass(this.opts.clsSeleted)
         this.makeSelectedBtns()
+
+        this.checkBreadcrumbOver()
+      }
+    , onBreadcrumbCtrlClick: function(e) {
+        var self = $(e.currentTarget)
+          , ul = $('.thumbnail-breadcrumb .overflow > ul')
+          , position = ul.position()
+          , overflow = $('.thumbnail-breadcrumb .overflow')
+          , left = 0
+        if (self.hasClass('ctrl-right')) {
+          left = position.left - overflow.width()
+        } else {
+          left = position.left + overflow.width()
+        }
+        if (left > 0)
+          left = 0
+        else if (left < overflow.width()-ul.width())
+          left = overflow.width()-ul.width()
+        $('.thumbnail-breadcrumb .overflow > ul').css({
+          'left': left+'px',
+          'position': 'relative'
+        })
       }
   }
 
