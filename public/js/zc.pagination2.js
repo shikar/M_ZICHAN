@@ -113,7 +113,7 @@
     , tplPageNext  : '<a href="javascript:void(null)" class="btn btn-link%s" aria-label="Next"><span class="glyphicon glyphicon-triangle-right"></span></a>'
     , tplPageLast  : '<a href="javascript:void(null)" class="btn btn-link%s" aria-label="Last"><span class="glyphicon glyphicon-step-forward"></span></a>'
     , tplPageItem  : '<input class="form-control page-ipt" type="text" value="%s"> / <span class="page-max">%s</span>'
-    , tplPageTotal : '共有 %s 条记录'
+    , tplPageTotal : '共有 <b>%s</b> 条记录'
   }
 
   $.fn.ZCPagination2.Constructor = ZCPagination2
