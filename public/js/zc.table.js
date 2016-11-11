@@ -21,6 +21,7 @@
     , create: function(data) {
         var i,j,item
         this.data = data
+        this.el.find('thead').empty()
         this.el.find('tbody').empty()
         this.el.find('thead').append('<tr></tr>')
         if (this.data.info.checkbox == true) this.el.find('thead tr').append('<th class="text-center">#</th>')

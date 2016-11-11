@@ -28,7 +28,7 @@
           }
         }
         this.el.find('.thumbnail-menu>li').bind('click', $.proxy(this.onOpenClick, this))
-        this.el.find('.thumbnail-menu>li>li').bind('click', $.proxy(this.onGoClick, this))
+        this.el.find('.thumbnail-menu>li li').bind('click', $.proxy(this.onGoClick, this))
       }
     , onOpenClick: function(e) {
         var self = $(e.currentTarget)
