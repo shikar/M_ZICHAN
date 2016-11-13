@@ -48,6 +48,7 @@
           , overflow = $('.thumbnail-breadcrumb>.overflow')
         if (breadcrumbFilter.width() > overflow.width()) {
           $('.thumbnail-breadcrumb').find('.ctrl-left, .ctrl-right').removeClass('hide')
+          $('.thumbnail-breadcrumb').find('.ctrl-right').trigger('click')
         } else {
           $('.thumbnail-breadcrumb').find('.ctrl-left, .ctrl-right').addClass('hide')
         }
