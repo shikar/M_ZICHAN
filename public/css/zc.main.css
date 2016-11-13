@@ -308,8 +308,15 @@ body {
   background-color: #eee;
 }
 .thumbnail-breadcrumb .overflow {
+  position: absolute;
+  top: 12px;
+  right: 225px;
+  left: 25px;
   display: block;
   overflow: hidden;
+}
+.thumbnail-breadcrumb .form-inline {
+  float: right;
 }
 .thumbnail-breadcrumb .ctrl-left,
 .thumbnail-breadcrumb .ctrl-right {
