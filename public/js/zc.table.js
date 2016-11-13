@@ -24,7 +24,7 @@
         this.el.find('thead').empty()
         this.el.find('tbody').empty()
         this.el.find('thead').append('<tr></tr>')
-        if (this.data.info.checkbox == true) this.el.find('thead tr').append('<th class="text-center">#</th>')
+        if (this.data.info.checkbox == true) this.el.find('thead tr').append('<th class="text-center"><input type="checkbox" name="seletct-all"></th>')
         for (i = 0; i < data.fields.length; i++) {
           if (!data.fields[i]['hidden']) this.el.find('thead tr').append('<th>'+data.fields[i]['name']+'</th>')
         }
@@ -43,6 +43,7 @@
           this.el.find('tbody tr:last').append('<td class="text-center act-btn">'+this.opts.tplActBtns+'</td>')
         }
 
+        this.el.find('input[name=seletct-all]').bind('click', $.proxy(this.onSelectAllClick, this))
         this.el.find('tbody .act-btn a').bind('click', $.proxy(this.onBtnActClick, this))
         this.el.find('tbody tr').bind('click', $.proxy(this.onTrClick, this))
       }
@@ -50,6 +51,15 @@
         str = str + ''
         str = str.replace(new RegExp('('+this.data.info.keyword+')', 'ig'), '<b class="'+this.opts.clsKeyword+'">$1</b>')
         return str
+      }
+    , onSelectAllClick: function(e) {
+        var self = $(e.currentTarget)
+          , cheched = self.prop('checked')
+        this.el.find('tbody tr input[type=checkbox]').prop('checked', cheched)
+        if (cheched)
+          this.el.find('tbody tr').addClass(this.opts.clsSelected)
+        else
+          this.el.find('tbody tr').removeClass(this.opts.clsSelected)
       }
     , onBtnActClick: function(e) {
         var self = $(e.currentTarget)
