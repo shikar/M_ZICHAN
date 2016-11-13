@@ -164,7 +164,6 @@
   $.fn.ZCMain.defs = {
       localAccessUrl : 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/'
     , includeHeader  : 'header.html'
-    , includeMenu    : 'menu.html'
     , includeRight   : 'right.html'
     , ajaxSearchTip  : 'json/searchTip.json'
     , ajaxSearchHot  : 'json/searchHot.json'

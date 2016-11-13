@@ -68,7 +68,7 @@
           selected : this.selected
         })
       }
-    , onSelectEach: function(idx, el, e) {
+    , onSelectEach: function(idx, el) {
         var $el = $(el)
           , key = $el.data('key')
           , type = $el.data('type')
