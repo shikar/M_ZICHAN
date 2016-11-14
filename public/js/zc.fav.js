@@ -24,7 +24,7 @@
       }
     , checkLoacAccessUrl: function() {
         var protocol = window.location.protocol
-        if (protocol == 'file' && navigator.userAgent.toLowerCase().match(/chrome/) != null) {
+        if (protocol == 'file:' && navigator.userAgent.toLowerCase().match(/chrome/) != null) {
           this.opts.rootUrl = 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/' + this.opts.rootUrl
         }
       }
