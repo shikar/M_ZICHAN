@@ -5,10 +5,8 @@
   var ZCSort = function (el, opts) {
     this.el = el
     this.opts = opts
-    this.urlPath = ''
     this.prevRet = []
 
-    if (navigator.userAgent.toLowerCase().match(/chrome/) != null) this.urlPath = this.opts.localAccessUrl
     this.init()
   }
 

@@ -5,7 +5,6 @@
   var ZCThumbnailShow = function (el, opts) {
     this.el       = el
     this.opts     = opts
-    this.urlPath  = ''
     this.ajaxData = null
 
     this.id     = 0
@@ -14,8 +13,7 @@
     this.page   = 1
     this.search = ''
 
-    if (navigator.userAgent.toLowerCase().match(/chrome/) != null) this.urlPath = this.opts.localAccessUrl
-
+    this.checkLoacAccessUrl()
     this.init()
   }
 
@@ -32,7 +30,14 @@
           'onSearch'  : $.proxy(this.onSearchResult, this)
         })
       }
-    , create: function(id) {
+    , checkLoacAccessUrl: function() {
+        var protocol = window.location.protocol
+        if (protocol == 'file' && navigator.userAgent.toLowerCase().match(/chrome/) != null) {
+          this.opts.rootUrl = 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/' + this.opts.rootUrl
+        }
+      }
+    , create: function(id, ajaxUrl) {
+        if (ajaxUrl) this.opts.ajaxUrl = ajaxUrl
         this.el.empty().append(this.opts.loadHtml)
         this.id     = id
         this.filter = []
@@ -43,7 +48,7 @@
           cache    : false,
           dataType : "json",
           data     : {id: id},
-          url      : this.urlPath + this.opts.ajaxUrl,
+          url      : this.opts.rootUrl + this.opts.ajaxUrl,
           success  : $.proxy(this.onThumbnailShowResult, this)
         })
       }
@@ -58,7 +63,7 @@
               page   : this.page,
               search : this.search
             },
-          url      : this.urlPath + this.opts.ajaxTable,
+          url      : this.opts.rootUrl + this.opts.ajaxTable,
           success  : $.proxy(this.onThumbnailTableResult, this)
         })
       }
@@ -66,20 +71,18 @@
     , onThumbnailShowResult: function(json) {
         this.ajaxData = json
         this.el.empty().append(this.opts.tplMain)
-        this.el.find('.row>div')
-          .ZCCatalog('create', json.menu)
-          .ZCBreadcrumb('create', json.breadcrumb)
-        this.el.find('.thumbnail-main')
-          .ZCTopInfo('create', json.info)
-          .ZCFilter('create', json.filter)
-          .ZCSort('create', json.sort)
-          .ZCTable('create', json.table)
-          .ZCPagination2('create', json.page)
+        if (json.hasOwnProperty('menu')) this.el.find('.row>div').ZCCatalog('create', json.menu)
+        else this.el.find('.thumbnail-main').addClass('no-thumbnail-menu')
+        if (json.hasOwnProperty('breadcrumb')) this.el.find('.row>div').ZCBreadcrumb('create', json.breadcrumb)
+        if (json.hasOwnProperty('info')) this.el.find('.thumbnail-main').ZCTopInfo('create', json.info)
+        if (json.hasOwnProperty('filter')) this.el.find('.thumbnail-main').ZCFilter('create', json.filter)
+        if (json.hasOwnProperty('sort')) this.el.find('.thumbnail-main').ZCSort('create', json.sort)
+        if (json.hasOwnProperty('table')) this.el.find('.thumbnail-main').ZCTable('create', json.table)
+        if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('create', json.page)
       }
     , onThumbnailTableResult: function(json) {
-        this.el.find('.thumbnail-main')
-          .ZCTable('create', json.table)
-          .ZCPagination2('create', json.page)
+        if (json.hasOwnProperty('table')) this.el.find('.thumbnail-main').ZCTable('create', json.table)
+        if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('create', json.page)
       }
     , onCatalogResult: function(e) {
         this.create(e.key)
@@ -92,8 +95,8 @@
         e.stopPropagation()
       }
     , onActResult: function(e) {
-        console.log(e.key, e.idx)
-        e.stopPropagation()
+        // console.log('cmd:' + e.cmd + '|key:' + e.key + '|idx:' + e.idx)
+        // e.stopPropagation()
       }
     , onPageResult: function(e) {
         console.log(e.page)
@@ -130,12 +133,12 @@
   }
 
   $.fn.ZCThumbnailShow.defs = {
-      localAccessUrl : 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/'
-    , ajaxUrl        : 'json/thumbnailShow.json'
-    , ajaxTable      : 'json/thumbnailTable.json'
-    , id             : 0
-    , loadHtml       : '<div class="sk-wave"><div class="sk-rect sk-rect1"></div><div class="sk-rect sk-rect2"></div><div class="sk-rect sk-rect3"></div><div class="sk-rect sk-rect4"></div><div class="sk-rect sk-rect5"></div></div>'
-    , tplMain        : '<div class="container-fluid"><div class="row"><div class="col-xs-12"><div class="thumbnail-main"></div></div></div></div>'
+      rootUrl   : ''
+    , ajaxUrl   : 'json/thumbnailShow.json'
+    , ajaxTable : 'json/thumbnailTable.json'
+    , id        : 0
+    , loadHtml  : '<div class="sk-wave"><div class="sk-rect sk-rect1"></div><div class="sk-rect sk-rect2"></div><div class="sk-rect sk-rect3"></div><div class="sk-rect sk-rect4"></div><div class="sk-rect sk-rect5"></div></div>'
+    , tplMain   : '<div class="container-fluid"><div class="row"><div class="col-xs-12"><div class="thumbnail-main"></div></div></div></div>'
   }
 
   $.fn.ZCThumbnailShow.Constructor = ZCThumbnailShow

@@ -6,9 +6,8 @@
     this.opts = opts
     this.el = el
     this.menuData = []
-    this.urlPath = ''
 
-    if (navigator.userAgent.toLowerCase().match(/chrome/) != null) this.urlPath = this.opts.localAccessUrl
+    this.checkLoacAccessUrl()
     this.init()
   }
 
@@ -19,18 +18,33 @@
         $.ajax({
           cache    : false,
           dataType : "json",
-          url      : this.urlPath + this.opts.ajaxMenu,
+          url      : this.opts.rootUrl + this.opts.ajaxMenu,
           success  : $.proxy(this.onAjaxMenuResult, this)
         })
+      }
+    , checkLoacAccessUrl: function() {
+        var protocol = window.location.protocol
+        if (protocol == 'file' && navigator.userAgent.toLowerCase().match(/chrome/) != null) {
+          this.opts.rootUrl = 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/' + this.opts.rootUrl
+        }
       }
 
     , createMainThumbnail: function(menu, idx) {
         var item,items = ''
         $('#main-block').ZCItemList('show', this.menuData[menu]['list'][idx]['list'])
       }
+    , checkHash: function() {
+        var hash = window.location.hash
+          , arr = hash.split('_')
+        if (arr.length > 2 && arr[0] == '#m') {
+          this.el.find('.menu li[data-menu='+arr[1]+'] a').trigger('click')
+          this.el.find('.sub-menu li[data-menu='+arr[1]+'][data-idx='+arr[2]+'] a').trigger('click')
+        }
+      }
+
 
     , onAjaxMenuResult: function(json) {
-        var i,j,menu,subMenu,subMenuStr,badge
+        var i,j,menu,subMenu,subMenuStr,badge,subMenuUrl
         this.menuData = json
         this.el.find('.menu').empty()
         this.el.find('.sub-menu').empty()
@@ -40,8 +54,9 @@
           this.el.find('.sub-menu').append($.sprintf(this.opts.tplSubItemTitle, i, menu.name))
           for (var j = 0; j < menu.list.length; j++) {
             subMenu = menu.list[j]
+            subMenuUrl = (subMenu.hasOwnProperty('url')?subMenu.url:'')
             badge = (subMenu.count>0?$.sprintf(this.opts.tplBadge, subMenu.count):'')
-            this.el.find('.sub-menu').append($.sprintf(this.opts.tplSubItem, subMenu.id, i, j, ( subMenu.list.length > 0 ? 'true' : 'false' ), subMenu.name, subMenu.name, badge))
+            this.el.find('.sub-menu').append($.sprintf(this.opts.tplSubItem, subMenu.id, '', i, j, ( subMenu.list.length > 0 ? 'true' : 'false' ), subMenuUrl, i, j, subMenu.name, subMenu.name, badge))
           }
           badge = (menu.count>0?$.sprintf(this.opts.tplBadge, menu.count):'')
           this.el.find('.menu').append($.sprintf(this.opts.tplItem, i, menu.name, this.opts.icons[i], menu.name+badge))
@@ -62,6 +77,8 @@
         this.el.find('.menu li a').bind('click', $.proxy(this.onMenuClick, this))
         this.el.find('.sub-menu li a').bind('click', $.proxy(this.onSubMenuClick, this))
         this.el.find('.sub-menu .close-sub-menu').bind('click', $.proxy(this.onSubMenuClose, this))
+
+        this.checkHash()
       }
     , onMenuToggleClick: function(e) {
         if (this.el.hasClass('menu-open')) {
@@ -105,7 +122,8 @@
         else
           $(document).trigger({
             type : "thumbnailShow",
-            key  : self.data('key')
+            key  : self.data('key'),
+            ajax : self.data('ajax')
           })
       }
     , onSubMenuClose: function(e) {
@@ -123,13 +141,13 @@
   }
 
   $.fn.ZCMenu.defs = {
-      localAccessUrl  : 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/'
+      rootUrl         : ''
     , icons           : ['glyphpro glyphpro-sampler','glyphpro glyphpro-server','glyphpro glyphpro-charts','glyphicon glyphicon-inbox','glyphpro glyphpro-pie_chart','glyphpro glyphpro-settings','glyphpro glyphpro-global']
     , ajaxMenu        : 'json/menu.json'
     , tplItem         : '<li data-menu="%s"><a href="javascript:void(null)" data-toggle="tooltip" title="%s"><span class="%s"></span> %s</li>'
     , tplSubItemTitle : '<li class="title" data-menu="%s">%s<div class="close-sub-menu pull-right"><span class="glyphicon glyphicon-triangle-left"></span></div></li>'
-    , tplSubItem      : '<li data-key="%s" data-menu="%s" data-idx="%s" data-child="%s"><a href="javascript:void(null)" title="%s">%s %s</a></li>'
-    , tplBadge        : ' <span class="badge">%s</span></a>'
+    , tplSubItem      : '<li data-key="%s" data-ajax="%s" data-menu="%s" data-idx="%s" data-child="%s"><a href="%s#m_%s_%s" title="%s">%s %s</a></li>'
+    , tplBadge        : ' <span class="badge">%s</span>'
   }
 
   $.fn.ZCMenu.Constructor = ZCMenu

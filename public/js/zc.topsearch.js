@@ -28,7 +28,7 @@
         $('#main-block').ZCItemList('show', data.list)
 
         this.el.find('.page')
-          .ZCPagination2('create', data.page)
+          .ZCPagination1('create', data.page)
           .bind('onPage', $.proxy(this.onPageClick, this))
         Holder.run()
       }

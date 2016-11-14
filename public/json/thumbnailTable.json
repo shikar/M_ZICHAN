@@ -2,7 +2,11 @@
   "table" : {
     "info":{
       "checkbox": 1,
-      "keyword" : "医院"
+      "keyword" : "医院",
+      "acts" : [
+        "<a href=\"javascript:void(null)\" title=\"收藏\"><span class=\"glyphicon glyphicon-heart\"></span></a>",
+        "<a href=\"javascript:void(null)\" title=\"编辑\"><span class=\"glyphicon glyphicon-edit\"></span></a>"
+      ]
     },
     "fields":[
       {"name":"id","hidden":true},

@@ -5,11 +5,9 @@
   var ZCMain = function (el, opts) {
     this.opts = opts
     this.loadCount = 0
-    this.urlPath = ''
 
-    if (navigator.userAgent.toLowerCase().match(/chrome/) != null) this.urlPath = this.opts.localAccessUrl
-
-    this.loadBlock()
+    this.checkLoacAccessUrl()
+    this.init()
   }
 
   ZCMain.prototype = {
@@ -21,6 +19,7 @@
           dataType : "json"
         })
         Holder.run()
+        $( ".main" ).ZCMenu()
         $( "#fav" ).ZCFav()
         this.initTopSearch()
         this.initPopover()
@@ -31,18 +30,11 @@
           // , go1 : $.proxy(this.onResult, this)
         })
       }
-
-
-    /* 检测载入情况 */
-    , loadBlock: function () {
-        $( "#header-block" ).load( this.urlPath + this.opts.includeHeader + '?' + Math.random(), $.proxy(this.onLoadedBlock, this))
-        $( "#right-block" ).load( this.urlPath + this.opts.includeRight + '?' + Math.random(), $.proxy(this.onLoadedBlock, this))
-
-        $( ".main" ).ZCMenu()
-      }
-    , onLoadedBlock: function(e) {
-        this.loadCount++
-        if (this.loadCount == 2) this.init()
+    , checkLoacAccessUrl: function() {
+        var protocol = window.location.protocol
+        if (protocol == 'file' && navigator.userAgent.toLowerCase().match(/chrome/) != null) {
+          this.opts.rootUrl = 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/' + this.opts.rootUrl
+        }
       }
 
 
@@ -63,7 +55,7 @@
         $('#top-search .search-type-option li a').bind('click', $.proxy(this.onTopSearchSelect, this))
         // 热门搜索载入
         $.ajax({
-          url     : this.urlPath + this.opts.ajaxSearchHot,
+          url     : this.opts.rootUrl + this.opts.ajaxSearchHot,
           success : $.proxy(this.onAjaxSearchHotResult, this)
         })
         $('#top-search .search-hot').on('click', 'li a', $.proxy(this.onSearchHotClick, this))
@@ -88,7 +80,7 @@
     , onTopSearchInput: function(e) {
         var self = $(e.currentTarget)
         $.ajax({
-          url     : this.urlPath + this.opts.ajaxSearchTip,
+          url     : this.opts.rootUrl + this.opts.ajaxSearchTip,
           data    : {search: self.val(), type:$('#top-search input[name=type]').val()},
           success : $.proxy(this.onAjaxSearchTipResult, this)
         })
@@ -148,7 +140,7 @@
 
 
     , mainThumbnailShow: function(e) {
-        $('#main-block').ZCThumbnailShow('create', e.key)
+        $('#main-block').ZCThumbnailShow('create', [e.key, e.ajax])
       }
   }
 
@@ -162,9 +154,7 @@
   }
 
   $.fn.ZCMain.defs = {
-      localAccessUrl : 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/'
-    , includeHeader  : 'header.html'
-    , includeRight   : 'right.html'
+      rootUrl        : ''
     , ajaxSearchTip  : 'json/searchTip.json'
     , ajaxSearchHot  : 'json/searchHot.json'
     , tplSearchTip   : '<li><a href="javascript:void(null)">%s</a></li>'

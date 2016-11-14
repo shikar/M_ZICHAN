@@ -5,10 +5,8 @@
   var ZCTable = function (el, opts) {
     this.el = el
     this.opts = opts
-    this.urlPath = ''
     this.ajaxData = null
 
-    if (navigator.userAgent.toLowerCase().match(/chrome/) != null) this.urlPath = this.opts.localAccessUrl
     this.init()
   }
 
@@ -28,7 +26,7 @@
         for (i = 0; i < data.fields.length; i++) {
           if (!data.fields[i]['hidden']) this.el.find('thead tr').append('<th>'+data.fields[i]['name']+'</th>')
         }
-        this.el.find('thead tr').append('<th class="text-center">操作</th>')
+        if (data.info.hasOwnProperty('listbtn') && data.info.listbtn.length > 0) this.el.find('thead tr').append('<th class="text-center">操作</th>')
 
         for (i = 0; i < data.lists.length; i++) {
           item = data.lists[i]
@@ -40,11 +38,27 @@
             if (!data.fields[j]['hidden'])
               this.el.find('tbody tr:last').append('<td>'+this.checkKeyword(item[j])+'</td>')
           }
-          this.el.find('tbody tr:last').append('<td class="text-center act-btn">'+this.opts.tplActBtns+'</td>')
+          if (data.info.hasOwnProperty('listbtn') && data.info.listbtn.length > 0) {
+            this.el.find('tbody tr:last').append('<td class="text-center act-btn"></td>')
+            for (j = 0; j < data.info.listbtn.length; j++) {
+              this.el.find('tbody tr:last .act-btn').append(data.info.listbtn[j])
+            }
+          }
+
         }
 
-        this.el.find('input[name=seletct-all]').bind('click', $.proxy(this.onSelectAllClick, this))
-        this.el.find('tbody .act-btn a').bind('click', $.proxy(this.onBtnActClick, this))
+        if (data.info.hasOwnProperty('tablebtn') && data.info.tablebtn.length > 0) {
+          this.el.append(this.opts.tplTblBtns)
+          for (i = 0; i < data.info.tablebtn.length; i++) {
+            this.el.find('.table-btn').append(data.info.tablebtn[i]+' ')
+          }
+          this.el.find('input[name=seletct-all]').bind('click', $.proxy(this.onSelectAllClick, this))
+          this.el.find('.table-btn a').tooltip().bind('click', $.proxy(this.onTableBtnActClick, this))
+        }
+
+
+        if (data.info.hasOwnProperty('listbtn') && data.info.listbtn.length > 0) this.el.find('tbody .act-btn a').tooltip().bind('click', $.proxy(this.onListBtnActClick, this))
+
         this.el.find('tbody tr').bind('click', $.proxy(this.onTrClick, this))
       }
     , checkKeyword: function(str) {
@@ -61,12 +75,28 @@
         else
           this.el.find('tbody tr').removeClass(this.opts.clsSelected)
       }
-    , onBtnActClick: function(e) {
+    , onTableBtnActClick: function(e) {
+        var self = $(e.currentTarget)
+          , idx = self.index()
+          , key = []
+        this.el.find('tbody tr input[type=checkbox]:checked').each(function(idx, el) {
+          var $el = $(el)
+          key.push($el.val())
+        })
+        this.el.trigger({
+          type : 'onAct',
+          cmd  : 'table',
+          key  : key,
+          idx  : idx
+        })
+      }
+    , onListBtnActClick: function(e) {
         var self = $(e.currentTarget)
           , key = self.parents('tr').data('key')
           , idx = self.index()
         this.el.trigger({
           type : 'onAct',
+          cmd  : 'list',
           key  : key,
           idx  : idx
         })
@@ -101,8 +131,8 @@
   $.fn.ZCTable.defs = {
       data        : null
     , loadHtml    : '<div class="sk-wave"><div class="sk-rect sk-rect1"></div><div class="sk-rect sk-rect2"></div><div class="sk-rect sk-rect3"></div><div class="sk-rect sk-rect4"></div><div class="sk-rect sk-rect5"></div></div>'
-    , tplMain     : '<table class="table table-striped table-hover"><thead></thead><tbody></tbody></table>'
-    , tplActBtns  : '<a href="javascript:void(null)"><span class="glyphicon glyphicon-heart"></span></a> <a href="javascript:void(null)"><span class="glyphicon glyphicon-edit"></span></a>'
+    , tplMain     : '<table class="table table-striped table-hover table-list"><thead></thead><tbody></tbody></table>'
+    , tplTblBtns  : '<div class="table-btn"></div>'
     , clsKeyword  : 'red'
     , clsSelected : 'info'
   }

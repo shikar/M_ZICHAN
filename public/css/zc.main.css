@@ -123,7 +123,8 @@ body {
   width: 0;
   background-color: #eaedf1;
 }
-.menu-content .sub-menu .badge {
+.menu-content .sub-menu .badge,
+.main .item-list .badge {
   position: absolute;
   right: 0;
   margin: 10px 6px;
@@ -169,7 +170,6 @@ body {
   overflow: hidden;
   overflow-y: auto;
   width: auto;
-  padding-right: 50px;
 }
 .menu-content .sub-menu-footer {
   position: absolute;
@@ -259,12 +259,35 @@ body {
   padding-top: 15px;
 }
 #main-block .thumbnail {
+  position: relative;
   display: block;
   width: 160px;
   height: 260px;
   margin: 0 auto;
   margin-bottom: 20px;
   cursor: pointer;
+}
+#main-block .thumbnail img {
+  -webkit-filter: grayscale(80%);
+     -moz-filter: grayscale(80%);
+      -ms-filter: grayscale(80%);
+       -o-filter: grayscale(80%);
+          filter: grayscale(80%);
+}
+#main-block .thumbnail:hover {
+  border: 3px solid #0099cb;
+}
+#main-block .thumbnail:hover img {
+  -webkit-filter: grayscale(0%);
+     -moz-filter: grayscale(0%);
+      -ms-filter: grayscale(0%);
+       -o-filter: grayscale(0%);
+          filter: grayscale(0%);
+}
+#main-block .thumbnail .badge {
+  z-index: 100;
+  top: -15px;
+  right: -15px;
 }
 #main-block .thumbnail .caption {
   padding: 0;
@@ -388,6 +411,14 @@ body {
 .thumbnail-main {
   margin-left: 210px;
 }
+.thumbnail-main.no-thumbnail-menu {
+  margin-left: 0;
+}
+
+
+.thumbnail-main .table-list .act-btn a {
+  margin: 0 3px;
+}
 
 
 dl.filter-bar,
@@ -400,13 +431,13 @@ dl.sort-bar {
 }
 
 .filter-bar > dt {
-  width: 100px;
+  width: 110px;
 }
 .sort-bar > dt {
   width: 40px;
 }
 .filter-bar > dd {
-  margin-left: 110px;
+  margin-left: 120px;
 }
 .sort-bar > dd {
   margin-left: 50px;

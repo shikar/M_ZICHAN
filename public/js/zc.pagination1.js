@@ -47,7 +47,6 @@
           else if(pagesRangeMax > this.opts.pageTotal)
             pagesRangeMax = this.opts.pageTotal
 
-          this.el.html(this.opts.tplMain)
           $pagination = this.el.find('nav .pagination')
           $pagination.empty()
           if (this.opts.pageCur == 1)
@@ -103,7 +102,7 @@
     , pageTotal   : 10
     , pageCur     : 1
     , count       : 9999
-    , tplMain     : '<nav aria-label="Page navigation"><ul class="pagination"></ul></nav>'
+    , tplMain     : '<div class="text-center"><nav aria-label="Page navigation"><ul class="pagination"></ul></nav></div>'
     , tplPagePrev : '<li%s><a href="javascript:void(null)" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>'
     , tplPageNext : '<li%s><a href="javascript:void(null)" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>'
     , tplPageItem : '<li%s><a href="javascript:void(null)">%s</a></li>'

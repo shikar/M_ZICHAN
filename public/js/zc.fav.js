@@ -5,10 +5,9 @@
   var ZCFav = function (el, opts) {
     this.el = el
     this.opts = opts
-    this.urlPath = ''
     this.favData = null
 
-    if (navigator.userAgent.toLowerCase().match(/chrome/) != null) this.urlPath = this.opts.localAccessUrl
+    this.checkLoacAccessUrl()
     this.init()
   }
 
@@ -19,9 +18,15 @@
         $.ajax({
           cache    : false,
           dataType : "json",
-          url      : this.urlPath + this.opts.ajaxFav,
+          url      : this.opts.rootUrl + this.opts.ajaxFav,
           success  : $.proxy(this.onAjaxFavResult, this)
         })
+      }
+    , checkLoacAccessUrl: function() {
+        var protocol = window.location.protocol
+        if (protocol == 'file' && navigator.userAgent.toLowerCase().match(/chrome/) != null) {
+          this.opts.rootUrl = 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/' + this.opts.rootUrl
+        }
       }
 
     , onAjaxFavResult: function(json) {
@@ -63,9 +68,9 @@
   }
 
   $.fn.ZCFav.defs = {
-      localAccessUrl   : 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/'
-    , ajaxFav          : 'json/fav.json'
-    , tplFavItem       : '<li data-id="%s"><a href="javascript:void(null)" title="%s"><img src="%s" class="img-responsive"><span class="txt">%s</span></a></li>'
+      rootUrl    : ''
+    , ajaxFav    : 'json/fav.json'
+    , tplFavItem : '<li data-id="%s"><a href="javascript:void(null)" title="%s"><img src="%s" class="img-responsive"><span class="txt">%s</span></a></li>'
   }
 
   $.fn.ZCFav.Constructor = ZCFav
