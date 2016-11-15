@@ -5,3 +5,5 @@ docs/
 resources/
 public/json/json.rar
 public.rar
+public/json/menu.json.bak
+*.bak
