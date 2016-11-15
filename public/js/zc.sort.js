@@ -115,7 +115,6 @@
   $.fn.ZCSort.defs = {
       data     : [{"name":"name1", "type":"type1"},{"name":"name2", "type":"type2"}]
     , tplMain  : '<dl class="dl-horizontal sort-bar clearfix" data-toggle="tooltip" data-placement="top" title="点击更换升降序,拖动变换次序"><dt class="title">排序:</dt><dd class="title"><botton type="button" class="btn btn-default btn-xs btn-reset pull-right"><span class="glyphpro glyphpro-redo"></span> 重置</botton><ul class="list-unstyled list-inline list-sort"></ul></dd></dl>'
-    // , tplMain  : '<ul class="list-unstyled list-inline sort-bar clearfix" data-toggle="tooltip" data-placement="top" title="点击更换升降序,拖动变换次序"><li class="pull-left">排序:</li><li class="pull-left"><ul class="list-unstyled list-inline list-sort"></ul></li><li class=" pull-right"><botton type="button" class="btn btn-info btn-xs btn-reset"><span class="glyphpro glyphpro-redo"></span> 重置</botton></li></ul>'
     , tplItem  : '<li data-key="%s" data-sort="none"><a href="javascript:void(null)" class="btn btn-default btn-xs" title="%s">%s <span class="glyphpro glyphpro-sorting text-muted"></span></a></li>'
     , iconDef  : 'glyphpro-sorting'
     , iconAsc  : 'glyphpro-arrow_down'

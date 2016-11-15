@@ -44,8 +44,9 @@
        * @param  {[type]} ajaxUrl 自定义的 ajax 地址
        */
     , create: function(id, ajaxUrl) {
-        if (!ajaxUrl) this.ajaxUrl = this.opts.ajaxUrl
+        if (!ajaxUrl) this.ajaxUrl = this.opts.rootUrl + this.opts.ajaxUrl
         else this.ajaxUrl = ajaxUrl
+        console.log(this.ajaxUrl)
         this.el.empty().append(this.opts.loadHtml)
         this.id     = id
         this.filter = []
@@ -56,7 +57,7 @@
           cache    : false,
           dataType : "json",
           data     : {id: id},
-          url      : this.opts.rootUrl + this.ajaxUrl,
+          url      : this.ajaxUrl,
           success  : $.proxy(this.onThumbnailShowResult, this)
         })
       }
@@ -74,7 +75,7 @@
               page   : this.page,
               search : this.search
             },
-          url      : this.opts.rootUrl + this.ajaxUrl,
+          url      : this.ajaxUrl,
           success  : $.proxy(this.onThumbnailTableResult, this)
         })
       }

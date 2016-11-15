@@ -145,13 +145,13 @@
      * @param  {string} e.utype url的类型(def, ajax, iframe)
      */
     , mainThumbnailShow: function(e) {
-        console.log(e)
-        var param = [e.key]
         if (e.utype == 'iframe') {
           $('#main-block').empty().append($.sprintf(this.opts.tplMainIframe, e.url))
         } else {
-          if (e.utype == 'ajax') param.push(e.url)
-          $('#main-block').ZCThumbnailShow('create', param)
+          if (e.utype == 'ajax')
+            $('#main-block').ZCThumbnailShow('create', e.key, e.url)
+          else
+            $('#main-block').ZCThumbnailShow('create', e.key)
         }
       }
   }
