@@ -19,6 +19,7 @@
     , create: function(data) {
         var i,j,item
         this.data = data
+        this.el.find('.table-btn').detach()
         this.el.find('thead').empty()
         this.el.find('tbody').empty()
         this.el.find('thead').append('<tr></tr>')

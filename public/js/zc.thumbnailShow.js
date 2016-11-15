@@ -13,6 +13,8 @@
     this.page   = 1
     this.search = ''
 
+    this.ajaxUrl = ''
+
     this.checkLoacAccessUrl()
     this.init()
   }
@@ -36,8 +38,14 @@
           this.opts.rootUrl = 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/' + this.opts.rootUrl
         }
       }
+      /**
+       * 表格界面显示包括所有的组件, 返回的 json 结构参照 thumbnailShow.json
+       * @param  {number} id      表格界面调用的依据
+       * @param  {[type]} ajaxUrl 自定义的 ajax 地址
+       */
     , create: function(id, ajaxUrl) {
-        if (ajaxUrl) this.opts.ajaxUrl = ajaxUrl
+        if (!ajaxUrl) this.ajaxUrl = this.opts.ajaxUrl
+        else this.ajaxUrl = ajaxUrl
         this.el.empty().append(this.opts.loadHtml)
         this.id     = id
         this.filter = []
@@ -48,10 +56,13 @@
           cache    : false,
           dataType : "json",
           data     : {id: id},
-          url      : this.opts.rootUrl + this.opts.ajaxUrl,
+          url      : this.opts.rootUrl + this.ajaxUrl,
           success  : $.proxy(this.onThumbnailShowResult, this)
         })
       }
+      /**
+       * 有条件的查询,只更新表格和分页组件, 返回的 json 结构参照 thumbnailTable.json
+       */
     , refreshTable: function() {
         $.ajax({
           cache    : false,
@@ -63,7 +74,7 @@
               page   : this.page,
               search : this.search
             },
-          url      : this.opts.rootUrl + this.opts.ajaxTable,
+          url      : this.opts.rootUrl + this.ajaxUrl,
           success  : $.proxy(this.onThumbnailTableResult, this)
         })
       }
@@ -135,7 +146,7 @@
   $.fn.ZCThumbnailShow.defs = {
       rootUrl   : ''
     , ajaxUrl   : 'json/thumbnailShow.json'
-    , ajaxTable : 'json/thumbnailTable.json'
+    // , ajaxTable : 'json/thumbnailTable.json'
     , id        : 0
     , loadHtml  : '<div class="sk-wave"><div class="sk-rect sk-rect1"></div><div class="sk-rect sk-rect2"></div><div class="sk-rect sk-rect3"></div><div class="sk-rect sk-rect4"></div><div class="sk-rect sk-rect5"></div></div>'
     , tplMain   : '<div class="container-fluid"><div class="row"><div class="col-xs-12"><div class="thumbnail-main"></div></div></div></div>'
