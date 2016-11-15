@@ -54,9 +54,22 @@
           this.el.find('.sub-menu').append($.sprintf(this.opts.tplSubItemTitle, i, menu.name))
           for (var j = 0; j < menu.list.length; j++) {
             subMenu = menu.list[j]
-            subMenuUrl = (subMenu.hasOwnProperty('url')?subMenu.url:'')
             badge = (subMenu.count>0?$.sprintf(this.opts.tplBadge, subMenu.count):'')
-            this.el.find('.sub-menu').append($.sprintf(this.opts.tplSubItem, subMenu.id, '', i, j, ( subMenu.list.length > 0 ? 'true' : 'false' ), subMenuUrl, i, j, subMenu.name, subMenu.name, badge))
+            this.el.find('.sub-menu').append($.sprintf(
+              this.opts.tplSubItem,
+              subMenu.id,
+              subMenu.url,
+              subMenu.type,
+              i,
+              j,
+              ( subMenu.list.length > 0 ? 'true' : 'false' ),
+              subMenu.url,
+              i,
+              j,
+              subMenu.name,
+              subMenu.name,
+              badge
+            ))
           }
           badge = (menu.count>0?$.sprintf(this.opts.tplBadge, menu.count):'')
           this.el.find('.menu').append($.sprintf(this.opts.tplItem, i, menu.name, this.opts.icons[i], menu.name+badge))
@@ -109,22 +122,31 @@
         this.el.find('.menu-content').addClass('submenu-open')
       }
     , onSubMenuClick: function(e) {
-        var self = $(e.currentTarget).parent()
-          , menu = self.data('menu')
-          , idx = self.data('idx')
-          , sub = self.data('child')
+        var self   = $(e.currentTarget)
+          , parent = self.parent()
+          , key    = parent.data('key')
+          , url    = parent.data('url')
+          , type   = parent.data('type')
+          , menu   = parent.data('menu')
+          , idx    = parent.data('idx')
+          , child  = parent.data('child')
+
+        if (type == 'blank') self.attr({target: '_blank'})
+        if (type == 'open' || type == 'blank') return true
 
         this.el.find('.sub-menu li').removeClass('active')
-        self.addClass('active')
+        parent.addClass('active')
         // console.log(menu,idx,sub)
-        if (sub)
+        if (child)
           this.createMainThumbnail(menu, idx)
         else
           $(document).trigger({
-            type : "thumbnailShow",
-            key  : self.data('key'),
-            ajax : self.data('ajax')
+            type  : "thumbnailShow",
+            key   : key,
+            url   : url,
+            utype : type
           })
+        return false
       }
     , onSubMenuClose: function(e) {
         this.el.find('.menu-content').removeClass('submenu-open')
@@ -139,6 +161,21 @@
     if (typeof option == 'string') data[option]()
     return $this
   }
+  /**
+   * menu 的 json 数据结构说明(相关json: menu.json, fav.json, searchResult.json)
+   * id    : 用于识别菜单内容
+   * icon  : 菜单的图片(只有二级以后有用)
+   * name  : 菜单名称
+   * count : 菜单的计数统计
+   * list  : 子菜单
+   * url   : 链接(只有二级以后有用)
+   * type  : 菜单的类别
+   *       def    : 调用默认的 ajax 地址
+   *       open   : 本页跳转
+   *       blank  : 新开一个
+   *       ajax   : 自定义的 ajax 地址
+   *       iframe : 以 iframe 的方式打开
+   */
 
   $.fn.ZCMenu.defs = {
       rootUrl         : ''
@@ -146,7 +183,7 @@
     , ajaxMenu        : 'json/menu.json'
     , tplItem         : '<li data-menu="%s"><a href="javascript:void(null)" data-toggle="tooltip" title="%s"><span class="%s"></span> %s</li>'
     , tplSubItemTitle : '<li class="title" data-menu="%s">%s<div class="close-sub-menu pull-right"><span class="glyphicon glyphicon-triangle-left"></span></div></li>'
-    , tplSubItem      : '<li data-key="%s" data-ajax="%s" data-menu="%s" data-idx="%s" data-child="%s"><a href="%s#m_%s_%s" title="%s">%s %s</a></li>'
+    , tplSubItem      : '<li data-key="%s" data-url="%s" data-type="%s" data-menu="%s" data-idx="%s" data-child="%s"><a href="%s#m_%s_%s" title="%s">%s %s</a></li>'
     , tplBadge        : ' <span class="badge">%s</span>'
   }
 

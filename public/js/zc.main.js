@@ -19,8 +19,8 @@
           dataType : "json"
         })
         Holder.run()
-        $( ".main" ).ZCMenu()
-        $( "#fav" ).ZCFav()
+        $( ".main" ).ZCMenu({rootUrl: this.opts.rootUrl})
+        $( "#fav" ).ZCFav({rootUrl: this.opts.rootUrl})
         this.initTopSearch()
         this.initPopover()
 
@@ -138,9 +138,21 @@
       }
 
 
-
+    /**
+     * 图标点击后的统一调用接口
+     * @param  {string} e.key 菜单识别
+     * @param  {string} e.url ajax地址(默认为空)
+     * @param  {string} e.utype url的类型(def, ajax, iframe)
+     */
     , mainThumbnailShow: function(e) {
-        $('#main-block').ZCThumbnailShow('create', [e.key, e.ajax])
+        console.log(e)
+        var param = [e.key]
+        if (e.utype == 'iframe') {
+          $('#main-block').empty().append($.sprintf(this.opts.tplMainIframe, e.url))
+        } else {
+          if (e.utype == 'ajax') param.push(e.url)
+          $('#main-block').ZCThumbnailShow('create', param)
+        }
       }
   }
 
@@ -154,11 +166,12 @@
   }
 
   $.fn.ZCMain.defs = {
-      rootUrl        : ''
-    , ajaxSearchTip  : 'json/searchTip.json'
-    , ajaxSearchHot  : 'json/searchHot.json'
-    , tplSearchTip   : '<li><a href="javascript:void(null)">%s</a></li>'
-    , tplSearchHot   : '<li><a href="javascript:void(null)">%s</a></li>'
+      rootUrl       : ''
+    , ajaxSearchTip : 'json/searchTip.json'
+    , ajaxSearchHot : 'json/searchHot.json'
+    , tplSearchTip  : '<li><a href="javascript:void(null)">%s</a></li>'
+    , tplSearchHot  : '<li><a href="javascript:void(null)">%s</a></li>'
+    , tplMainIframe : '<iframe src="%s"></iframe>'
   }
 
   $.fn.ZCMain.Constructor = ZCMain

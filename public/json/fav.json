@@ -2,21 +2,29 @@
     {
         "id":1,
         "name":"目录导航数据集",
-        "icon":"1_1_1.png"
+        "icon":"1_1_1.png",
+        "url":"http://baidu.com",
+        "type":"open"
     },
     {
         "id":2,
         "name":"数据集关键字搜索数据集",
-        "icon":"1_1_2.png"
+        "icon":"1_1_2.png",
+        "url":"http://baidu.com",
+        "type":"blank"
     },
     {
         "id":3,
         "name":"搜索拥有某数据元的数据集",
-        "icon":"1_1_3.png"
+        "icon":"1_1_3.png",
+        "url":"http://baidu.com",
+        "type":"iframe"
     },
     {
         "id":4,
         "name":"搜索使用某代码的数据集",
-        "icon":"1_1_3.png"
+        "icon":"1_1_3.png",
+        "url":"http://baidu.com",
+        "type":"ajax"
     }
 ]

@@ -35,7 +35,16 @@
         this.el.empty()
         for (i = 0; i < this.favData.length; i++) {
           item = this.favData[i]
-          this.el.append($.sprintf(this.opts.tplFavItem, item.id, item.name, 'img/'+item.icon, item.name))
+          this.el.append($.sprintf(
+            this.opts.tplFavItem,
+            item.id,
+            item.url,
+            item.type,
+            item.url,
+            item.name,
+            'img/'+item.icon,
+            item.name
+          ))
         }
         if (this.favData.length >= 3)
           this.el.removeClass('col1').addClass('col3')
@@ -45,11 +54,22 @@
         this.el.find('li').bind('click', $.proxy(this.onFavClick, this))
       }
     , onFavClick: function(e) {
-        var self = $(e.currentTarget)
+        var self  = $(e.currentTarget)
+          , key   = self.data('key')
+          , url   = self.data('url')
+          , type  = self.data('type')
+
+
+        if (type == 'blank') self.find('a').attr({target: '_blank'})
+        if (type == 'open' || type == 'blank') return true
+
         $(document).trigger({
-          type : "thumbnailShow",
-          key  : self.data('id')
+          type  : "thumbnailShow",
+          key   : key,
+          url   : url,
+          utype : type
         })
+        return false
       }
   }
 
@@ -70,7 +90,7 @@
   $.fn.ZCFav.defs = {
       rootUrl    : ''
     , ajaxFav    : 'json/fav.json'
-    , tplFavItem : '<li data-id="%s"><a href="javascript:void(null)" title="%s"><img src="%s" class="img-responsive"><span class="txt">%s</span></a></li>'
+    , tplFavItem : '<li data-key="%s" data-url="%s" data-type="%s"><a href="%s" title="%s"><img src="%s" class="img-responsive"><span class="txt">%s</span></a></li>'
   }
 
   $.fn.ZCFav.Constructor = ZCFav

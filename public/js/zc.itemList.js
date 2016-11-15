@@ -16,17 +16,39 @@
         this.el.empty().append(this.opts.tplMain)
         for (var i = 0; i < data.length; i++) {
           item = data[i]
-          this.el.find('.item-list').append($.sprintf(this.opts.tplThumbnail, item.count, item.id, 'img/'+item.icon, item.name, item.ds))
+          this.el.find('.item-list').append($.sprintf(
+            this.opts.tplThumbnail,
+            item.id,
+            item.url,
+            item.type,
+            item.count,
+            item.url,
+            'img/'+item.icon,
+            item.name,
+            item.ds
+          ))
         }
 
         this.el.find('.thumbnail').bind('click', $.proxy(this.onThumbnailClick, this))
       }
     , onThumbnailClick: function(e) {
         var self = $(e.currentTarget)
+          , key    = self.data('key')
+          , url    = self.data('url')
+          , type   = self.data('type')
+
+
+        if (type == 'blank') self.find('a').attr({target: '_blank'})
+        if (type == 'open' || type == 'blank') return true
+
         $(document).trigger({
-          type : "thumbnailShow",
-          key  : self.data('id')
+          type  : "thumbnailShow",
+          key   : key,
+          url   : url,
+          utype : type
         })
+
+        return false
       }
   }
 
@@ -46,7 +68,7 @@
 
   $.fn.ZCItemList.defs = {
       tplMain      : '<div class="container-fluid"><div class="row item-list"></div><div class="row"><div class="col-xs-12 page"></div></div></div>'
-    , tplThumbnail : '<div class="col-sm-3"><div class="thumbnail" data-id="%s"><span class="badge">%s</span><img src="%s"><div class="caption"><h5>%s</h5><p class="text-muted small">%s</p></div></div></div>'
+    , tplThumbnail : '<div class="col-sm-3"><div class="thumbnail" data-key="%s" data-url="%s" data-type="%s"><span class="badge">%s</span><a href="%s"><img src="%s"></a><div class="caption"><h5>%s</h5><p class="text-muted small">%s</p></div></div></div>'
   }
 
   $.fn.ZCItemList.Constructor = ZCItemList
