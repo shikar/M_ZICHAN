@@ -146,7 +146,6 @@
             url   : url,
             utype : type
           })
-        return false
       }
     , onSubMenuClose: function(e) {
         this.el.find('.menu-content').removeClass('submenu-open')
