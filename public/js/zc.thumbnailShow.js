@@ -64,12 +64,13 @@
       /**
        * 点击目录, 返回的 json 结构参照 thumbnailCatalog.json
        */
-    , refreshTable: function(id) {
+    , refreshTable: function(catelog) {
         $.ajax({
           cache    : false,
           dataType : "json",
           data     : {
-              catelog : id,
+              id      : this.id,
+              catelog : catelog
             },
           url      : this.ajaxUrl,
           success  : $.proxy(this.onThumbnailCatalogResult, this)
