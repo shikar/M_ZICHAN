@@ -145,14 +145,15 @@
      * @param  {string} e.utype url的类型(def, ajax, iframe)
      */
     , mainThumbnailShow: function(e) {
-        if (e.utype == 'iframe') {
+        if ('' != e.url) {
           if (e.url.indexOf("http") !== 0) e.url = this.opts.rootUrl + e.url
+        }
+        if ('iframe' == e.utype) {
           $('#main-block').empty().append($.sprintf(this.opts.tplMainIframe, e.url))
-        } else {
-          if (e.utype == 'ajax')
-            $('#main-block').ZCThumbnailShow('create', e.key, e.url)
-          else
-            $('#main-block').ZCThumbnailShow('create', e.key)
+        } else if ('ajax' == e.utype) {
+          $('#main-block').ZCThumbnailShow('create', e.key, e.url)
+        } else if ('def' == e.utype) {
+          $('#main-block').ZCThumbnailShow('create', e.key)
         }
       }
   }
