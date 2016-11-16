@@ -146,6 +146,7 @@
      */
     , mainThumbnailShow: function(e) {
         if (e.utype == 'iframe') {
+          if (e.url.indexOf("http") !== 0) e.url = this.opts.rootUrl + e.url
           $('#main-block').empty().append($.sprintf(this.opts.tplMainIframe, e.url))
         } else {
           if (e.utype == 'ajax')
