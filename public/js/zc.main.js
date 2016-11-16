@@ -152,7 +152,7 @@
           $('#main-block').empty().append($.sprintf(this.opts.tplMainIframe, e.url))
         } else if ('ajax' == e.utype) {
           $('#main-block').ZCThumbnailShow('create', e.key, e.url)
-        } else if ('def' == e.utype) {
+        } else {
           $('#main-block').ZCThumbnailShow('create', e.key)
         }
       }

@@ -116,8 +116,9 @@
 
         this.el.find('.sub-menu li').hide()
         this.el.find('.sub-menu li[data-menu='+menu+']').show()
-
         this.el.find('.menu-content').addClass('submenu-open')
+
+        this.el.find('.sub-menu li[data-menu='+menu+']:eq(1) a').trigger('click')
       }
     , onSubMenuClick: function(e, auto) {
         var self   = $(e.currentTarget)
@@ -176,7 +177,7 @@
    *       open   : 本页跳转
    *       blank  : 新开一个
    *       ajax   : 自定义的 ajax 地址
-   *       iframe : 以 iframe 的方式打开
+   *       iframe : 不跳转以 iframe 的方式打开
    */
 
   $.fn.ZCMenu.defs = {
