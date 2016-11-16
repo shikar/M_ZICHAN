@@ -135,6 +135,10 @@
                   <br><br><br><br>
                   <div class="text-center">登录后欢迎页欢迎辞</div>
                   <br><br><br><br>
+                  <button class="test-btn" data-idx="0">按钮1</button>
+                  <button class="test-btn" data-idx="1">按钮2</button>
+                  <button class="test-btn" data-idx="2">按钮3</button>
+                  <button class="test-btn" data-idx="3">按钮4</button>
                 </div>
               </div>
             </div>
@@ -189,12 +193,35 @@
         console.log('cmd:' + e.cmd + '|key:' + e.key + '|idx:' + e.idx)
       });
 
-      $.fn.ZCModal({
-        title  : '加载中',
-        size   : 'large',
-        remote : 'ajax/form2.html',
-        body   : '请稍后,加载中...'
+      $('.test-btn').click(function(e){
+        var self = $(e.currentTarget)
+          , idx = self.data('idx')
+          , ajaxurl = ''
+
+        switch (idx){
+          case 0:
+            ajaxurl = 'detail.html';
+            break;
+          case 1:
+            ajaxurl = 'faved.html';
+            break;
+          case 2:
+            ajaxurl = 'form.html';
+            break;
+          case 3:
+            ajaxurl = 'form2.html';
+            break;
+        }
+        console.log('ajax/'+ajaxurl)
+        $.fn.ZCModal({
+          title  : '加载中',
+          size   : 'large',
+          remote : 'ajax/'+ajaxurl,
+          body   : '请稍后,加载中...'
+        })
       })
+
+
     });
     //-->
     </script>
