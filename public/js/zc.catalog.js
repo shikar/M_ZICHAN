@@ -58,10 +58,9 @@
 
         this.el.find('.thumbnail-menu>li li').removeClass('act')
         self.addClass('act')
-        console.log(self.hasClass('act'))
 
         if (!auto && arr.length > 2 && arr[0] == '#m') {
-          window.location.hash = '#m_' + arr[1] + '_' + arr[2] + '_' + (arr[3]|'') + '_' + pkey + '_' + key
+          window.location.hash = '#m_' + arr[1] + '_' + arr[2] + '_' + (arr[3]||'') + '_' + pkey + '_' + key
         }
 
         this.el.trigger({
