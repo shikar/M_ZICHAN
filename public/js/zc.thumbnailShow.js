@@ -34,7 +34,7 @@
       }
     , checkLoacAccessUrl: function() {
         var protocol = window.location.protocol
-        if (protocol == 'file' && navigator.userAgent.toLowerCase().match(/chrome/) != null) {
+        if (protocol == 'file:' && navigator.userAgent.toLowerCase().match(/chrome/) != null) {
           this.opts.rootUrl = 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/' + this.opts.rootUrl
         }
       }
@@ -46,7 +46,7 @@
     , create: function(id, ajaxUrl) {
         if (!ajaxUrl) this.ajaxUrl = this.opts.rootUrl + this.opts.ajaxUrl
         else this.ajaxUrl = ajaxUrl
-        console.log(this.ajaxUrl)
+
         this.el.empty().append(this.opts.loadHtml)
         this.id     = id
         this.filter = []
@@ -61,6 +61,21 @@
           success  : $.proxy(this.onThumbnailShowResult, this)
         })
       }
+      /**
+       * 点击目录, 返回的 json 结构参照 thumbnailCatalog.json
+       */
+    , refreshTable: function(id) {
+        $.ajax({
+          cache    : false,
+          dataType : "json",
+          data     : {
+              catelog : id,
+            },
+          url      : this.ajaxUrl,
+          success  : $.proxy(this.onThumbnailCatalogResult, this)
+        })
+      }
+
       /**
        * 有条件的查询,只更新表格和分页组件, 返回的 json 结构参照 thumbnailTable.json
        */
@@ -92,12 +107,20 @@
         if (json.hasOwnProperty('table')) this.el.find('.thumbnail-main').ZCTable('create', json.table)
         if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('create', json.page)
       }
+    , onThumbnailCatalogResult: function(json) {
+        if (json.hasOwnProperty('breadcrumb')) this.el.find('.row>div').ZCBreadcrumb('create', json.breadcrumb)
+        if (json.hasOwnProperty('info')) this.el.find('.thumbnail-main').ZCTopInfo('create', json.info)
+        if (json.hasOwnProperty('filter')) this.el.find('.thumbnail-main').ZCFilter('create', json.filter)
+        if (json.hasOwnProperty('sort')) this.el.find('.thumbnail-main').ZCSort('create', json.sort)
+        if (json.hasOwnProperty('table')) this.el.find('.thumbnail-main').ZCTable('create', json.table)
+        if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('create', json.page)
+      }
     , onThumbnailTableResult: function(json) {
         if (json.hasOwnProperty('table')) this.el.find('.thumbnail-main').ZCTable('create', json.table)
         if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('create', json.page)
       }
     , onCatalogResult: function(e) {
-        this.create(e.key)
+        this.refreshTable(e.key)
       }
 
     , onSortResult: function(e) {

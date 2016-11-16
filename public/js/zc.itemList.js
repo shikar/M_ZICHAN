@@ -30,16 +30,30 @@
         }
 
         this.el.find('.thumbnail').bind('click', $.proxy(this.onThumbnailClick, this))
+        this.checkHash()
       }
-    , onThumbnailClick: function(e) {
+    , checkHash: function() {
+        var hash = window.location.hash
+          , arr = hash.split('_')
+        if (arr.length > 3 && arr[0] == '#m') {
+          this.el.find('.thumbnail[data-key='+arr[3]+']').trigger('click', [true])
+        }
+      }
+    , onThumbnailClick: function(e, auto) {
         var self = $(e.currentTarget)
-          , key    = self.data('key')
-          , url    = self.data('url')
-          , type   = self.data('type')
+          , key  = self.data('key')
+          , url  = self.data('url')
+          , type = self.data('type')
+          , hash = window.location.hash
+          , arr  = hash.split('_')
 
 
         if (type == 'blank') self.find('a').attr({target: '_blank'})
         if (type == 'open' || type == 'blank') return true
+
+        if (!auto && arr.length > 2 && arr[0] == '#m') {
+          window.location.hash = '#m_' + arr[1] + '_' + arr[2] + '_' + key
+        }
 
         $(document).trigger({
           type  : "thumbnailShow",
@@ -48,7 +62,7 @@
           utype : type
         })
 
-        return false
+        return false;
       }
   }
 

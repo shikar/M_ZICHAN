@@ -28,6 +28,13 @@
           this.opts.rootUrl = 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/' + this.opts.rootUrl
         }
       }
+    , checkHash: function() {
+        var hash = window.location.hash
+          , arr = hash.split('_')
+        if (arr.length > 1 && arr[0] == '#f') {
+          this.el.find('li[data-key='+arr[1]+']').trigger('click', [true])
+        }
+      }
 
     , onAjaxFavResult: function(json) {
         var i,item
@@ -52,8 +59,10 @@
           this.el.removeClass('col1').addClass('col2')
 
         this.el.find('li').bind('click', $.proxy(this.onFavClick, this))
+
+        this.checkHash()
       }
-    , onFavClick: function(e) {
+    , onFavClick: function(e, auto) {
         var self  = $(e.currentTarget)
           , key   = self.data('key')
           , url   = self.data('url')
@@ -63,12 +72,15 @@
         if (type == 'blank') self.find('a').attr({target: '_blank'})
         if (type == 'open' || type == 'blank') return true
 
+        if (!auto) location.hash = '#f_' + key
+
         $(document).trigger({
           type  : "thumbnailShow",
           key   : key,
           url   : url,
           utype : type
         })
+
         return false
       }
   }

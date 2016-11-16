@@ -37,8 +37,8 @@
         var hash = window.location.hash
           , arr = hash.split('_')
         if (arr.length > 2 && arr[0] == '#m') {
-          this.el.find('.menu li[data-menu='+arr[1]+'] a').trigger('click')
-          this.el.find('.sub-menu li[data-menu='+arr[1]+'][data-idx='+arr[2]+'] a').trigger('click')
+          this.el.find('.menu li[data-menu='+arr[1]+'] a').trigger('click', [true])
+          this.el.find('.sub-menu li[data-menu='+arr[1]+'][data-idx='+arr[2]+'] a').trigger('click', [true])
         }
       }
 
@@ -64,8 +64,6 @@
               j,
               ( subMenu.list.length > 0 ? 'true' : 'false' ),
               subMenu.url,
-              i,
-              j,
               subMenu.name,
               subMenu.name,
               badge
@@ -121,7 +119,7 @@
 
         this.el.find('.menu-content').addClass('submenu-open')
       }
-    , onSubMenuClick: function(e) {
+    , onSubMenuClick: function(e, auto) {
         var self   = $(e.currentTarget)
           , parent = self.parent()
           , key    = parent.data('key')
@@ -137,6 +135,9 @@
         this.el.find('.sub-menu li').removeClass('active')
         parent.addClass('active')
         // console.log(menu,idx,sub)
+
+        if (!auto) window.location.hash = '#m_' + menu + '_' + idx
+
         if (child)
           this.createMainThumbnail(menu, idx)
         else
@@ -146,6 +147,8 @@
             url   : url,
             utype : type
           })
+
+        return false;
       }
     , onSubMenuClose: function(e) {
         this.el.find('.menu-content').removeClass('submenu-open')
@@ -182,7 +185,7 @@
     , ajaxMenu        : 'json/menu.json'
     , tplItem         : '<li data-menu="%s"><a href="javascript:void(null)" data-toggle="tooltip" title="%s"><span class="%s"></span> %s</li>'
     , tplSubItemTitle : '<li class="title" data-menu="%s">%s<div class="close-sub-menu pull-right"><span class="glyphicon glyphicon-triangle-left"></span></div></li>'
-    , tplSubItem      : '<li data-key="%s" data-url="%s" data-type="%s" data-menu="%s" data-idx="%s" data-child="%s"><a href="%s#m_%s_%s" title="%s">%s %s</a></li>'
+    , tplSubItem      : '<li data-key="%s" data-url="%s" data-type="%s" data-menu="%s" data-idx="%s" data-child="%s"><a href="%s" title="%s">%s %s</a></li>'
     , tplBadge        : ' <span class="badge">%s</span>'
   }
 

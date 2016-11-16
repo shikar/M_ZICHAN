@@ -33,7 +33,7 @@
           item = data.lists[i]
           this.el.find('tbody').append($.sprintf('<tr data-key="%s"></tr>', item[0]))
           if (this.data.info.checkbox == true) {
-            this.el.find('tbody tr:last').append('<td class="text-center"><input type="checkbox" name="ids[]" value="'+item[0]+'"></td>')
+            this.el.find('tbody tr:last').append('<td class="text-center"><input type="checkbox" name="ids" value="'+item[0]+'"></td>')
           }
           for (j = 0; j < item.length; j++) {
             if (!data.fields[j]['hidden'])
@@ -80,7 +80,7 @@
         var self = $(e.currentTarget)
           , idx = self.index()
           , key = []
-        this.el.find('tbody tr input[type=checkbox]:checked').each(function(idx, el) {
+        this.el.find('tbody tr input[name=ids]:checked').each(function(idx, el) {
           var $el = $(el)
           key.push($el.val())
         })
@@ -133,7 +133,7 @@
       data        : null
     , loadHtml    : '<div class="sk-wave"><div class="sk-rect sk-rect1"></div><div class="sk-rect sk-rect2"></div><div class="sk-rect sk-rect3"></div><div class="sk-rect sk-rect4"></div><div class="sk-rect sk-rect5"></div></div>'
     , tplMain     : '<table class="table table-striped table-hover table-list"><thead></thead><tbody></tbody></table>'
-    , tplTblBtns  : '<div class="table-btn"></div>'
+    , tplTblBtns  : '<div class="table-btn text-center"></div>'
     , clsKeyword  : 'red'
     , clsSelected : 'info'
   }

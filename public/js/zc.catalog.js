@@ -29,6 +29,16 @@
         }
         this.el.find('.thumbnail-menu>li').bind('click', $.proxy(this.onOpenClick, this))
         this.el.find('.thumbnail-menu>li li').bind('click', $.proxy(this.onGoClick, this))
+
+        this.checkHash()
+      }
+    , checkHash: function() {
+        var hash = window.location.hash
+          , arr = hash.split('_')
+        if (arr.length > 3 && arr[0] == '#m') {
+          this.el.find('.thumbnail-menu>li[data-key='+arr[4]+']').trigger('click', [true])
+          this.el.find('.thumbnail-menu>li[data-key='+arr[4]+'] li[data-key='+arr[5]+']').trigger('click', [true])
+        }
       }
     , onOpenClick: function(e) {
         var self = $(e.currentTarget)
@@ -39,13 +49,27 @@
           self.addClass('act')
         }
       }
-    , onGoClick: function(e) {
+    , onGoClick: function(e, auto) {
         var self = $(e.currentTarget)
-          , key = self.data('key')
+          , pkey = self.parents('li').data('key')
+          , key  = self.data('key')
+          , hash = window.location.hash
+          , arr  = hash.split('_')
+
+        this.el.find('.thumbnail-menu>li li').removeClass('act')
+        self.addClass('act')
+        console.log(self.hasClass('act'))
+
+        if (!auto && arr.length > 2 && arr[0] == '#m') {
+          window.location.hash = '#m_' + arr[1] + '_' + arr[2] + '_' + (arr[3]|'') + '_' + pkey + '_' + key
+        }
+
         this.el.trigger({
           type : 'onCatalog',
           key  : key
         })
+
+        e.stopPropagation()
       }
   }
 
