@@ -19,7 +19,7 @@
     , create: function(data) {
         var i,j,item
         this.data = data
-        this.el.find('.table-btn').detach()
+        this.el.find('.table-btn').empty()
         this.el.find('thead').empty()
         this.el.find('tbody').empty()
         this.el.find('thead').append('<tr></tr>')
@@ -49,7 +49,6 @@
         }
 
         if (data.info.hasOwnProperty('tablebtn') && data.info.tablebtn.length > 0) {
-          this.el.append(this.opts.tplTblBtns)
           for (i = 0; i < data.info.tablebtn.length; i++) {
             this.el.find('.table-btn').append(data.info.tablebtn[i]+' ')
           }
@@ -132,8 +131,7 @@
   $.fn.ZCTable.defs = {
       data        : null
     , loadHtml    : '<div class="sk-wave"><div class="sk-rect sk-rect1"></div><div class="sk-rect sk-rect2"></div><div class="sk-rect sk-rect3"></div><div class="sk-rect sk-rect4"></div><div class="sk-rect sk-rect5"></div></div>'
-    , tplMain     : '<table class="table table-striped table-hover table-list"><thead></thead><tbody></tbody></table>'
-    , tplTblBtns  : '<div class="table-btn text-center"></div>'
+    , tplMain     : '<table class="table table-striped table-hover table-list"><thead></thead><tbody></tbody></table><div class="table-btn text-center"></div>'
     , clsKeyword  : 'red'
     , clsSelected : 'info'
   }
