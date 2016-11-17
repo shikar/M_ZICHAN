@@ -43,7 +43,7 @@
       }
 
     , onHidden: function(e) {
-        this.destroy()
+        $('#'+this.id).remove()
       }
 
   }
