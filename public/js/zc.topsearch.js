@@ -5,14 +5,20 @@
   var ZCTopSearch = function (el, opts) {
     this.el = el
     this.opts = opts
-    this.urlPath = ''
 
-    if (navigator.userAgent.toLowerCase().match(/chrome/) != null) this.urlPath = this.opts.localAccessUrl
+    this.checkLoacAccessUrl()
   }
 
   ZCTopSearch.prototype = {
 
       constructor: ZCTopSearch
+
+    , checkLoacAccessUrl: function() {
+        var protocol = window.location.protocol
+        if (protocol == 'file:' && navigator.userAgent.toLowerCase().match(/chrome/) != null) {
+          this.opts.rootUrl = 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/' + this.opts.rootUrl
+        }
+      }
       /**
        * 根据结果创建组件
        * @param  {Object} data json
@@ -30,7 +36,6 @@
         this.el.find('.page')
           .ZCPagination1('create', data.page)
           .bind('onPage', $.proxy(this.onPageClick, this))
-        Holder.run()
       }
       /**
        * 搜索调用
@@ -39,13 +44,14 @@
        * @param  {Number} page 第几页 默认:1
        */
     , goSearch: function(key, type, page) {
+        window.location.hash = ''
         this.el.html(this.opts.loadHtml)
-        if (!page) page = 1
+        page = page||1
         $.ajax({
-          url      : this.urlPath + this.opts.ajaxSearchResult,
+          url      : this.opts.rootUrl + this.opts.ajaxSearchResult,
           dataType : "json",
           cache    : false,
-          data     : {key: key, type: type, page:page},
+          data     : {key:key, type:type, page:page},
           success  : $.proxy(this.onAjaxSearchResult, this)
         })
       }
@@ -71,10 +77,11 @@
       for (var i = 1; i < arguments.length; i++) args.push(arguments[i])
       data[option].apply(data, args)
     }
+    return $this
   }
 
   $.fn.ZCTopSearch.defs = {
-      localAccessUrl   : 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/'
+      rootUrl          : ''
     , loadHtml         : '<div class="sk-wave"><div class="sk-rect sk-rect1"></div><div class="sk-rect sk-rect2"></div><div class="sk-rect sk-rect3"></div><div class="sk-rect sk-rect4"></div><div class="sk-rect sk-rect5"></div></div>'
     , ajaxSearchResult : 'json/searchResult.json'
     , key              : ''

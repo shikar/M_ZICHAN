@@ -65,8 +65,9 @@
             $pagination.append($.sprintf(this.opts.tplPageNext, ' class="disabled"'))
           else
             $pagination.append($.sprintf(this.opts.tplPageNext, ''))
+
+          $pagination.find('li a').bind('click', $.proxy(this.onPageClick, this))
         }
-        $pagination.find('li a').bind('click', $.proxy(this.onPageClick, this))
       }
 
     , onPageClick: function(e) {

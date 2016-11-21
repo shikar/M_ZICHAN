@@ -1,4 +1,4 @@
-html {filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);-webkit-filter: grayscale(100%);}
+/*html {filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);-webkit-filter: grayscale(100%);}*/
 body {
   font-family: '微软雅黑','Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
@@ -642,6 +642,6 @@ ul li.placeholder .btn {
 }
 
 .nopaddinglr{
-  padding-left: 0px; 
+  padding-left: 0px;
   padding-right: 0px;
 }

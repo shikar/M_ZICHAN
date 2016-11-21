@@ -166,6 +166,7 @@
       for (var i = 1; i < arguments.length; i++) args.push(arguments[i])
       data[option].apply(data, args)
     }
+    return $this
   }
 
   $.fn.ZCThumbnailShow.defs = {

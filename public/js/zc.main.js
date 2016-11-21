@@ -66,7 +66,7 @@
        * @param  {string} type 搜索类别(all|cur)
        */
     , goSearch: function(key, type) {
-        $('#main-block').ZCTopSearch('goSearch', key, type, 1);
+        $('#main-block').ZCTopSearch({rootUrl:this.opts.rootUrl}).ZCTopSearch('goSearch', key, type, 1);
       }
     , onTopSearchClick: function(e) {
         this.goSearch($('#top-search input[name=key]').val(), $('#top-search input[name=type]').val());
@@ -151,9 +151,9 @@
         if ('iframe' == e.utype) {
           $('#main-block').empty().append($.sprintf(this.opts.tplMainIframe, e.url))
         } else if ('ajax' == e.utype) {
-          $('#main-block').ZCThumbnailShow('create', e.key, e.url)
+          $('#main-block').ZCThumbnailShow({rootUrl:this.opts.rootUrl}).ZCThumbnailShow('create', e.key, e.url)
         } else {
-          $('#main-block').ZCThumbnailShow('create', e.key)
+          $('#main-block').ZCThumbnailShow({rootUrl:this.opts.rootUrl}).ZCThumbnailShow('create', e.key)
         }
       }
   }
