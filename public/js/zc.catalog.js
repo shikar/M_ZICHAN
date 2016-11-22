@@ -39,7 +39,7 @@
     , checkHash: function() {
         var hash = window.location.hash
           , arr = hash.split('_')
-        if (arr.length > 3 && arr[0] == '#m') {
+        if (arr.length > 4 && arr[0] == '#m') {
           this.el.find('.thumbnail-menu>li[data-key='+arr[4]+']').trigger('click', [true])
           this.el.find('.thumbnail-menu>li[data-key='+arr[4]+'] li[data-key='+arr[5]+']').trigger('click', [true])
         } else if (this.menuData.hasOwnProperty('open')) {
