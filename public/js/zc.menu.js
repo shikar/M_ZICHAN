@@ -74,7 +74,6 @@
               subMenu.url,
               subMenu.type,
               menu.id,
-              subMenu.id,
               ( subMenu.list.length > 0 ? 'true' : 'false' ),
               subMenu.url,
               subMenu.name,
@@ -140,7 +139,6 @@
           , url    = parent.data('url')
           , type   = parent.data('type')
           , menu   = parent.data('menu')
-          , idx    = parent.data('idx')
           , child  = parent.data('child')
 
         if (type == 'blank') self.attr({target: '_blank'})
@@ -149,10 +147,10 @@
         this.el.find('.sub-menu li').removeClass('active')
         parent.addClass('active')
 
-        if (!auto) window.location.hash = '#m_' + menu + '_' + idx
+        if (!auto) window.location.hash = '#m_' + menu + '_' + key
 
         if (child)
-          this.createMainThumbnail(menu, idx)
+          this.createMainThumbnail(menu, key)
         else
           $(document).trigger({
             type  : "thumbnailShow",
@@ -198,7 +196,7 @@
     , ajaxMenu        : 'json/menu.json'
     , tplItem         : '<li data-menu="%s"><a href="javascript:void(null)" data-toggle="tooltip" title="%s"><span class="%s"></span> %s</li>'
     , tplSubItemTitle : '<li class="title" data-menu="%s">%s<div class="close-sub-menu pull-right"><span class="glyphicon glyphicon-triangle-left"></span></div></li>'
-    , tplSubItem      : '<li data-key="%s" data-url="%s" data-type="%s" data-menu="%s" data-idx="%s" data-child="%s"><a href="%s#" title="%s">%s %s</a></li>'
+    , tplSubItem      : '<li data-key="%s" data-url="%s" data-type="%s" data-menu="%s" data-child="%s"><a href="%s#" title="%s">%s %s</a></li>'
     , tplBadge        : ' <span class="badge">%s</span>'
   }
 
