@@ -47,13 +47,16 @@
           , hash = window.location.hash
           , arr  = hash.split('_')
 
+        if (!auto && arr.length > 2 && arr[0] == '#m') window.location.hash = '#m_' + arr[1] + '_' + arr[2] + '_' + key
 
-        if (type == 'blank') self.find('a').attr({target: '_blank'})
+
+        if (type == 'blank') {
+          self.find('a').attr({target: '_blank'})
+          self.attr({href: self.attr('href')+window.location.hash})
+        }
         if (type == 'open' || type == 'blank') return true
 
-        if (!auto && arr.length > 2 && arr[0] == '#m') {
-          window.location.hash = '#m_' + arr[1] + '_' + arr[2] + '_' + key
-        }
+
 
         $(document).trigger({
           type  : "thumbnailShow",

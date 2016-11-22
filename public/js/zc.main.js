@@ -151,7 +151,7 @@
         if ('iframe' == e.utype) {
           $('#main-block').empty().append($.sprintf(this.opts.tplMainIframe, e.url))
         } else if ('ajax' == e.utype) {
-          $('#main-block').ZCThumbnailShow({rootUrl:this.opts.rootUrl}).ZCThumbnailShow('create', e.key, e.url)
+          $('#main-block').ZCThumbnailShow({rootUrl:this.opts.rootUrl}).ZCThumbnailShow('create', e.key, 0, e.url)
         } else {
           $('#main-block').ZCThumbnailShow({rootUrl:this.opts.rootUrl}).ZCThumbnailShow('create', e.key)
         }

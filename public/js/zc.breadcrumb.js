@@ -18,7 +18,7 @@
       }
     , create: function(data) {
         var i,item
-        this.el.find('.filter-selects').empty()
+        this.el.find('.thumbnail-breadcrumb ul').empty()
         for (i = 0; i < data.length; i++) {
           item = data[i]
           this.el.find('.thumbnail-breadcrumb ul').append($.sprintf(this.opts.tplItem, item))

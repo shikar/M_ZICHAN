@@ -23,7 +23,7 @@
         var key,curDl
           , i = 0
         this.data = data
-        this.el.find('dl').empty()
+        this.el.find('.block-info dl').empty()
 
         for (key in this.data) {
           curDl = this.el.find('dl:eq('+i%2+')')
@@ -65,7 +65,7 @@
 
   $.fn.ZCTopInfo.defs = {
       data      : null
-    , tplMain   : '<div class="panel panel-default"><div class="panel-body panel-close container-fluid"><div class="row"><div class="col-xs-6"><dl class="dl-horizontal"></dl></div><div class="col-xs-6"><button type="button" class="btn btn-link btn-open"><span class="glyphicon glyphicon-menu-down"></span></button><dl class="dl-horizontal"></dl></div></div></div></div>'
+    , tplMain   : '<div class="panel panel-default block-info"><div class="panel-body panel-close container-fluid"><div class="row"><div class="col-xs-6"><dl class="dl-horizontal"></dl></div><div class="col-xs-6"><button type="button" class="btn btn-link btn-open"><span class="glyphicon glyphicon-menu-down"></span></button><dl class="dl-horizontal"></dl></div></div></div></div>'
     , tplItem   : '<dt>%s</dt><dd>%s</dd>'
     , iconOpen  : 'glyphicon-menu-down'
     , iconClose : 'glyphicon-menu-up'

@@ -68,11 +68,14 @@
           , url   = self.data('url')
           , type  = self.data('type')
 
-
-        if (type == 'blank') self.find('a').attr({target: '_blank'})
+        if (!auto) window.location.hash = '#f_' + key
+        if (type == 'blank') {
+          self.find('a').attr({target: '_blank'})
+          self.attr({href: self.attr('href')+window.location.hash})
+        }
         if (type == 'open' || type == 'blank') return true
 
-        if (!auto) location.hash = '#f_' + key
+
 
         $(document).trigger({
           type  : "thumbnailShow",

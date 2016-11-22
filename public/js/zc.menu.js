@@ -51,7 +51,7 @@
           , arr = hash.split('_')
         if (arr.length > 2 && arr[0] == '#m') {
           this.el.find('.menu li[data-menu='+arr[1]+'] a').trigger('click', [true])
-          this.el.find('.sub-menu li[data-menu='+arr[1]+'][data-idx='+arr[2]+'] a').trigger('click', [true])
+          this.el.find('.sub-menu li[data-menu='+arr[1]+'][data-key='+arr[2]+'] a').trigger('click', [true])
         }
       }
 
@@ -141,13 +141,16 @@
           , menu   = parent.data('menu')
           , child  = parent.data('child')
 
-        if (type == 'blank') self.attr({target: '_blank'})
+        if (!auto) window.location.hash = '#m_' + menu + '_' + key
+
+        if (type == 'blank') {
+          self.attr({target: '_blank'})
+          self.attr({href: self.attr('href')+window.location.hash})
+        }
         if (type == 'open' || type == 'blank') return true
 
         this.el.find('.sub-menu li').removeClass('active')
         parent.addClass('active')
-
-        if (!auto) window.location.hash = '#m_' + menu + '_' + key
 
         if (child)
           this.createMainThumbnail(menu, key)
@@ -196,7 +199,7 @@
     , ajaxMenu        : 'json/menu.json'
     , tplItem         : '<li data-menu="%s"><a href="javascript:void(null)" data-toggle="tooltip" title="%s"><span class="%s"></span> %s</li>'
     , tplSubItemTitle : '<li class="title" data-menu="%s">%s<div class="close-sub-menu pull-right"><span class="glyphicon glyphicon-triangle-left"></span></div></li>'
-    , tplSubItem      : '<li data-key="%s" data-url="%s" data-type="%s" data-menu="%s" data-child="%s"><a href="%s#" title="%s">%s %s</a></li>'
+    , tplSubItem      : '<li data-key="%s" data-url="%s" data-type="%s" data-menu="%s" data-child="%s"><a href="%s" title="%s">%s %s</a></li>'
     , tplBadge        : ' <span class="badge">%s</span>'
   }
 

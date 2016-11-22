@@ -20,6 +20,7 @@
       }
     , create: function(data) {
         var i,j,item,subitem
+        this.el.find('.filter-bar').empty()
         for (i = 0; i < data.length; i++) {
           item = data[i]
           this.el.find('.filter-bar').append($.sprintf(this.opts.tplList, item.name))

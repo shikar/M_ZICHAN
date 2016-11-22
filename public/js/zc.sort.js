@@ -21,6 +21,7 @@
         var key,val
           , list = this.el.find('.sort-bar .list-sort')
         this.data = data
+
         list.empty()
         for (key in data) {
           val = data[key]

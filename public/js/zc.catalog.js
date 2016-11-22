@@ -5,6 +5,7 @@
   var ZCCatalog = function (el, opts) {
     this.opts = opts
     this.el = el
+    this.menuData = null
 
     this.init()
   }
@@ -17,8 +18,11 @@
       }
     , create: function(data) {
         var i,j,item,subitem
-        for (i = 0; i < data.length; i++) {
-          item = data[i]
+          , list = data.list
+        this.menuData = data
+        console.log(this.menuData)
+        for (i = 0; i < list.length; i++) {
+          item = list[i]
           this.el.find('.thumbnail-menu')
             .append($.sprintf(this.opts.tplItem, item.id, item.name))
             .find('li:last').append('<ul></ul>')
@@ -38,6 +42,9 @@
         if (arr.length > 3 && arr[0] == '#m') {
           this.el.find('.thumbnail-menu>li[data-key='+arr[4]+']').trigger('click', [true])
           this.el.find('.thumbnail-menu>li[data-key='+arr[4]+'] li[data-key='+arr[5]+']').trigger('click', [true])
+        } else if (this.menuData.hasOwnProperty('open')) {
+          this.el.find('.thumbnail-menu>li[data-key='+this.menuData.open[0]+']').trigger('click', [true])
+          this.el.find('.thumbnail-menu>li[data-key='+this.menuData.open[0]+'] li[data-key='+this.menuData.open[1]+']').trigger('click', [true])
         }
       }
     , onOpenClick: function(e) {
@@ -61,12 +68,12 @@
 
         if (!auto && arr.length > 2 && arr[0] == '#m') {
           window.location.hash = '#m_' + arr[1] + '_' + arr[2] + '_' + (arr[3]||'') + '_' + pkey + '_' + key
+        } else {
+          this.el.trigger({
+            type : 'onCatalog',
+            key  : key
+          })
         }
-
-        this.el.trigger({
-          type : 'onCatalog',
-          key  : key
-        })
 
         e.stopPropagation()
       }
