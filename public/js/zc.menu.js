@@ -29,9 +29,22 @@
         }
       }
 
-    , createMainThumbnail: function(menu, idx) {
-        var item,items = ''
-        $('#main-block').ZCItemList('show', this.menuData[menu]['list'][idx]['list'])
+    , createMainThumbnail: function(menuId, subMenuId) {
+        var i,j,menu,submenu
+          , list = null
+
+        for (i = 0; i < this.menuData.length; i++) {
+          menu = this.menuData[i]
+          if (menu.id !== menuId) continue
+          for (var j = 0; j < menu.list.length; j++) {
+            submenu = menu.list[j]
+            if (submenu.id !== subMenuId) continue
+            list = submenu.list
+            break
+          }
+          if (list !== null) break
+        }
+        $('#main-block').ZCItemList('show', list)
       }
     , checkHash: function() {
         var hash = window.location.hash
@@ -51,7 +64,7 @@
         for (i = 0; i < this.menuData.length; i++) {
           menu = this.menuData[i]
           subMenuStr = ''
-          this.el.find('.sub-menu').append($.sprintf(this.opts.tplSubItemTitle, i, menu.name))
+          this.el.find('.sub-menu').append($.sprintf(this.opts.tplSubItemTitle, menu.id, menu.name))
           for (var j = 0; j < menu.list.length; j++) {
             subMenu = menu.list[j]
             badge = (subMenu.count>0?$.sprintf(this.opts.tplBadge, subMenu.count):'')
@@ -60,8 +73,8 @@
               subMenu.id,
               subMenu.url,
               subMenu.type,
-              i,
-              j,
+              menu.id,
+              subMenu.id,
               ( subMenu.list.length > 0 ? 'true' : 'false' ),
               subMenu.url,
               subMenu.name,
@@ -70,7 +83,7 @@
             ))
           }
           badge = (menu.count>0?$.sprintf(this.opts.tplBadge, menu.count):'')
-          this.el.find('.menu').append($.sprintf(this.opts.tplItem, i, menu.name, this.opts.icons[i], menu.name+badge))
+          this.el.find('.menu').append($.sprintf(this.opts.tplItem, menu.id, menu.name, this.opts.icons[i], menu.name+badge))
         }
 
 
@@ -108,7 +121,7 @@
         var self = $(e.currentTarget)
         self.tooltip('hide')
       }
-    , onMenuClick: function(e) {
+    , onMenuClick: function(e, auto) {
         var self = $(e.currentTarget).parent()
           , menu = self.data('menu')
         this.el.find('.menu li').removeClass('active')
@@ -118,7 +131,7 @@
         this.el.find('.sub-menu li[data-menu='+menu+']').show()
         this.el.find('.menu-content').addClass('submenu-open')
 
-        this.el.find('.sub-menu li[data-menu='+menu+']:eq(1) a').trigger('click')
+        if (!auto) this.el.find('.sub-menu li[data-menu='+menu+']:eq(1) a').trigger('click')
       }
     , onSubMenuClick: function(e, auto) {
         var self   = $(e.currentTarget)
@@ -135,7 +148,6 @@
 
         this.el.find('.sub-menu li').removeClass('active')
         parent.addClass('active')
-        // console.log(menu,idx,sub)
 
         if (!auto) window.location.hash = '#m_' + menu + '_' + idx
 
@@ -149,7 +161,7 @@
             utype : type
           })
 
-        return false;
+        return false
       }
     , onSubMenuClose: function(e) {
         this.el.find('.menu-content').removeClass('submenu-open')
@@ -186,7 +198,7 @@
     , ajaxMenu        : 'json/menu.json'
     , tplItem         : '<li data-menu="%s"><a href="javascript:void(null)" data-toggle="tooltip" title="%s"><span class="%s"></span> %s</li>'
     , tplSubItemTitle : '<li class="title" data-menu="%s">%s<div class="close-sub-menu pull-right"><span class="glyphicon glyphicon-triangle-left"></span></div></li>'
-    , tplSubItem      : '<li data-key="%s" data-url="%s" data-type="%s" data-menu="%s" data-idx="%s" data-child="%s"><a href="%s" title="%s">%s %s</a></li>'
+    , tplSubItem      : '<li data-key="%s" data-url="%s" data-type="%s" data-menu="%s" data-idx="%s" data-child="%s"><a href="%s#" title="%s">%s %s</a></li>'
     , tplBadge        : ' <span class="badge">%s</span>'
   }
 

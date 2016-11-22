@@ -27,7 +27,7 @@
 
         for (key in this.data) {
           curDl = this.el.find('dl:eq('+i%2+')')
-          curDl.append($.sprintf(this.opts.tplItem, key+':', this.data[key]))
+          curDl.append($.sprintf(this.opts.tplItem, this.data[key]['name']+':', this.data[key]['value']))
           i++
         }
       }
