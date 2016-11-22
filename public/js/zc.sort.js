@@ -25,7 +25,7 @@
         list.empty()
         for (key in data) {
           val = data[key]
-          list.append($.sprintf(this.opts.tplItem, key, val, val))
+          list.append($.sprintf(this.opts.tplItem, val.name, val.value, val.value))
         }
 
         list.sortable({
