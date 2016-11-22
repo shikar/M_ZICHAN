@@ -365,15 +365,16 @@
     }
   ],
   "breadcrumb":["首页","一级目录","二级目录","三级目录"],
-  "sort" : {
-    "name":"数据集名称",
-    "udid":"数据集标示符",
-    "dc":"数据元个数",
-    "rc":"记录行数",
-    "e":"负责单位",
-    "bt":"业务类别",
-    "dt":"抓取时间"
-  },
+  "sort" :
+  [
+  {"name":"name","value":"数据集名称"},
+ {"name":"udid","value":"数据集标示符"},
+ {"name":"dc","value":"数据元个数"},
+ {"name":"rc","value":"记录行数"},
+ {"name":"e","value":"负责单位"},
+ {"name":"bt","value":"业务类别"},
+ {"name":"dt","value":"抓取时间"}
+  ],
   "table" : {
     "info":{
       "checkbox": 1,
