@@ -26,7 +26,7 @@
           this.el.find('.filter-bar').append($.sprintf(this.opts.tplList, item.name))
           for (j = 0; j < item.list.length; j++) {
             subitem = item.list[j]
-            this.el.find('.filter-bar dd:last').append($.sprintf(this.opts.tplItem, subitem.id, item.name, subitem.name))
+            this.el.find('.filter-bar dd:last').append($.sprintf(this.opts.tplItem, subitem.id, item.id, subitem.name))
           }
         }
         this.el.find('.filter-bar .btn-open').bind('click', $.proxy(this.onOpenClick, this))
@@ -75,7 +75,7 @@
           , text = $el.text()
           , obj = {}
         $('.thumbnail-breadcrumb .filter-selects').append($.sprintf(this.opts.tplItem, key, type, type+':'+text))
-        obj[key] = type
+        obj[type] = key
         this.selected.push(obj)
       }
     , onBreadcrumbFilterClick: function(e) {

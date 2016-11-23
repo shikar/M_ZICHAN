@@ -88,7 +88,7 @@
     },
     "fields":[
       {"name":"id","hidden":true},
-      {"name":"数据集名称","hidden":false},
+      {"name":"数据集名称","hidden":false,"link":"id"},
       {"name":"数据集标示符","hidden":false},
       {"name":"数据元个数","hidden":false},
       {"name":"记录行数","hidden":false},

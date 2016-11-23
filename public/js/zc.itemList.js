@@ -85,7 +85,7 @@
   }
 
   $.fn.ZCItemList.defs = {
-	  rootUrl          : ''
+      rootUrl      : ''
     , tplMain      : '<div class="container-fluid"><div class="row item-list"></div><div class="row"><div class="col-xs-12 page"></div></div></div>'
     , tplThumbnail : '<div class="col-sm-3"><div class="thumbnail" data-key="%s" data-url="%s" data-type="%s"><span class="badge">%s</span><a href="%s"><img src="%s"></a><div class="caption"><h5>%s</h5><p class="text-muted small">%s</p></div></div></div>'
   }

@@ -136,16 +136,24 @@
         if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('create', json.page)
       }
     , onCatalogResult: function(e) {
+        console.log('onCatalogResult',e.key)
         this.goCatelog(e.key)
       }
 
     , onSortResult: function(e) {
         console.log(e.list)
-        this.sort = e.list
+        this.sort = JSON.stringify(e.list)
         this.refreshTable()
         e.stopPropagation()
       }
     , onActResult: function(e) {
+        switch (e.cmd) {
+          case 'link':
+            if (e.menu != '')
+              window.location.hash = '#'+e.menu
+            this.create(e.key)
+            break
+        }
         // console.log('cmd:' + e.cmd + '|key:' + e.key + '|idx:' + e.idx)
         // e.stopPropagation()
       }
@@ -157,7 +165,7 @@
       }
     , onFilterResult: function(e) {
         console.log(e.selected)
-        this.filter = e.selected
+        this.filter = JSON.stringify(e.selected)
         this.refreshTable()
         e.stopPropagation()
       }

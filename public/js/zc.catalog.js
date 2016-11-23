@@ -20,7 +20,6 @@
         var i,j,item,subitem
           , list = data.list
         this.menuData = data
-        console.log(this.menuData)
         for (i = 0; i < list.length; i++) {
           item = list[i]
           this.el.find('.thumbnail-menu')
@@ -68,7 +67,6 @@
 
         if (!auto && arr.length > 2 && arr[0] == '#m') {
           window.location.hash = '#m_' + arr[1] + '_' + arr[2] + '_' + (arr[3]||'') + '_' + pkey + '_' + key
-        } else {
           this.el.trigger({
             type : 'onCatalog',
             key  : key
