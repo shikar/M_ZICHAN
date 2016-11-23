@@ -62,7 +62,7 @@
           if (data.info.hasOwnProperty('listbtn') && data.info.listbtn.length > 0) {
             this.el.find('tbody tr:last').append('<td class="text-center act-btn"></td>')
             for (j = 0; j < data.info.listbtn.length; j++) {
-              $lastTr.find('.act-btn').append(data.info.listbtn[j])
+              $lastTr.find('.act-btn').append(this.checkAct(data.info.listbtn[j], item))
             }
           }
 
@@ -105,6 +105,12 @@
           ret.val = ret.val.replace(new RegExp(':'+i, 'g'), row[i].value)
         return ret
       }
+    , checkAct: function(link, row) {
+        var i
+        for (i in row)
+          link = link.replace(new RegExp(':'+i, 'g'), row[i].value)
+        return link
+      }
     , checkKeyword: function(str) {
         str = str + ''
         str = str.replace(new RegExp('('+this.data.info.keyword+')', 'ig'), '<b class="'+this.opts.clsKeyword+'">$1</b>')
@@ -121,29 +127,45 @@
       }
     , onTableBtnActClick: function(e) {
         var self = $(e.currentTarget)
-          , idx = self.index()
-          , key = []
+          , idx  = self.index()
+          , url  = self.attr('href')
+          , type = self.data('type')
+          , key  = []
         this.el.find('tbody tr input[name=ids]:checked').each(function(idx, el) {
           var $el = $(el)
           key.push($el.val())
         })
+
+        if (key.length <= 0) return false
+
+        url = this.checkAct(url, {"ids":{"value":key.toString()}})
+        self.attr('href', url)
+        if (type == 'open') return true
         this.el.trigger({
-          type : 'onAct',
-          cmd  : 'table',
-          key  : key,
-          idx  : idx
+          type  : 'onAct',
+          cmd   : 'table',
+          key   : key,
+          utype : type,
+          url   : url
         })
+        return false
       }
     , onListBtnActClick: function(e) {
         var self = $(e.currentTarget)
-          , key = self.parents('tr').data('key')
-          , idx = self.index()
+          , key  = self.parents('tr').data('key')
+          , idx  = self.index()
+          , url  = self.attr('href')
+          , type = self.data('type')
+        e.stopPropagation()
+        if (type == 'open') return true
         this.el.trigger({
-          type : 'onAct',
-          cmd  : 'list',
-          key  : key,
-          idx  : idx
+          type  : 'onAct',
+          cmd   : 'list',
+          key   : key,
+          utype : type,
+          url   : url
         })
+        return false
       }
     , onLinkClick: function(e) {
         var self = $(e.currentTarget)

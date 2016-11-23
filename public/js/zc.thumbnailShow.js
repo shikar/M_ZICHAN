@@ -153,6 +153,15 @@
               window.location.hash = '#'+e.menu
             this.create(e.key)
             break
+          case 'list':
+          case 'table':
+            $.fn.ZCModal({
+              title  : '加载中',
+              size   : 'large',
+              remote : e.url,
+              body   : '请稍后,加载中...'
+            })
+            break
         }
         // console.log('cmd:' + e.cmd + '|key:' + e.key + '|idx:' + e.idx)
         // e.stopPropagation()

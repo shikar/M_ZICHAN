@@ -24,9 +24,10 @@
         $('#'+this.id).modal({
           backdrop : this.opts.backdrop,
           show     : this.opts.show,
-          remote   : this.opts.remote,
+          remote   : this.opts.rootUrl+this.opts.remote,
         })
         .bind('hidden.bs.modal', $.proxy(this.onHidden, this))
+        .bind('loaded.bs.modal', $.proxy(this.onLoaded, this))
         .modal('show')
       }
     , checkLoacAccessUrl: function() {
@@ -44,6 +45,17 @@
 
     , onHidden: function(e) {
         $('#'+this.id).remove()
+      }
+    , onLoaded: function(e) {
+        var form = $('#'+this.id).find('form')
+          , submit = $('#'+this.id).find('[type=submit]')
+        if (form) {
+          if (submit) submit.bind('click', $.proxy(this.onSubmit, this))
+        }
+      }
+    , onSubmit: function(e) {
+        console.log($('#'+this.id).find('form').attr('action'))
+        $('#'+this.id).find('form').ajaxSubmit()
       }
 
   }

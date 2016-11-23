@@ -3,16 +3,16 @@
   <h4 class="modal-title">通用表单</h4>
 </div>
 <div class="modal-body">
-  <form class="form-horizontal">
+  <form action="index.html" method="post" class="form-horizontal"><!--  enctype="multipart/form-data" -->
     <div class="form-group">
       <label for="input1" class="col-sm-2 control-label">申请单名称</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control" id="input1" placeholder="申请单名称">
+        <input type="text" class="form-control" id="input1" name="input1" placeholder="申请单名称">
       </div>
 
       <label for="input2" class="col-sm-2 control-label">数据格式</label>
       <div class="col-sm-4">
-        <select class="form-control" id="input2">
+        <select class="form-control" id="input2" name="input2">
           <option>EXL</option>
           <option>EXL2</option>
           <option>EXL23</option>
@@ -24,13 +24,13 @@
     <div class="form-group">
       <label for="input3" class="col-sm-2 control-label">数据存放地址</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control" id="input3" placeholder="数据存放地址">
+        <input type="text" class="form-control" id="input3" name="input3" placeholder="数据存放地址">
       </div>
 
       <label for="input4" class="col-sm-2 control-label">期望完成日期</label>
       <div class="col-sm-4">
         <div class="input-group date form_date" data-date-format="yyyy-mm-dd">
-          <input type="text" class="form-control" id="input4" placeholder="期望完成日期">
+          <input type="text" class="form-control" id="input4" name="input4" placeholder="期望完成日期">
           <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
         </div>
       </div>
@@ -38,7 +38,7 @@
     <div class="form-group">
       <label for="input5" class="col-sm-2 control-label">数据用途</label>
       <div class="col-sm-10">
-        <input type="password" class="form-control" id="input5" placeholder="数据用途">
+        <input type="text" class="form-control" id="input5" name="input5" placeholder="数据用途">
       </div>
     </div>
   </form>
