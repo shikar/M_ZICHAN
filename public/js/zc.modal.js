@@ -67,7 +67,7 @@
       }
     , onBeforeSubmit: function(formData, jqForm, options) {
         var queryString = $.param(formData)
-        console.log('About to submit: \n' + queryString)
+        console.log('提交的信息: \n' + queryString)
       }
     , onSubmitComplete: function(e) {
         console.log('onSubmitSuccess', e)
