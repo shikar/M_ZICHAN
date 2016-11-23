@@ -54,8 +54,21 @@
         }
       }
     , onSubmit: function(e) {
-        console.log($('#'+this.id).find('form').attr('action'))
-        $('#'+this.id).find('form').ajaxSubmit()
+        // console.log($('#'+this.id).find('form').attr('action'))
+        $('#'+this.id).find('[type=submit]').button('loading')
+        $('#'+this.id).find('form').ajaxSubmit({
+          beforeSubmit : $.proxy(this.onBeforeSubmit, this),
+          complete     : $.proxy(this.onSubmitComplete, this)
+        })
+      }
+    , onBeforeSubmit: function(formData, jqForm, options) {
+        var queryString = $.param(formData)
+        console.log('About to submit: \n' + queryString)
+      }
+    , onSubmitComplete: function(e) {
+        console.log('onSubmitSuccess', e)
+        $('#'+this.id).find('[type=submit]').remove()
+        $('#'+this.id).find('.modal-body').html(e.responseText)
       }
 
   }
