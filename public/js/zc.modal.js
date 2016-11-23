@@ -50,16 +50,20 @@
         var form = $('#'+this.id).find('form')
           , submit = $('#'+this.id).find('[type=submit]')
         if (form) {
-          if (submit) submit.bind('click', $.proxy(this.onSubmit, this))
+          form.bind('submit', $.proxy(this.onSubmit, this))
+          if (submit) submit.bind('click', $.proxy(this.onSubmitClick, this))
         }
       }
-    , onSubmit: function(e) {
-        // console.log($('#'+this.id).find('form').attr('action'))
+    , onSubmitClick: function(e) {
         $('#'+this.id).find('[type=submit]').button('loading')
+        $('#'+this.id).find('form').trigger('submit')
+      }
+    , onSubmit: function(e) {
         $('#'+this.id).find('form').ajaxSubmit({
           beforeSubmit : $.proxy(this.onBeforeSubmit, this),
           complete     : $.proxy(this.onSubmitComplete, this)
         })
+        return false
       }
     , onBeforeSubmit: function(formData, jqForm, options) {
         var queryString = $.param(formData)
