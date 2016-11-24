@@ -21,7 +21,7 @@
 		
         var i,j,item,$lastTr,td,itemLinkRet
         this.data = data
-        this.formatData(data)
+        
         
         this.el.find('thead').empty()
         
@@ -36,6 +36,7 @@
 		
 
 		if(data.lists!=null  && data.lists.length>0){
+			this.formatData(data)
 			this.el.find('tbody').empty()
 			for (i = 0; i < this.list.length; i++) {
 			  item = this.list[i]
