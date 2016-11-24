@@ -18,14 +18,13 @@
         this.el.append(this.opts.tplMain)
       }
     , create: function(data) {
-		if(data.lists==null || data.lists.length==0)
-			return;
+		
         var i,j,item,$lastTr,td,itemLinkRet
         this.data = data
         this.formatData(data)
-        this.el.find('.table-btn').empty()
+        
         this.el.find('thead').empty()
-        this.el.find('tbody').empty()
+        
         this.el.find('thead').append('<tr></tr>')
 
         // 是否生成 checkbox 头
@@ -34,42 +33,50 @@
           if (!data.fields[i]['hidden']) this.el.find('thead tr').append('<th>'+data.fields[i]['name']+'</th>')
         }
         if (data.info.hasOwnProperty('listbtn') && data.info.listbtn.length > 0) this.el.find('thead tr').append('<th class="text-center">操作</th>')
+		
 
-        for (i = 0; i < this.list.length; i++) {
-          item = this.list[i]
-          this.el.find('tbody').append($.sprintf('<tr data-key="%s"></tr>', item.id.value))
-          $lastTr = this.el.find('tbody tr:last')
+		if(data.lists!=null  && data.lists.length>0){
+			this.el.find('tbody').empty()
+			for (i = 0; i < this.list.length; i++) {
+			  item = this.list[i]
+			  this.el.find('tbody').append($.sprintf('<tr data-key="%s"></tr>', item.id.value))
+			  $lastTr = this.el.find('tbody tr:last')
 
-          // 是否生成 checkbox
-          if (this.data.info.checkbox == true) {
-            $lastTr.append('<td class="text-center"><input type="checkbox" name="ids" value="'+item.id.value+'"></td>')
-          }
+			  // 是否生成 checkbox
+			  if (this.data.info.checkbox == true) {
+				$lastTr.append('<td class="text-center"><input type="checkbox" name="ids" value="'+item.id.value+'"></td>')
+			  }
 
-          // 插入表格内数据
-          for (j in item) {
-            if (item[j]['hidden']) continue
-            td = this.checkKeyword(item[j]['value'])
-            if (item[j].hasOwnProperty('link') && item[j].link!=null) {
-              itemLinkRet = this.checkLink(item[j], item)
-              if (itemLinkRet.type == 'url') {
-                td = $.sprintf(this.opts.tplLink, itemLinkRet.val, '', td)
-              } else if (itemLinkRet.type == 'ajax') {
-                td = $.sprintf(this.opts.tplLink, 'javascript:void(null)', ' data-key="'+itemLinkRet.val+'" data-menu="'+item[j].menu+'"', td)
-              }
-            }
-            $lastTr.append('<td>'+td+'</td>')
-          }
+			  // 插入表格内数据
+			  for (j in item) {
+				if (item[j]['hidden']) continue
+				td = this.checkKeyword(item[j]['value'])
+				if (item[j].hasOwnProperty('link') && item[j].link!=null) {
+				  itemLinkRet = this.checkLink(item[j], item)
+				  if (itemLinkRet.type == 'url') {
+					td = $.sprintf(this.opts.tplLink, itemLinkRet.val, '', td)
+				  } else if (itemLinkRet.type == 'ajax') {
+					td = $.sprintf(this.opts.tplLink, 'javascript:void(null)', ' data-key="'+itemLinkRet.val+'" data-menu="'+item[j].menu+'"', td)
+				  }
+				}
+				$lastTr.append('<td>'+td+'</td>')
+			  }
 
-          // 插入记录按钮
-          if (data.info.hasOwnProperty('listbtn') && data.info.listbtn.length > 0) {
-            this.el.find('tbody tr:last').append('<td class="text-center act-btn"></td>')
-            for (j = 0; j < data.info.listbtn.length; j++) {
-              $lastTr.find('.act-btn').append(this.checkAct(data.info.listbtn[j], item))
-            }
-          }
+			  // 插入记录按钮
+			  if (data.info.hasOwnProperty('listbtn') && data.info.listbtn.length > 0) {
+				this.el.find('tbody tr:last').append('<td class="text-center act-btn"></td>')
+				for (j = 0; j < data.info.listbtn.length; j++) {
+				  $lastTr.find('.act-btn').append(this.checkAct(data.info.listbtn[j], item))
+				}
+			  }
 
-        }
+			}
+		
+		}
 
+		
+		
+		this.el.find('.table-btn').empty()
         // 插入表格按钮和事件
         if (data.info.hasOwnProperty('tablebtn') && data.info.tablebtn.length > 0) {
           for (i = 0; i < data.info.tablebtn.length; i++) {
