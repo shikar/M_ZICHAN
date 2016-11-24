@@ -74,7 +74,7 @@
           , type = $el.data('type')
           , text = $el.text()
           , obj = {}
-        $('.thumbnail-breadcrumb .filter-selects').append($.sprintf(this.opts.tplItem, key, type, type+':'+text))
+        $('.thumbnail-breadcrumb .filter-selects').append($.sprintf(this.opts.tplItem, key, type, text))
         obj[type] = key
         this.selected.push(obj)
       }
