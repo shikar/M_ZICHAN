@@ -110,8 +110,23 @@
           success  : $.proxy(this.onThumbnailTableResult, this)
         })
       }
+    , checkReturn: function(json) {
+        if (json.errflag === 1) {
+          window.location.reload()
+          return true
+        }
+        else if (json.msg != null) {
+          $.fn.ZCModal({
+            title : '错误信息',
+            body  : json.msg
+          })
+          return true
+        }
+        return false
+      }
 
     , onThumbnailShowResult: function(json) {
+        if (this.checkReturn(json)) return
         this.ajaxData = json
         this.el.empty().append(this.opts.tplMain)
         if (json.hasOwnProperty('menu')) this.el.find('.row>div').ZCCatalog('create', json.menu)
@@ -124,6 +139,7 @@
         if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('create', json.page)
       }
     , onThumbnailCatalogResult: function(json) {
+        if (this.checkReturn(json)) return
         if (json.hasOwnProperty('breadcrumb')) this.el.find('.row>div').ZCBreadcrumb('create', json.breadcrumb)
         if (json.hasOwnProperty('info')) this.el.find('.thumbnail-main').ZCTopInfo('create', json.info)
         if (json.hasOwnProperty('filter')) this.el.find('.thumbnail-main').ZCFilter('create', json.filter)
@@ -132,6 +148,7 @@
         if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('create', json.page)
       }
     , onThumbnailTableResult: function(json) {
+        if (this.checkReturn(json)) return
         if (json.hasOwnProperty('table')) this.el.find('.thumbnail-main').ZCTable('create', json.table)
         if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('create', json.page)
       }
@@ -151,7 +168,16 @@
           case 'link':
             if (e.menu != '')
               window.location.hash = '#'+e.menu
-            this.create(e.key)
+            if (e.key)
+              this.create(e.key)
+            else if (e.model) {
+              $.fn.ZCModal({
+                title  : '加载中',
+                size   : 'large',
+                remote : e.model,
+                body   : '请稍后,加载中...'
+              })
+            }
             break
           case 'list':
           case 'table':
