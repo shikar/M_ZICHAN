@@ -18,6 +18,8 @@
         this.el.append(this.opts.tplMain)
       }
     , create: function(data) {
+		if(data.lists==null || data.lists.length==0)
+			return;
         var i,j,item,$lastTr,td,itemLinkRet
         this.data = data
         this.formatData(data)
