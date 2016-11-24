@@ -74,6 +74,7 @@
       }
     , onSubmitComplete: function(e) {
         console.log('onSubmitSuccess', e)
+        this.$modal.find('.modal-dialog').removeClass('modal-lg').addClass('modal-sm')
         this.$modal.find('[type=submit]').remove()
         this.$modal.find('.modal-body').html(e.responseText)
       }
