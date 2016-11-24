@@ -6,6 +6,7 @@
     this.el = el
     this.opts = opts
     this.id = 'modal'+parseInt(Math.random()*10000)
+    this.$modal = null
 
     this.checkLoacAccessUrl()
     this.init()
@@ -16,12 +17,13 @@
       constructor: ZCModal
     , init: function() {
         $('body').append($.sprintf(this.opts.tplMain, this.id, this.opts.title, this.opts.body))
+        this.$modal = $('#'+this.id)
         if (this.opts.size == 'large')
-          $('#'+this.id).find('.modal-dialog').addClass('modal-lg')
+          this.$modal.find('.modal-dialog').addClass('modal-lg')
         else if (this.opts.size == 'small')
-          $('#'+this.id).find('.modal-dialog').addClass('modal-sm')
+          this.$modal.find('.modal-dialog').addClass('modal-sm')
 
-        $('#'+this.id).modal({
+        this.$modal.modal({
           backdrop : this.opts.backdrop,
           show     : this.opts.show,
           remote   : this.opts.rootUrl+this.opts.remote,
@@ -37,29 +39,30 @@
         }
       }
     , cloas: function() {
-        $('#'+this.id).modal('hide')
+        this.$modal.modal('hide')
       }
     , destroy: function() {
 
       }
 
     , onHidden: function(e) {
-        $('#'+this.id).remove()
+        this.$modal.remove()
       }
     , onLoaded: function(e) {
-        var form = $('#'+this.id).find('form')
-          , submit = $('#'+this.id).find('[type=submit]')
+        var form = this.$modal.find('form')
+          , submit = this.$modal.find('[type=submit]')
         if (form) {
           form.bind('submit', $.proxy(this.onSubmit, this))
           if (submit) submit.bind('click', $.proxy(this.onSubmitClick, this))
         }
       }
     , onSubmitClick: function(e) {
-        $('#'+this.id).find('[type=submit]').button('loading')
-        $('#'+this.id).find('form').trigger('submit')
+        this.$modal.find('[type=submit]').button('loading')
+        this.$modal.find('form').trigger('submit')
+        setTimeout($.proxy(this.onSetTimeOut, this), 4000)
       }
     , onSubmit: function(e) {
-        $('#'+this.id).find('form').ajaxSubmit({
+        this.$modal.find('form').ajaxSubmit({
           beforeSubmit : $.proxy(this.onBeforeSubmit, this),
           complete     : $.proxy(this.onSubmitComplete, this)
         })
@@ -71,8 +74,12 @@
       }
     , onSubmitComplete: function(e) {
         console.log('onSubmitSuccess', e)
-        $('#'+this.id).find('[type=submit]').remove()
-        $('#'+this.id).find('.modal-body').html(e.responseText)
+        this.$modal.find('.modal-dialog').removeClass('modal-lg').addClass('modal-sm')
+        this.$modal.find('[type=submit]').remove()
+        this.$modal.find('.modal-body').html(e.responseText)
+      }
+    , onSetTimeOut: function() {
+        this.$modal.find('[type=submit]').button('reset')
       }
 
   }
