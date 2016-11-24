@@ -47,7 +47,7 @@
           for (j in item) {
             if (item[j]['hidden']) continue
             td = this.checkKeyword(item[j]['value'])
-            if (item[j].hasOwnProperty('link')) {
+            if (item[j].hasOwnProperty('link') && item[j].link!=null) {
               itemLinkRet = this.checkLink(item[j], item)
               if (itemLinkRet.type == 'url') {
                 td = $.sprintf(this.opts.tplLink, itemLinkRet.val, '', td)
