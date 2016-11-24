@@ -76,6 +76,7 @@
        * 根据目录 ID 刷新右边组件, 返回的 json 结构参照 thumbnailCatelog.json
        */
     , goCatelog: function(catelog) {
+        this.el.find('input[name=search]').val('')
         this.catelog = catelog
         $.ajax({
           cache    : false,
@@ -205,7 +206,7 @@
         e.stopPropagation()
       }
     , onSearchResult: function(e) {
-        console.log(e.search)
+        console.log('onSearchResult')
         this.search = e.search
         this.refreshTable()
         e.stopPropagation()

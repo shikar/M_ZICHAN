@@ -28,7 +28,7 @@
     , onSearchClick: function(e) {
         var self = $(e.currentTarget)
           , search = this.el.find('input[name=search]').val()
-        if (search == '') return
+        //if (search == '') return
         this.el.trigger({
           type   : 'onSearch',
           search : search
