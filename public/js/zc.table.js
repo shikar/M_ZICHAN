@@ -91,7 +91,7 @@
         for (i = 0; i < data.lists.length; i++) {
           row = {}
           for (j = 0; j < data.lists[i].length; j++) {
-            row[data.fields[j]['name']] = jQuery.extend({'value':data.lists[i][j]}==null?"":data.lists[i][j]}, data.fields[j])
+            row[data.fields[j]['name']] = jQuery.extend({'value':data.lists[i][j]==null?"":data.lists[i][j]}, data.fields[j])
           }
           this.list.push(row)
         }
