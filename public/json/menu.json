@@ -3,248 +3,11 @@
         "id":1,
         "icon":"1.png",
         "name":"资产目录",
-        "list":[
-            {
-                "id":1,
-                "name":"数据集利用",
-                "icon":"",
-                "list":[
-                    {
-                        "id":1,
-                        "name":"目录导航数据集",
-                        "icon":"1_1_1.png",
-                        "list":[
-
-                        ],
-                        "ds":"详细描述等待添加具体多少字不清楚",
-                        "count":42,
-                        "url":"",
-                        "type ":"def"
-                    },
-                    {
-                        "id":2,
-                        "name":"数据集关键字搜索数据集",
-                        "icon":"1_1_2.png",
-                        "list":[
-
-                        ],
-                        "ds":"详细描述等待添加具体多少字不清楚",
-                        "count":97,
-                        "url":"",
-                        "type ":"def"
-                    },
-                    {
-                        "id":3,
-                        "name":"搜索拥有某数据元的数据集",
-                        "icon":"1_1_3.png",
-                        "list":[
-
-                        ],
-                        "ds":"详细描述等待添加具体多少字不清楚",
-                        "count":47,
-                        "url":"",
-                        "type ":"def"
-                    },
-                    {
-                        "id":4,
-                        "name":"搜索使用某代码的数据集",
-                        "icon":"1_1_4.png",
-                        "list":[
-
-                        ],
-                        "ds":"详细描述等待添加具体多少字不清楚",
-                        "count":5,
-                        "url":"",
-                        "type ":"def"
-                    }
-                ],
-                "ds":"",
-                "count":78,
-                "url":"",
-                "type ":"def"
-            },
-            {
-                "id":2,
-                "name":"数据元利用",
-                "icon":"",
-                "list":[
-                    {
-                        "id":1,
-                        "name":"目录导航数据元",
-                        "icon":"1_2_1.png",
-                        "list":[
-
-                        ],
-                        "ds":"详细描述等待添加具体多少字不清楚",
-                        "count":72,
-                        "url":"",
-                        "type ":"def"
-                    },
-                    {
-                        "id":2,
-                        "name":"数据元关键字搜索数据元",
-                        "icon":"1_2_2.png",
-                        "list":[
-
-                        ],
-                        "ds":"详细描述等待添加具体多少字不清楚",
-                        "count":18,
-                        "url":"",
-                        "type ":"def"
-                    },
-                    {
-                        "id":3,
-                        "name":"搜索某数据集拥有的数据元",
-                        "icon":"1_2_3.png",
-                        "list":[
-
-                        ],
-                        "ds":"详细描述等待添加具体多少字不清楚",
-                        "count":75,
-                        "url":"",
-                        "type ":"def"
-                    },
-                    {
-                        "id":4,
-                        "name":"搜索使用某代码的数据元",
-                        "icon":"1_2_4.png",
-                        "list":[
-
-                        ],
-                        "ds":"详细描述等待添加具体多少字不清楚",
-                        "count":75,
-                        "url":"",
-                        "type ":"def"
-                    }
-                ],
-                "ds":"",
-                "count":55,
-                "url":"",
-                "type ":"def"
-            },
-            {
-                "id":3,
-                "name":"代码利用",
-                "icon":"",
-                "list":[
-                    {
-                        "id":1,
-                        "name":"目录导航代码",
-                        "icon":"1_3_1.png",
-                        "list":[
-
-                        ],
-                        "ds":"详细描述等待添加具体多少字不清楚",
-                        "count":34,
-                        "url":"",
-                        "type ":"def"
-                    },
-                    {
-                        "id":2,
-                        "name":"代码关键字搜索代码",
-                        "icon":"1_3_2.png",
-                        "list":[
-
-                        ],
-                        "ds":"详细描述等待添加具体多少字不清楚",
-                        "count":21,
-                        "url":"",
-                        "type ":"def"
-                    },
-                    {
-                        "id":3,
-                        "name":"代码值关键字搜索代码值",
-                        "icon":"1_3_3.png",
-                        "list":[
-
-                        ],
-                        "ds":"详细描述等待添加具体多少字不清楚",
-                        "count":42,
-                        "url":"",
-                        "type ":"def"
-                    },
-                    {
-                        "id":4,
-                        "name":"搜索某数据元下使用的代码",
-                        "icon":"1_3_4.png",
-                        "list":[
-
-                        ],
-                        "ds":"详细描述等待添加具体多少字不清楚",
-                        "count":69,
-                        "url":"",
-                        "type ":"def"
-                    },
-                    {
-                        "id":5,
-                        "name":"搜索某数据集下使用的代码",
-                        "icon":"1_3_5.png",
-                        "list":[
-
-                        ],
-                        "ds":"详细描述等待添加具体多少字不清楚",
-                        "count":33,
-                        "url":"",
-                        "type ":"def"
-                    }
-                ],
-                "ds":"",
-                "count":97,
-                "url":"",
-                "type ":"def"
-            },
-            {
-                "id":4,
-                "name":"指标利用",
-                "icon":"",
-                "list":[
-                    {
-                        "id":1,
-                        "name":"目录导航指标",
-                        "icon":"1_4_1.png",
-                        "list":[
-
-                        ],
-                        "ds":"详细描述等待添加具体多少字不清楚",
-                        "count":89,
-                        "url":"",
-                        "type ":"def"
-                    },
-                    {
-                        "id":2,
-                        "name":"指标关键字搜索指标",
-                        "icon":"1_4_2.png",
-                        "list":[
-
-                        ],
-                        "ds":"详细描述等待添加具体多少字不清楚",
-                        "count":70,
-                        "url":"",
-                        "type ":"def"
-                    },
-                    {
-                        "id":3,
-                        "name":"搜索某数据集关联计算使用的可及指标",
-                        "icon":"1_4_3.png",
-                        "list":[
-
-                        ],
-                        "ds":"详细描述等待添加具体多少字不清楚",
-                        "count":75,
-                        "url":"",
-                        "type ":"def"
-                    }
-                ],
-                "ds":"",
-                "count":20,
-                "url":"",
-                "type ":"def"
-            }
-        ],
+        "list":Array[4],
         "ds":"",
         "count":37,
         "url":"",
-        "type ":"def"
+        "type":"def"
     },
     {
         "id":2,
@@ -266,7 +29,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":95,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":2,
@@ -278,7 +41,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":83,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":3,
@@ -290,7 +53,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":7,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":4,
@@ -302,7 +65,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":16,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":5,
@@ -314,13 +77,13 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":70,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     }
                 ],
                 "ds":"",
                 "count":77,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             },
             {
                 "id":2,
@@ -337,7 +100,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":49,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":2,
@@ -349,13 +112,13 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":15,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     }
                 ],
                 "ds":"",
                 "count":20,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             },
             {
                 "id":3,
@@ -372,7 +135,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":96,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":2,
@@ -384,19 +147,19 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":91,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     }
                 ],
                 "ds":"",
                 "count":35,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             }
         ],
         "ds":"",
         "count":18,
         "url":"",
-        "type ":"def"
+        "type":"def"
     },
     {
         "id":3,
@@ -418,7 +181,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":71,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":2,
@@ -430,13 +193,13 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":47,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     }
                 ],
                 "ds":"",
                 "count":13,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             },
             {
                 "id":2,
@@ -453,7 +216,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":50,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":2,
@@ -465,7 +228,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":17,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":3,
@@ -477,13 +240,13 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":17,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     }
                 ],
                 "ds":"",
                 "count":34,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             },
             {
                 "id":3,
@@ -500,7 +263,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":89,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":2,
@@ -512,7 +275,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":30,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":3,
@@ -524,19 +287,19 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":48,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     }
                 ],
                 "ds":"",
                 "count":7,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             }
         ],
         "ds":"",
         "count":12,
         "url":"",
-        "type ":"def"
+        "type":"def"
     },
     {
         "id":4,
@@ -553,7 +316,7 @@
                 "ds":"",
                 "count":23,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             },
             {
                 "id":2,
@@ -565,7 +328,7 @@
                 "ds":"",
                 "count":36,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             },
             {
                 "id":3,
@@ -577,7 +340,7 @@
                 "ds":"",
                 "count":98,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             },
             {
                 "id":4,
@@ -589,7 +352,7 @@
                 "ds":"",
                 "count":65,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             },
             {
                 "id":5,
@@ -601,7 +364,7 @@
                 "ds":"",
                 "count":19,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             },
             {
                 "id":6,
@@ -613,7 +376,7 @@
                 "ds":"",
                 "count":3,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             },
             {
                 "id":7,
@@ -625,7 +388,7 @@
                 "ds":"",
                 "count":71,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             },
             {
                 "id":7,
@@ -637,13 +400,13 @@
                 "ds":"",
                 "count":3,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             }
         ],
         "ds":"",
         "count":94,
         "url":"",
-        "type ":"def"
+        "type":"def"
     },
     {
         "id":5,
@@ -660,7 +423,7 @@
                 "ds":"",
                 "count":7,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             },
             {
                 "id":2,
@@ -677,7 +440,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":57,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":2,
@@ -689,7 +452,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":94,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":3,
@@ -701,7 +464,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":11,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":4,
@@ -713,13 +476,13 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":12,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     }
                 ],
                 "ds":"",
                 "count":4,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             },
             {
                 "id":3,
@@ -736,7 +499,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":56,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":2,
@@ -748,19 +511,19 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":98,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     }
                 ],
                 "ds":"",
                 "count":93,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             }
         ],
         "ds":"",
         "count":37,
         "url":"",
-        "type ":"def"
+        "type":"def"
     },
     {
         "id":6,
@@ -782,7 +545,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":2,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":2,
@@ -794,13 +557,13 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":84,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     }
                 ],
                 "ds":"",
                 "count":51,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             },
             {
                 "id":2,
@@ -817,7 +580,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":40,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":2,
@@ -829,13 +592,13 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":12,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     }
                 ],
                 "ds":"",
                 "count":37,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             },
             {
                 "id":3,
@@ -852,7 +615,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":70,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":2,
@@ -864,7 +627,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":73,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":3,
@@ -876,7 +639,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":25,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":4,
@@ -888,7 +651,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":36,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":5,
@@ -900,7 +663,7 @@
                         "ds":"详细描述等待添加具体多少字不清楚",
                         "count":7,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     },
                     {
                         "id":6,
@@ -912,19 +675,19 @@
                         "ds":"详细描述等待添加???体多少字不清楚",
                         "count":74,
                         "url":"",
-                        "type ":"def"
+                        "type":"def"
                     }
                 ],
                 "ds":"",
                 "count":74,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             }
         ],
         "ds":"",
         "count":34,
         "url":"",
-        "type ":"def"
+        "type":"def"
     },
     {
         "id":7,
@@ -941,7 +704,7 @@
                 "ds":"",
                 "count":14,
                 "url":"",
-                "type ":"def"
+                "type":"def"
             },
             {
                 "id":2,
@@ -953,12 +716,12 @@
                 "ds":"",
                 "count":43,
                 "url":"http://www.baidu.com",
-                "type ":"ajax"
+                "type":"def"
             }
         ],
         "ds":"",
         "count":5,
         "url":"",
-        "type ":"def"
+        "type":"def"
     }
 ]
