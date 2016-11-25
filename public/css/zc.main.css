@@ -10,7 +10,8 @@ body {
 }
 
 #top-search {
-  margin-top: 13px;
+/*margin-top: 13px;*/
+  margin-top: 23px;
   margin-bottom: 0;
 }
 .search-hot {
