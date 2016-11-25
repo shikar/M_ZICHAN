@@ -1,655 +1,964 @@
-{
-    "errflag":0,
-    "msg":null,
-    "info":[
-        {
-            "name":"id",
-            "value":1
-        },
-        {
-            "name":"数据集名称",
-            "value":"数据集1"
-        },
-        {
-            "name":"标示符",
-            "value":"xxx3"
-        },
-        {
-            "name":"负责单位",
-            "value":"CDC"
-        },
-        {
-            "name":"数据元个数",
-            "value":20
-        },
-        {
-            "name":"记录行数",
-            "value":23000
-        },
-        {
-            "name":"业务类别",
-            "value":2908
-        },
-        {
-            "name":"抓取时间",
-            "value":"2016-09-01 12:31:18"
-        }
-    ],
-    "menu":{
-        "open":[
-            1,
-            1
-        ],
+[
+    {
+        "id":1,
+        "icon":"1.png",
+        "name":"资产目录",
         "list":[
             {
                 "id":1,
-                "icon":"1.png",
-                "name":"目录三_1",
+                "name":"数据集利用",
+                "icon":"",
                 "list":[
                     {
                         "id":1,
-                        "name":"目录四_1_1",
-                        "icon":"",
-                        "ds":"",
-                        "count":78,
-                        "ct":80,
-                        "type":"def",
-                        "url":""
+                        "name":"目录导航数据集",
+                        "icon":"1_1_1.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":42,
+                        "url":"",
+                        "type":"def"
                     },
                     {
                         "id":2,
-                        "name":"目录四_1_2",
-                        "icon":"",
-                        "ds":"",
-                        "count":55,
-                        "ct":94,
-                        "type":"def",
-                        "url":""
+                        "name":"数据集关键字搜索数据集",
+                        "icon":"1_1_2.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":97,
+                        "url":"",
+                        "type":"def"
                     },
                     {
                         "id":3,
-                        "name":"目录四_1_3",
-                        "icon":"",
-                        "ds":"",
-                        "count":97,
-                        "ct":62,
-                        "type":"def",
-                        "url":""
+                        "name":"搜索拥有某数据元的数据集",
+                        "icon":"1_1_3.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":47,
+                        "url":"",
+                        "type":"def"
                     },
                     {
                         "id":4,
-                        "name":"目录四_1_4",
-                        "icon":"",
-                        "ds":"",
-                        "count":20,
-                        "ct":79,
-                        "type":"def",
-                        "url":""
+                        "name":"搜索使用某代码的数据集",
+                        "icon":"1_1_4.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":5,
+                        "url":"",
+                        "type":"def"
                     }
                 ],
                 "ds":"",
-                "count":37,
-                "ct":68,
-                "type":"def",
-                "url":""
+                "count":78,
+                "url":"",
+                "type":"def"
             },
             {
                 "id":2,
-                "icon":"2.png",
-                "name":"目录三_2",
+                "name":"数据元利用",
+                "icon":"",
                 "list":[
                     {
                         "id":1,
-                        "name":"目录四_2_1",
-                        "icon":"",
-                        "ds":"",
-                        "count":77,
-                        "ct":48,
-                        "type":"def",
-                        "url":""
+                        "name":"目录导航数据元",
+                        "icon":"1_2_1.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":72,
+                        "url":"",
+                        "type":"def"
                     },
                     {
                         "id":2,
-                        "name":"目录四_2_2",
-                        "icon":"",
-                        "ds":"",
-                        "count":20,
-                        "ct":9,
-                        "type":"def",
-                        "url":""
+                        "name":"数据元关键字搜索数据元",
+                        "icon":"1_2_2.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":18,
+                        "url":"",
+                        "type":"def"
                     },
                     {
                         "id":3,
-                        "name":"目录四_2_3",
-                        "icon":"",
-                        "ds":"",
-                        "count":35,
-                        "ct":19,
-                        "type":"def",
-                        "url":""
-                    }
-                ],
-                "ds":"",
-                "count":18,
-                "ct":99,
-                "type":"def",
-                "url":""
-            },
-            {
-                "id":3,
-                "icon":"3.png",
-                "name":"目录三_3",
-                "list":[
-                    {
-                        "id":1,
-                        "name":"目录四_3_1",
-                        "icon":"",
-                        "ds":"",
-                        "count":13,
-                        "ct":80,
-                        "type":"def",
-                        "url":""
-                    },
-                    {
-                        "id":2,
-                        "name":"目录四_3_2",
-                        "icon":"",
-                        "ds":"",
-                        "count":34,
-                        "ct":28,
-                        "type":"def",
-                        "url":""
-                    },
-                    {
-                        "id":3,
-                        "name":"目录四_3_3",
-                        "icon":"",
-                        "ds":"",
-                        "count":7,
-                        "ct":11,
-                        "type":"def",
-                        "url":""
-                    }
-                ],
-                "ds":"",
-                "count":12,
-                "ct":25,
-                "type":"def",
-                "url":""
-            },
-            {
-                "id":4,
-                "icon":"4.png",
-                "name":"目录三_4",
-                "list":[
-                    {
-                        "id":1,
-                        "name":"目录四_4_1",
-                        "icon":"",
-                        "ds":"",
-                        "count":23,
-                        "ct":15,
-                        "type":"def",
-                        "url":""
-                    },
-                    {
-                        "id":2,
-                        "name":"目录四_4_2",
-                        "icon":"",
-                        "ds":"",
-                        "count":36,
-                        "ct":42,
-                        "type":"def",
-                        "url":""
-                    },
-                    {
-                        "id":3,
-                        "name":"目录四_4_3",
-                        "icon":"",
-                        "ds":"",
-                        "count":98,
-                        "ct":38,
-                        "type":"def",
-                        "url":""
+                        "name":"搜索某数据集拥有的数据元",
+                        "icon":"1_2_3.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":75,
+                        "url":"",
+                        "type":"def"
                     },
                     {
                         "id":4,
-                        "name":"目录四_4_4",
-                        "icon":"",
-                        "ds":"",
-                        "count":65,
-                        "ct":44,
-                        "type":"def",
-                        "url":""
+                        "name":"搜索使用某代码的数据元",
+                        "icon":"1_2_4.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":75,
+                        "url":"",
+                        "type":"def"
+                    }
+                ],
+                "ds":"",
+                "count":55,
+                "url":"",
+                "type":"def"
+            },
+            {
+                "id":3,
+                "name":"代码利用",
+                "icon":"",
+                "list":[
+                    {
+                        "id":1,
+                        "name":"目录导航代码",
+                        "icon":"1_3_1.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":34,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":2,
+                        "name":"代码关键字搜索代码",
+                        "icon":"1_3_2.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":21,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":3,
+                        "name":"代码值关键字搜索代码值",
+                        "icon":"1_3_3.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":42,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":4,
+                        "name":"搜索某数据元下使用的代码",
+                        "icon":"1_3_4.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":69,
+                        "url":"",
+                        "type":"def"
                     },
                     {
                         "id":5,
-                        "name":"目录四_4_5",
-                        "icon":"",
-                        "ds":"",
-                        "count":19,
-                        "ct":87,
-                        "type":"def",
-                        "url":""
-                    },
-                    {
-                        "id":6,
-                        "name":"目录四_4_6",
-                        "icon":"",
-                        "ds":"",
-                        "count":3,
-                        "ct":16,
-                        "type":"def",
-                        "url":""
-                    },
-                    {
-                        "id":7,
-                        "name":"目录四_4_7",
-                        "icon":"",
-                        "ds":"",
-                        "count":71,
-                        "ct":29,
-                        "type":"def",
-                        "url":""
-                    },
-                    {
-                        "id":8,
-                        "name":"目录四_4_8",
-                        "icon":"",
-                        "ds":"",
-                        "count":3,
-                        "ct":20,
-                        "type":"def",
-                        "url":""
+                        "name":"搜索某数据集下使用的代码",
+                        "icon":"1_3_5.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":33,
+                        "url":"",
+                        "type":"def"
                     }
                 ],
                 "ds":"",
-                "count":94,
-                "ct":60,
-                "type":"def",
-                "url":""
+                "count":97,
+                "url":"",
+                "type":"def"
             },
             {
-                "id":5,
-                "icon":"5.png",
-                "name":"目录三_5",
+                "id":4,
+                "name":"指标利用",
+                "icon":"",
                 "list":[
                     {
                         "id":1,
-                        "name":"目录四_5_1",
-                        "icon":"",
-                        "ds":"",
+                        "name":"目录导航指标",
+                        "icon":"1_4_1.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":89,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":2,
+                        "name":"指标关键字搜索指标",
+                        "icon":"1_4_2.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":70,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":3,
+                        "name":"搜索某数据集关联计算使用的可及指标",
+                        "icon":"1_4_3.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":75,
+                        "url":"",
+                        "type":"def"
+                    }
+                ],
+                "ds":"",
+                "count":20,
+                "url":"",
+                "type":"def"
+            }
+        ],
+        "ds":"",
+        "count":37,
+        "url":"",
+        "type":"def"
+    },
+    {
+        "id":2,
+        "icon":"2.png",
+        "name":"数据资产",
+        "list":[
+            {
+                "id":1,
+                "name":"数据共享利用",
+                "icon":"",
+                "list":[
+                    {
+                        "id":1,
+                        "name":"共享申请单提交",
+                        "icon":"2_1_1.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":95,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":2,
+                        "name":"共享申请单审批",
+                        "icon":"2_1_2.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":83,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":3,
+                        "name":"共享申请单办理",
+                        "icon":"2_1_3.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
                         "count":7,
-                        "ct":30,
-                        "type":"def",
-                        "url":""
+                        "url":"",
+                        "type":"def"
                     },
                     {
-                        "id":2,
-                        "name":"目录四_5_2",
-                        "icon":"",
-                        "ds":"",
-                        "count":4,
-                        "ct":85,
-                        "type":"def",
-                        "url":""
+                        "id":4,
+                        "name":"共享申请单查询",
+                        "icon":"2_1_4.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":16,
+                        "url":"",
+                        "type":"def"
                     },
                     {
-                        "id":3,
-                        "name":"目录四_5_3",
-                        "icon":"",
-                        "ds":"",
-                        "count":93,
-                        "ct":55,
-                        "type":"def",
-                        "url":""
+                        "id":5,
+                        "name":"共享申请单统计",
+                        "icon":"2_1_5.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":70,
+                        "url":"",
+                        "type":"def"
                     }
                 ],
                 "ds":"",
-                "count":37,
-                "ct":62,
-                "type":"def",
-                "url":""
+                "count":77,
+                "url":"",
+                "type":"def"
             },
             {
-                "id":6,
-                "icon":"6.png",
-                "name":"目录三_6",
+                "id":2,
+                "name":"居民主数据利用",
+                "icon":"",
                 "list":[
                     {
                         "id":1,
-                        "name":"目录四_6_1",
-                        "icon":"",
-                        "ds":"",
-                        "count":51,
-                        "ct":83,
-                        "type":"def",
-                        "url":""
+                        "name":"居民模糊搜索",
+                        "icon":"2_2_1.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":49,
+                        "url":"",
+                        "type":"def"
                     },
                     {
                         "id":2,
-                        "name":"目录四_6_2",
-                        "icon":"",
-                        "ds":"",
-                        "count":37,
-                        "ct":51,
-                        "type":"def",
-                        "url":""
+                        "name":"居民精准搜索",
+                        "icon":"2_2_2.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":15,
+                        "url":"",
+                        "type":"def"
+                    }
+                ],
+                "ds":"",
+                "count":20,
+                "url":"",
+                "type":"def"
+            },
+            {
+                "id":3,
+                "name":"基础数据利用",
+                "icon":"",
+                "list":[
+                    {
+                        "id":1,
+                        "name":"气象数据搜索",
+                        "icon":"2_3_1.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":96,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":2,
+                        "name":"环境数据搜索",
+                        "icon":"2_3_2.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":91,
+                        "url":"",
+                        "type":"def"
+                    }
+                ],
+                "ds":"",
+                "count":35,
+                "url":"",
+                "type":"def"
+            }
+        ],
+        "ds":"",
+        "count":18,
+        "url":"",
+        "type":"def"
+    },
+    {
+        "id":3,
+        "icon":"3.png",
+        "name":"分析挖掘",
+        "list":[
+            {
+                "id":1,
+                "name":"指标知识利用",
+                "icon":"",
+                "list":[
+                    {
+                        "id":1,
+                        "name":"目录导航指标知识",
+                        "icon":"3_1_1.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":71,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":2,
+                        "name":"指标关键字搜索指标知识",
+                        "icon":"3_1_2.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":47,
+                        "url":"",
+                        "type":"def"
+                    }
+                ],
+                "ds":"",
+                "count":13,
+                "url":"",
+                "type":"def"
+            },
+            {
+                "id":2,
+                "name":"描述分析利用",
+                "icon":"",
+                "list":[
+                    {
+                        "id":1,
+                        "name":"居民描述分析",
+                        "icon":"3_2_1.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":50,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":2,
+                        "name":"糖尿病描述分析",
+                        "icon":"3_2_2.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":17,
+                        "url":"",
+                        "type":"def"
                     },
                     {
                         "id":3,
-                        "name":"目录四_6_3",
-                        "icon":"",
-                        "ds":"",
-                        "count":74,
-                        "ct":27,
-                        "type":"def",
-                        "url":""
+                        "name":"死亡描述分析",
+                        "icon":"3_2_3.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":17,
+                        "url":"",
+                        "type":"def"
                     }
                 ],
                 "ds":"",
                 "count":34,
-                "ct":37,
-                "type":"def",
-                "url":""
+                "url":"",
+                "type":"def"
             },
             {
-                "id":7,
-                "icon":"7.png",
-                "name":"目录三_7",
+                "id":3,
+                "name":"挖掘分析利用",
+                "icon":"",
                 "list":[
                     {
                         "id":1,
-                        "name":"目录四_7_1",
-                        "icon":"",
-                        "ds":"",
-                        "count":14,
-                        "ct":97,
-                        "type":"def",
-                        "url":""
+                        "name":"GR人群随访3年糖尿病转归及影响因素分析",
+                        "icon":"3_3_1.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":89,
+                        "url":"",
+                        "type":"def"
                     },
                     {
                         "id":2,
-                        "name":"目录四_7_2",
-                        "icon":"",
-                        "ds":"",
-                        "count":43,
-                        "ct":94,
-                        "type":"def",
-                        "url":""
+                        "name":"基于随机森林算法的大肠癌筛查阳性预测",
+                        "icon":"3_3_2.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":30,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":3,
+                        "name":"老年人血浆同型半胱氨酸影响因素分析",
+                        "icon":"3_3_3.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":48,
+                        "url":"",
+                        "type":"def"
                     }
                 ],
                 "ds":"",
-                "count":5,
-                "ct":7,
-                "type":"def",
-                "url":""
-            }
-        ]
-    },
-    "filter":[
-        {
-            "id":1,
-            "name":"部门",
-            "list":[
-                {
-                    "id":1,
-                    "name":"疾病科"
-                },
-                {
-                    "id":2,
-                    "name":"内科"
-                },
-                {
-                    "id":3,
-                    "name":"发热门诊"
-                },
-                {
-                    "id":4,
-                    "name":"婴幼儿保健"
-                },
-                {
-                    "id":5,
-                    "name":"内分泌科"
-                }
-            ]
-        },
-        {
-            "id":2,
-            "name":"人员",
-            "list":[
-                {
-                    "id":1,
-                    "name":"医生"
-                },
-                {
-                    "id":2,
-                    "name":"护士"
-                },
-                {
-                    "id":3,
-                    "name":"门卫"
-                },
-                {
-                    "id":4,
-                    "name":"卫生局"
-                },
-                {
-                    "id":5,
-                    "name":"数据分析"
-                }
-            ]
-        }
-    ],
-    "breadcrumb":[
-        "首页",
-        "一级目录",
-        "二级目录",
-        "三级目录"
-    ],
-    "sort":[
-        {
-            "name":"name",
-            "value":"数据集名称"
-        },
-        {
-            "name":"udid",
-            "value":"数据集标示符"
-        },
-        {
-            "name":"dc",
-            "value":"数据元个数"
-        },
-        {
-            "name":"rc",
-            "value":"记录行数"
-        },
-        {
-            "name":"e",
-            "value":"负责单位"
-        },
-        {
-            "name":"bt",
-            "value":"业务类别"
-        },
-        {
-            "name":"dt",
-            "value":"抓取时间"
-        }
-    ],
-    "table":{
-        "info":{
-            "checkbox":1,
-            "keyword":"测",
-            "listbtn":[
-                "<a title="收藏" href="index.html?id=:id" data-type="open"><span class="glyphicon glyphicon-heart"></span></a>",
-                "<a title="编辑" href="ajax/form.html?id=:id" data-type="ajax"><span class="glyphicon glyphicon-edit"></span></a>"
-            ],
-            "tablebtn":[
-                "<a href="ajax/form2.html?id=:ids" data-type="ajax" class="btn btn-primary">提交至申请单列表</a>",
-                "<a href="ajax/faved.html?id=:ids" data-type="ajax" class="btn btn-danger">删除</a>"
-            ]
-        },
-        "fields":[
-            {
-                "name":"id",
-                "hidden":true
-            },
-            {
-                "name":"数据集名称",
-                "hidden":false,
-                "link":":id",
-                "type":"ajax",
-                "menu":""
-            },
-            {
-                "name":"数据集标示符",
-                "hidden":false,
-                "link":"url.html/?id=:id",
-                "type":"open",
-                "menu":"m_2_2"
-            },
-            {
-                "name":"数据元个数",
-                "hidden":false,
-                "link":"ajax/detail.html?id=:id",
-                "type":"popup"
-            },
-            {
-                "name":"记录行数",
-                "hidden":false,
-                "link":null,
-                "menu":null
-            },
-            {
-                "name":"负责单位",
-                "hidden":false
-            },
-            {
-                "name":"业务类别",
-                "hidden":false
-            },
-            {
-                "name":"抓取时间",
-                "hidden":false
+                "count":7,
+                "url":"",
+                "type":"def"
             }
         ],
-        "lists":[
-            [
-                "1",
-                "飘红测试",
-                null,
-                100,
-                2000,
-                "xxxx医院",
-                2908,
-                "2016-03-05 16:48:55"
-            ],
-            [
-                "2",
-                "测试2",
-                "xxxxx2",
-                20,
-                11000,
-                "xxxx医院飘红",
-                3908,
-                "2016-03-06 11:48:15"
-            ],
-            [
-                "3",
-                "测试3",
-                "xxxxx3",
-                990,
-                2000,
-                "xxxx医院2",
-                12908,
-                "2016-03-01 16:38:55"
-            ],
-            [
-                "4",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据"
-            ],
-            [
-                "5",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据"
-            ],
-            [
-                "6",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据"
-            ],
-            [
-                "7",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据"
-            ],
-            [
-                "8",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据"
-            ],
-            [
-                "9",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据"
-            ],
-            [
-                "10",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据"
-            ],
-            [
-                "11",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据",
-                "数据"
-            ]
-        ]
+        "ds":"",
+        "count":12,
+        "url":"",
+        "type":"def"
     },
-    "page":{
-        "totalPage":9,
-        "curPage":1,
-        "count":999
+    {
+        "id":4,
+        "icon":"4.png",
+        "name":"资产治理",
+        "list":[
+            {
+                "id":1,
+                "name":"来源元数据管理",
+                "icon":"",
+                "list":[
+
+                ],
+                "ds":"",
+                "count":23,
+                "url":"",
+                "type":"def"
+            },
+            {
+                "id":2,
+                "name":"领域元数据管理",
+                "icon":"",
+                "list":[
+
+                ],
+                "ds":"",
+                "count":36,
+                "url":"",
+                "type":"def"
+            },
+            {
+                "id":3,
+                "name":"主数据管理",
+                "icon":"",
+                "list":[
+
+                ],
+                "ds":"",
+                "count":98,
+                "url":"",
+                "type":"def"
+            },
+            {
+                "id":4,
+                "name":"基础数据管理",
+                "icon":"",
+                "list":[
+
+                ],
+                "ds":"",
+                "count":65,
+                "url":"",
+                "type":"def"
+            },
+            {
+                "id":5,
+                "name":"指标体系管理",
+                "icon":"",
+                "list":[
+
+                ],
+                "ds":"",
+                "count":19,
+                "url":"",
+                "type":"def"
+            },
+            {
+                "id":6,
+                "name":"图表分析管理",
+                "icon":"",
+                "list":[
+
+                ],
+                "ds":"",
+                "count":3,
+                "url":"",
+                "type":"def"
+            },
+            {
+                "id":7,
+                "name":"ETL需求管理",
+                "icon":"",
+                "list":[
+
+                ],
+                "ds":"",
+                "count":71,
+                "url":"",
+                "type":"def"
+            },
+            {
+                "id":7,
+                "name":"数据质控管理",
+                "icon":"",
+                "list":[
+
+                ],
+                "ds":"",
+                "count":3,
+                "url":"",
+                "type":"def"
+            }
+        ],
+        "ds":"",
+        "count":94,
+        "url":"",
+        "type":"def"
+    },
+    {
+        "id":5,
+        "icon":"5.png",
+        "name":"平台运营",
+        "list":[
+            {
+                "id":1,
+                "name":"机构注册配置",
+                "icon":"",
+                "list":[
+
+                ],
+                "ds":"",
+                "count":7,
+                "url":"",
+                "type":"def"
+            },
+            {
+                "id":2,
+                "name":"数据资产访问配置",
+                "icon":"",
+                "list":[
+                    {
+                        "id":1,
+                        "name":"物理数据库表访问设置",
+                        "icon":"5_2_1.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":57,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":2,
+                        "name":"测试访问连通性",
+                        "icon":"5_2_2.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":94,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":3,
+                        "name":"逆向工程获取数据模型",
+                        "icon":"5_2_3.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":11,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":4,
+                        "name":"报告模型获取结果",
+                        "icon":"5_2_4.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":12,
+                        "url":"",
+                        "type":"def"
+                    }
+                ],
+                "ds":"",
+                "count":4,
+                "url":"",
+                "type":"def"
+            },
+            {
+                "id":3,
+                "name":"平台配置",
+                "icon":"",
+                "list":[
+                    {
+                        "id":1,
+                        "name":"用户管理",
+                        "icon":"5_3_1.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":56,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":2,
+                        "name":"字典管理",
+                        "icon":"5_3_2.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":98,
+                        "url":"",
+                        "type":"def"
+                    }
+                ],
+                "ds":"",
+                "count":93,
+                "url":"",
+                "type":"def"
+            }
+        ],
+        "ds":"",
+        "count":37,
+        "url":"",
+        "type":"def"
+    },
+    {
+        "id":6,
+        "icon":"6.png",
+        "name":"基础设施",
+        "list":[
+            {
+                "id":1,
+                "name":"可视化组件",
+                "icon":"",
+                "list":[
+                    {
+                        "id":1,
+                        "name":"可视化组件维护",
+                        "icon":"6_1_1.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":2,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":2,
+                        "name":"可视化组件搜索",
+                        "icon":"6_1_2.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":84,
+                        "url":"",
+                        "type":"def"
+                    }
+                ],
+                "ds":"",
+                "count":51,
+                "url":"",
+                "type":"def"
+            },
+            {
+                "id":2,
+                "name":"指标wiki",
+                "icon":"",
+                "list":[
+                    {
+                        "id":1,
+                        "name":"实现指标wiki维护",
+                        "icon":"6_2_1.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":40,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":2,
+                        "name":"指标wiki搜索",
+                        "icon":"6_2_2.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":12,
+                        "url":"",
+                        "type":"def"
+                    }
+                ],
+                "ds":"",
+                "count":37,
+                "url":"",
+                "type":"def"
+            },
+            {
+                "id":3,
+                "name":"国标管理",
+                "icon":"",
+                "list":[
+                    {
+                        "id":1,
+                        "name":"标准体系目录管理",
+                        "icon":"6_3_1.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":70,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":2,
+                        "name":"数据集管理",
+                        "icon":"6_3_2.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":73,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":3,
+                        "name":"数据元管理",
+                        "icon":"6_3_3.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":25,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":4,
+                        "name":"代码体系管理",
+                        "icon":"6_3_4.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":36,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":5,
+                        "name":"代码管理",
+                        "icon":"6_3_5.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加具体多少字不清楚",
+                        "count":7,
+                        "url":"",
+                        "type":"def"
+                    },
+                    {
+                        "id":6,
+                        "name":"代码值管理",
+                        "icon":"6_3_6.png",
+                        "list":[
+
+                        ],
+                        "ds":"详细描述等待添加???体多少字不清楚",
+                        "count":74,
+                        "url":"",
+                        "type":"def"
+                    }
+                ],
+                "ds":"",
+                "count":74,
+                "url":"",
+                "type":"def"
+            }
+        ],
+        "ds":"",
+        "count":34,
+        "url":"",
+        "type":"def"
+    },
+    {
+        "id":7,
+        "icon":"7.png",
+        "name":"国家标准",
+        "list":[
+            {
+                "id":1,
+                "name":"卫生信息基本数据集数据元",
+                "icon":"",
+                "list":[
+
+                ],
+                "ds":"",
+                "count":14,
+                "url":"",
+                "type":"def"
+            },
+            {
+                "id":2,
+                "name":"中国公共卫生信息分类与基本数据集1.0版",
+                "icon":"",
+                "list":[
+
+                ],
+                "ds":"",
+                "count":43,
+                "url":"http://www.baidu.com",
+                "type":"ajax"
+            }
+        ],
+        "ds":"",
+        "count":5,
+        "url":"",
+        "type":"def"
     }
-}
+]
