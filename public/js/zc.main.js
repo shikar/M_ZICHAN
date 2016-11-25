@@ -36,6 +36,21 @@
           this.opts.rootUrl = 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/' + this.opts.rootUrl
         }
       }
+    , checkReturn: function(json) {
+        if (json.errflag === 1) {
+          window.location.reload()
+          return true
+        }
+        else if (json.msg != null) {
+          $.notify('提示信息: '+json.msg, {
+            clickToHide: true,
+            globalPosition: 'bottom right',
+            gap: 2
+          })
+          return true
+        }
+        return false
+      }
 
 
 
@@ -93,11 +108,13 @@
         this.goSearch(self.text(), 'all');
       }
     , onAjaxSearchHotResult: function(json) {
+        if (this.checkReturn(json)) return
         if (json.length <= 0) return
         for (var i = 0; i < json.length; i++)
           $('#top-search .search-hot').append($.sprintf(this.opts.tplSearchHot, json[i]))
       }
     , onAjaxSearchTipResult: function(json) {
+        if (this.checkReturn(json)) return
         var $searchTip = $('#top-search .search-tip')
         if (json.length > 0) {
           $searchTip.empty()

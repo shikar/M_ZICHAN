@@ -28,6 +28,21 @@
           this.opts.rootUrl = 'https://raw.githubusercontent.com/shikar/M_ZICHAN/master/public/' + this.opts.rootUrl
         }
       }
+    , checkReturn: function(json) {
+        if (json.errflag === 1) {
+          window.location.reload()
+          return true
+        }
+        else if (json.msg != null) {
+          $.notify('提示信息: '+json.msg, {
+            clickToHide: true,
+            globalPosition: 'bottom right',
+            gap: 2
+          })
+          return true
+        }
+        return false
+      }
     , checkHash: function() {
         var hash = window.location.hash
           , arr = hash.split('_')
@@ -37,6 +52,7 @@
       }
 
     , onAjaxFavResult: function(json) {
+        if (this.checkReturn(json)) return
         var i,item
         this.favData = json
         this.el.empty()

@@ -37,6 +37,21 @@
           .ZCPagination1('create', data.page)
           .bind('onPage', $.proxy(this.onPageClick, this))
       }
+    , checkReturn: function(json) {
+        if (json.errflag === 1) {
+          window.location.reload()
+          return true
+        }
+        else if (json.msg != null) {
+          $.notify('提示信息: '+json.msg, {
+            clickToHide: true,
+            globalPosition: 'bottom right',
+            gap: 2
+          })
+          return true
+        }
+        return false
+      }
       /**
        * 搜索调用
        * @param  {String} key  搜索关键字
@@ -57,6 +72,7 @@
       }
 
     , onAjaxSearchResult: function(json) {
+        if (this.checkReturn(json)) return
         this.create(json)
       }
     , onPageClick:function(e) {

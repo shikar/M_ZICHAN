@@ -8,7 +8,10 @@
         },
         {
             "name":"数据集名称",
-            "value":"数据集1"
+            "value":"数据集1",
+            "link":"ajax/form.html?id=1",
+            "type":"popup",
+            "menu":""
         },
         {
             "name":"标示符",
@@ -482,12 +485,12 @@
             "checkbox":1,
             "keyword":"测",
             "listbtn":[
-                "<a title="收藏" href="index.html?id=:id" data-type="open"><span class="glyphicon glyphicon-heart"></span></a>",
-                "<a title="编辑" href="ajax/form.html?id=:id" data-type="ajax"><span class="glyphicon glyphicon-edit"></span></a>"
+                "<a title=\"收藏\" href=\"index.html?id=:id\" data-type=\"open\"><span class=\"glyphicon glyphicon-heart\"></span></a>",
+                "<a title=\"编辑\" href=\"ajax/form.html?id=:id\" data-type=\"popup\"><span class=\"glyphicon glyphicon-edit\"></span></a>"
             ],
             "tablebtn":[
-                "<a href="ajax/form2.html?id=:ids" data-type="ajax" class="btn btn-primary">提交至申请单列表</a>",
-                "<a href="ajax/faved.html?id=:ids" data-type="ajax" class="btn btn-danger">删除</a>"
+                "<a href=\"ajax/form2.html?id=:ids\" data-type=\"popup\" class=\"btn btn-primary\">提交至申请单列表</a>",
+                "<a href=\"ajax/faved.html?id=:ids\" data-type=\"popup\" class=\"btn btn-danger\">删除</a>"
             ]
         },
         "fields":[

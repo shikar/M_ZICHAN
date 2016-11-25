@@ -112,14 +112,16 @@
         })
       }
     , checkReturn: function(json) {
+        console.log(json)
         if (json.errflag === 1) {
           window.location.reload()
           return true
         }
         else if (json.msg != null) {
-          $.fn.ZCModal({
-            title : '错误信息',
-            body  : json.msg
+          $.notify('提示信息: '+json.msg, {
+            clickToHide: true,
+            globalPosition: 'bottom right',
+            gap: 2
           })
           return true
         }
@@ -167,27 +169,28 @@
     , onActResult: function(e) {
         switch (e.cmd) {
           case 'link':
-            if (e.menu != '')
+          case 'list':
+          case 'table':
+            if (e.menu)
               window.location.hash = '#'+e.menu
-            if (e.key)
-              this.create(undefined,undefined,e.key)
-            else if (e.model) {
+            if (e.utype == 'ajax')
+              this.create(undefined,undefined,e.url)
+            else if (e.utype == 'popup') {
+              if (window.location.hash.indexOf("#m") === 0) {
+                if (e.url.indexOf('?') == -1)
+                  e.url += '?'
+                else
+                  e.url += '&'
+                e.url += 'hash=' + window.location.hash.replace('#','')
+              }
+
               $.fn.ZCModal({
                 title  : '加载中',
                 size   : 'large',
-                remote : e.model,
+                remote : e.url,
                 body   : '请稍后,加载中...'
               })
             }
-            break
-          case 'list':
-          case 'table':
-            $.fn.ZCModal({
-              title  : '加载中',
-              size   : 'large',
-              remote : e.url,
-              body   : '请稍后,加载中...'
-            })
             break
         }
         // console.log('cmd:' + e.cmd + '|key:' + e.key + '|idx:' + e.idx)

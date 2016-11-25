@@ -49,13 +49,8 @@
       				td = this.checkKeyword(item[j]['value'])
       				if (item[j].hasOwnProperty('link') && item[j].link!=null) {
       				  itemLinkRet = this.checkLink(item[j], item)
-      				  if (item[j].type == 'open') {
-      				    td = $.sprintf(this.opts.tplLink, itemLinkRet, '', td)
-      				  } else if (item[j].type == 'ajax') {
-      				    td = $.sprintf(this.opts.tplLink, 'javascript:void(null)', ' data-key="'+itemLinkRet+'" data-menu="'+item[j].menu+'"', td)
-      				  } else if (item[j].type == 'popup') {
-                  td = $.sprintf(this.opts.tplLink, 'javascript:void(null)', ' data-model="'+itemLinkRet+'"', td)
-                }
+                if (item[j].hasOwnProperty('type'))
+                  td = $.sprintf(this.opts.tplLink, itemLinkRet, item[j].type, item[j].menu, td)
       				}
       				$lastTr.append('<td>'+td+'</td>')
       			}
@@ -131,7 +126,6 @@
       }
     , onTableBtnActClick: function(e) {
         var self = $(e.currentTarget)
-          , idx  = self.index()
           , url  = self.attr('href')
           , type = self.data('type')
           , key  = []
@@ -145,10 +139,10 @@
         url = this.checkAct(url, {"ids":{"value":key.toString()}})
         self.attr('href', url)
         if (type == 'open') return true
+
         this.el.trigger({
           type  : 'onAct',
           cmd   : 'table',
-          key   : key,
           utype : type,
           url   : url
         })
@@ -156,35 +150,37 @@
       }
     , onListBtnActClick: function(e) {
         var self = $(e.currentTarget)
-          , key  = self.parents('tr').data('key')
-          , idx  = self.index()
           , url  = self.attr('href')
           , type = self.data('type')
+
         e.stopPropagation()
         if (type == 'open') return true
+
         this.el.trigger({
           type  : 'onAct',
           cmd   : 'list',
-          key   : key,
+          utype : type,
+          url   : url
+        })
+
+        return false
+      }
+    , onLinkClick: function(e) {
+        var self = $(e.currentTarget)
+          , menu = self.data('menu')
+          , url  = self.attr('href')
+          , type = self.data('type')
+
+        e.stopPropagation()
+        if (type == 'open') return true
+
+        this.el.trigger({
+          type  : 'onAct',
+          cmd   : 'link',
           utype : type,
           url   : url
         })
         return false
-      }
-    , onLinkClick: function(e) {
-        var self  = $(e.currentTarget)
-          , key   = self.data('key')
-          , model = self.data('model')
-          , menu  = self.data('menu')
-        if (key != '' || model != '') {
-          this.el.trigger({
-            type  : 'onAct',
-            cmd   : 'link',
-            key   : key,
-            model : model,
-            menu  : menu
-          })
-        }
       }
     , onTrClick: function(e) {
         var self = $(e.currentTarget)
@@ -217,7 +213,7 @@
       data        : null
     , loadHtml    : '<div class="sk-wave"><div class="sk-rect sk-rect1"></div><div class="sk-rect sk-rect2"></div><div class="sk-rect sk-rect3"></div><div class="sk-rect sk-rect4"></div><div class="sk-rect sk-rect5"></div></div>'
     , tplMain     : '<table class="table table-striped table-hover table-list"><thead></thead><tbody></tbody></table><div class="table-btn text-center"></div>'
-    , tplLink     : '<a href="%s" class="item-link"%s>%s</a>'
+    , tplLink     : '<a href="%s" class="item-link" data-type="%s" data-menu="%s">%s</a>'
     , clsKeyword  : 'red'
     , clsSelected : 'info'
   }
