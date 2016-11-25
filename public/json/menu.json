@@ -952,8 +952,8 @@
                 ],
                 "ds":"",
                 "count":43,
-                "url":"",
-                "type ":"def"
+                "url":"http://www.baidu.com",
+                "type ":"ajax"
             }
         ],
         "ds":"",
