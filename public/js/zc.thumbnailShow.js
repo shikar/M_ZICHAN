@@ -170,7 +170,7 @@
             if (e.menu != '')
               window.location.hash = '#'+e.menu
             if (e.key)
-              this.create(e.key)
+              this.create(undefined,undefined,e.key)
             else if (e.model) {
               $.fn.ZCModal({
                 title  : '加载中',

@@ -31,7 +31,7 @@
         this.opts.key = data.key
         this.opts.type = data.type
 
-        $('#main-block').ZCItemList('show', data.list)
+        $('#main-block').ZCItemList({rootUrl:this.opts.rootUrl}).ZCItemList('show', data.list)
 
         this.el.find('.page')
           .ZCPagination1('create', data.page)
@@ -51,7 +51,7 @@
           url      : this.opts.rootUrl + this.opts.ajaxSearchResult,
           dataType : "json",
           cache    : false,
-          data     : {key:key, type:type, page:page},
+          data     : {key:key, type:type, page:page,m:window.location.hash},
           success  : $.proxy(this.onAjaxSearchResult, this)
         })
       }

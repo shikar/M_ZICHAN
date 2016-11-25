@@ -19,8 +19,8 @@
           dataType : "json"
         })
         Holder.run()
-        $( ".main" ).ZCMenu({rootUrl: this.opts.rootUrl})
-        $( "#fav" ).ZCFav({rootUrl: this.opts.rootUrl})
+        $( ".main" ).ZCMenu({rootUrl: this.opts.rootUrl,ajaxMenu:this.opts.ajaxMenu})
+        $( "#fav" ).ZCFav({rootUrl: this.opts.rootUrl,ajaxFav:this.opts.ajaxFav})
         this.initTopSearch()
         this.initPopover()
 
@@ -44,21 +44,24 @@
         // 搜索提示框
         $('#top-search .search-tip').on('click', 'li a', $.proxy(this.onSearchTipSel, this))
         // 输入框监听
+		/*
         $('#top-search input[name=key]').bind({
           input : $.proxy(this.onTopSearchInput, this),
           blur  : $.proxy(this.onTopSearchBlur, this),
           keyup : $.proxy(this.onTopSearchKeyup, this),
-        })
+        })*/
         // 提交搜索
         $('#top-search .btn-search').bind('click', $.proxy(this.onTopSearchClick, this))
         // 目录选择
         $('#top-search .search-type-option li a').bind('click', $.proxy(this.onTopSearchSelect, this))
         // 热门搜索载入
+		/*
         $.ajax({
           url     : this.opts.rootUrl + this.opts.ajaxSearchHot,
           success : $.proxy(this.onAjaxSearchHotResult, this)
         })
         $('#top-search .search-hot').on('click', 'li a', $.proxy(this.onSearchHotClick, this))
+		*/
       }
       /**
        * 调用搜索结果接口
@@ -66,7 +69,7 @@
        * @param  {string} type 搜索类别(all|cur)
        */
     , goSearch: function(key, type) {
-        $('#main-block').ZCTopSearch({rootUrl:this.opts.rootUrl}).ZCTopSearch('goSearch', key, type, 1);
+        $('#main-block').ZCTopSearch({rootUrl:this.opts.rootUrl,ajaxSearchResult:this.opts.ajaxSearchResult}).ZCTopSearch('goSearch', key, type, 1);
       }
     , onTopSearchClick: function(e) {
         this.goSearch($('#top-search input[name=key]').val(), $('#top-search input[name=type]').val());

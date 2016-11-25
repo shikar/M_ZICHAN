@@ -44,7 +44,7 @@
           }
           if (list !== null) break
         }
-        $('#main-block').ZCItemList('show', list)
+        $('#main-block').ZCItemList({rootUrl:this.opts.rootUrl}).ZCItemList('show', list)
       }
     , checkHash: function() {
         var hash = window.location.hash
