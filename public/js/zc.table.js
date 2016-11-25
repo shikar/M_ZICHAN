@@ -30,7 +30,7 @@
         }
         if (data.info.hasOwnProperty('listbtn') && data.info.listbtn.length > 0) this.el.find('thead tr').append('<th class="text-center">操作</th>')
 
-    		if(data.lists!=null  && data.lists.length>0){
+    		//if(data.lists!=null  && data.lists.length>0){
     			this.formatData(data)
     			this.el.find('tbody').empty()
     			for (i = 0; i < this.list.length; i++) {
@@ -68,7 +68,7 @@
       				}
     			  }
     			}
-    		}
+    		//}
 
 
 
@@ -92,14 +92,15 @@
     , formatData: function(data) {
         var i,j,row
         this.list = []
-
-        for (i = 0; i < data.lists.length; i++) {
-          row = {}
-          for (j = 0; j < data.lists[i].length; j++) {
-            row[data.fields[j]['name']] = jQuery.extend({'value':data.lists[i][j]==null?"":data.lists[i][j]}, data.fields[j])
-          }
-          this.list.push(row)
-        }
+		if(data.lists!=null){
+			for (i = 0; i < data.lists.length; i++) {
+			  row = {}
+			  for (j = 0; j < data.lists[i].length; j++) {
+				row[data.fields[j]['name']] = jQuery.extend({'value':data.lists[i][j]==null?"":data.lists[i][j]}, data.fields[j])
+			  }
+			  this.list.push(row)
+			}
+		}
       }
     , checkLink: function(cur, row) {
         var i,re
