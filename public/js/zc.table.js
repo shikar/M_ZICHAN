@@ -30,44 +30,44 @@
         }
         if (data.info.hasOwnProperty('listbtn') && data.info.listbtn.length > 0) this.el.find('thead tr').append('<th class="text-center">操作</th>')
 
-    		//if(data.lists!=null  && data.lists.length>0){
-    			this.formatData(data)
-    			this.el.find('tbody').empty()
-    			for (i = 0; i < this.list.length; i++) {
-    			  item = this.list[i]
-    			  this.el.find('tbody').append($.sprintf('<tr data-key="%s"></tr>', item.id.value))
-    			  $lastTr = this.el.find('tbody tr:last')
+        //if(data.lists!=null  && data.lists.length>0){
+          this.formatData(data)
+          this.el.find('tbody').empty()
+          for (i = 0; i < this.list.length; i++) {
+            item = this.list[i]
+            this.el.find('tbody').append($.sprintf('<tr data-key="%s"></tr>', item.id.value))
+            $lastTr = this.el.find('tbody tr:last')
 
-    			  // 是否生成 checkbox
-    			  if (this.data.info.checkbox == true) {
-    				  $lastTr.append('<td class="text-center"><input type="checkbox" name="ids" value="'+item.id.value+'"></td>')
-    			  }
+            // 是否生成 checkbox
+            if (this.data.info.checkbox == true) {
+              $lastTr.append('<td class="text-center"><input type="checkbox" name="ids" value="'+item.id.value+'"></td>')
+            }
 
-    			  // 插入表格内数据
-    			  for (j in item) {
-      				if (item[j]['hidden']) continue
-      				td = this.checkKeyword(item[j]['value'])
-      				if (item[j].hasOwnProperty('link') && item[j].link!=null) {
-      				  itemLinkRet = this.checkLink(item[j], item)
+            // 插入表格内数据
+            for (j in item) {
+              if (item[j]['hidden']) continue
+              td = this.checkKeyword(item[j]['value'])
+              if (item[j].hasOwnProperty('link') && item[j].link!=null) {
+                itemLinkRet = this.checkLink(item[j], item)
                 if (item[j].hasOwnProperty('type'))
                   td = $.sprintf(this.opts.tplLink, itemLinkRet, item[j].type, item[j].menu, td)
-      				}
-      				$lastTr.append('<td>'+td+'</td>')
-      			}
+              }
+              $lastTr.append('<td>'+td+'</td>')
+            }
 
-    			  // 插入记录按钮
-    			  if (data.info.hasOwnProperty('listbtn') && data.info.listbtn.length > 0) {
-      				this.el.find('tbody tr:last').append('<td class="text-center act-btn"></td>')
-      				for (j = 0; j < data.info.listbtn.length; j++) {
-      				  $lastTr.find('.act-btn').append(this.checkAct(data.info.listbtn[j], item))
-      				}
-    			  }
-    			}
-    		//}
+            // 插入记录按钮
+            if (data.info.hasOwnProperty('listbtn') && data.info.listbtn.length > 0) {
+              this.el.find('tbody tr:last').append('<td class="text-center act-btn"></td>')
+              for (j = 0; j < data.info.listbtn.length; j++) {
+                $lastTr.find('.act-btn').append(this.checkAct(data.info.listbtn[j], item))
+              }
+            }
+          }
+        //}
 
 
 
-		    this.el.find('.table-btn').empty()
+        this.el.find('.table-btn').empty()
         // 插入表格按钮和事件
         if (data.info.hasOwnProperty('tablebtn') && data.info.tablebtn.length > 0) {
           for (i = 0; i < data.info.tablebtn.length; i++) {
@@ -87,15 +87,15 @@
     , formatData: function(data) {
         var i,j,row
         this.list = []
-		if(data.lists!=null){
-			for (i = 0; i < data.lists.length; i++) {
-			  row = {}
-			  for (j = 0; j < data.lists[i].length; j++) {
-				row[data.fields[j]['name']] = jQuery.extend({'value':data.lists[i][j]==null?"":data.lists[i][j]}, data.fields[j])
-			  }
-			  this.list.push(row)
-			}
-		}
+        if(data.lists!=null){
+          for (i = 0; i < data.lists.length; i++) {
+            row = {}
+            for (j = 0; j < data.lists[i].length; j++) {
+            row[data.fields[j]['name']] = jQuery.extend({'value':data.lists[i][j]==null?"":data.lists[i][j]}, data.fields[j])
+            }
+            this.list.push(row)
+          }
+        }
       }
     , checkLink: function(cur, row) {
         var i,re
@@ -108,6 +108,13 @@
         var i
         for (i in row)
           link = link.replace(new RegExp(':'+i, 'g'), row[i].value)
+        return link
+      }
+    , checkLinkHash: function(link) {
+        var hash = window.location.hash
+        if (hash.indexOf('#m') === 0) {
+          link += '&hash='+hash.replace('#', '')
+        }
         return link
       }
     , checkKeyword: function(str) {
@@ -138,7 +145,10 @@
 
         url = this.checkAct(url, {"ids":{"value":key.toString()}})
         self.attr('href', url)
-        if (type == 'open') return true
+        if (type == 'open') {
+          self.attr('href', this.checkLinkHash(url))
+          return true
+        }
 
         this.el.trigger({
           type  : 'onAct',
@@ -154,7 +164,10 @@
           , type = self.data('type')
 
         e.stopPropagation()
-        if (type == 'open') return true
+        if (type == 'open') {
+          self.attr('href', this.checkLinkHash(url))
+          return true
+        }
 
         this.el.trigger({
           type  : 'onAct',
@@ -172,7 +185,10 @@
           , type = self.data('type')
 
         e.stopPropagation()
-        if (type == 'open') return true
+        if (type == 'open') {
+          self.attr('href', this.checkLinkHash(url))
+          return true
+        }
 
         this.el.trigger({
           type  : 'onAct',

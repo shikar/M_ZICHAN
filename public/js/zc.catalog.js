@@ -27,7 +27,7 @@
             .find('li:last').append('<ul></ul>')
           for (j = 0; j < item.list.length; j++) {
             subitem = item.list[j]
-            this.el.find('.thumbnail-menu>li:last>ul').append($.sprintf(this.opts.tplItem, subitem.id, subitem.url, subitem.type, subitem.name))
+            this.el.find('.thumbnail-menu>li:last>ul').append($.sprintf(this.opts.tplItem, subitem.id, subitem.type, subitem.url, subitem.name))
           }
         }
         this.el.find('.thumbnail-menu>li').bind('click', $.proxy(this.onOpenClick, this))
@@ -54,6 +54,7 @@
           this.el.find('.thumbnail-menu>li').removeClass('act')
           self.addClass('act')
         }
+        return false
       }
     , onGoClick: function(e, auto) {
         var self   = $(e.currentTarget)
@@ -61,10 +62,10 @@
           , pkey   = parent.parents('li').data('key')
           , key    = parent.data('key')
           , type   = parent.data('type')
-          , url    = parent.data('url')
+          , url    = self.attr('href')
           , hash   = window.location.hash
           , arr    = hash.split('_')
-
+        e.stopPropagation()
         this.el.find('.thumbnail-menu>li li').removeClass('act')
         parent.addClass('act')
 
@@ -85,7 +86,6 @@
           })
         }
 
-        e.stopPropagation()
         return false
       }
   }
@@ -107,7 +107,7 @@
 
   $.fn.ZCCatalog.defs = {
       tplMain   : '<ul class="thumbnail-menu"></ul>'
-    , tplItem   : '<li data-key="%s" data-url="%s" data-type="%s"><a href="javascript:void(null)">%s</a></li>'
+    , tplItem   : '<li data-key="%s" data-type="%s"><a href="%s">%s</a></li>'
   }
 
   $.fn.ZCCatalog.Constructor = ZCCatalog
