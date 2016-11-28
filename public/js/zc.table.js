@@ -99,22 +99,21 @@
       }
     , checkLink: function(cur, row) {
         var i,re
+          , hash = window.location.hash
           , ret = cur.link
         for (i in row)
           ret = ret.replace(new RegExp(':'+i, 'g'), row[i].value)
+        if (hash.indexOf('#m') === 0)
+          ret = ret.replace(/:murl/g, hash.replace('#', ''))
         return ret
       }
     , checkAct: function(link, row) {
         var i
+          , hash = window.location.hash
         for (i in row)
           link = link.replace(new RegExp(':'+i, 'g'), row[i].value)
-        return link
-      }
-    , checkLinkHash: function(link) {
-        var hash = window.location.hash
-        if (hash.indexOf('#m') === 0) {
-          link += '&hash='+hash.replace('#', '')
-        }
+        if (hash.indexOf('#m') === 0)
+          link = link.replace(/:murl/g, hash.replace('#', ''))
         return link
       }
     , checkKeyword: function(str) {
@@ -145,10 +144,7 @@
 
         url = this.checkAct(url, {"ids":{"value":key.toString()}})
         self.attr('href', url)
-        if (type == 'open') {
-          self.attr('href', this.checkLinkHash(url))
-          return true
-        }
+        if (type == 'open') return true
 
         this.el.trigger({
           type  : 'onAct',
@@ -164,10 +160,7 @@
           , type = self.data('type')
 
         e.stopPropagation()
-        if (type == 'open') {
-          self.attr('href', this.checkLinkHash(url))
-          return true
-        }
+        if (type == 'open') return true
 
         this.el.trigger({
           type  : 'onAct',
@@ -185,10 +178,7 @@
           , type = self.data('type')
 
         e.stopPropagation()
-        if (type == 'open') {
-          self.attr('href', this.checkLinkHash(url))
-          return true
-        }
+        if (type == 'open') return true
 
         this.el.trigger({
           type  : 'onAct',

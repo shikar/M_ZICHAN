@@ -46,6 +46,12 @@
           this.el.find('.thumbnail-menu>li[data-key='+this.menuData.open[0]+'] li[data-key='+this.menuData.open[1]+'] a').trigger('click', [true])
         }
       }
+    , checkLink: function(link) {
+        var hash = window.location.hash
+        if (hash.indexOf('#m') === 0)
+          link = link.replace(/:murl/g, hash.replace('#', ''))
+        return link
+      }
     , onOpenClick: function(e) {
         var self = $(e.currentTarget)
         if (self.hasClass('act')) {
@@ -66,6 +72,7 @@
           , hash   = window.location.hash
           , arr    = hash.split('_')
         e.stopPropagation()
+        self.attr('href', this.checkLink(url))
         this.el.find('.thumbnail-menu>li li').removeClass('act')
         parent.addClass('act')
 

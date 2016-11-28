@@ -36,6 +36,12 @@
 
         this.el.find('.item-link').bind('click', $.proxy(this.onLinkClick, this))
       }
+    , checkLink: function(link) {
+        var hash = window.location.hash
+        if (hash.indexOf('#m') === 0)
+          link = link.replace(/:murl/g, hash.replace('#', ''))
+        return link
+      }
 
     , onOpenClick: function(e) {
         var self = $(e.currentTarget)
@@ -58,6 +64,7 @@
           , type = self.data('type')
 
         e.stopPropagation()
+        self.attr('href', this.checkLink(url))
         if (type == 'open') return true
 
         this.el.trigger({

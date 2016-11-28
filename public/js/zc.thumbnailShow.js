@@ -176,14 +176,6 @@
             if (e.utype == 'ajax')
               this.create(undefined,undefined,e.url)
             else if (e.utype == 'popup') {
-              if (window.location.hash.indexOf("#m") === 0) {
-                if (e.url.indexOf('?') == -1)
-                  e.url += '?'
-                else
-                  e.url += '&'
-                e.url += 'hash=' + window.location.hash.replace('#','')
-              }
-
               $.fn.ZCModal({
                 title  : '加载中',
                 size   : 'large',
