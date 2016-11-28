@@ -28,7 +28,7 @@
         for (key in this.data) {
           curDl = this.el.find('dl:eq('+i%2+')')
           value = this.data[key].value
-          if (this.data[key].hasOwnProperty('type'))
+          if (this.data[key].hasOwnProperty('type') && this.data[key].type)
             value = $.sprintf(this.opts.tplLink, this.data[key].link, this.data[key].type, value)
           curDl.append($.sprintf(this.opts.tplItem, this.data[key]['name']+':', value))
           i++
@@ -94,7 +94,7 @@
 
   $.fn.ZCTopInfo.defs = {
       data      : null
-    , tplMain   : '<div class="panel panel-default block-info"><div class="panel-body panel-close container-fluid"><div class="row"><div class="col-xs-6"><dl class="dl-horizontal"></dl></div><div class="col-xs-6"><button type="button" class="btn btn-link btn-open"><span class="glyphicon glyphicon-menu-down"></span></button><dl class="dl-horizontal"></dl></div></div></div></div>'
+    , tplMain   : '<div class="panel panel-default block-info"><div class="panel-body panel-close container-fluid"><div class="row"><div class="col-xs-6"><dl class="dl-horizontal"></dl></div><div class="col-xs-6"><button type="button" class="btn btn-link btn-open" style="outline:0"><span class="glyphicon glyphicon-menu-down"></span></button><dl class="dl-horizontal"></dl></div></div></div></div>'
     , tplItem   : '<dt>%s</dt><dd>%s</dd>'
     , tplLink   : '<a href="%s" class="item-link" data-type="%s">%s</a>'
     , iconOpen  : 'glyphicon-menu-down'
