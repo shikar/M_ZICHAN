@@ -314,7 +314,9 @@ body {
 
 
 .form-inline .page-ipt {
-  width: 40px;
+  width: 60px;
+  padding-left: 2px;
+  padding-right: 2px;
   text-align: center;
 }
 

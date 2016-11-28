@@ -56,8 +56,8 @@
                         "ds":"",
                         "count":78,
                         "ct":80,
-                        "type":"open",
-                        "url":"http://www.baidu.com"
+                        "type":"ajax",
+                        "url":"url.html"
                     },
                     {
                         "id":2,

@@ -156,7 +156,7 @@
         if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('create', json.page)
       }
     , onCatalogResult: function(e) {
-        console.log('onCatalogResult',e.key)
+        console.log('onCatalogResult:'+this.id+'|'+e.key+'|'+e.url)
         this.goCatelog(this.id, e.key, e.url)
       }
 
@@ -174,7 +174,7 @@
             if (e.menu)
               window.location.hash = '#'+e.menu
             if (e.utype == 'ajax')
-              this.create(undefined,undefined,e.url)
+              this.create(this.id, undefined, e.url)
             else if (e.utype == 'popup') {
               $.fn.ZCModal({
                 title  : '加载中',
