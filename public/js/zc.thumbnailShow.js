@@ -66,6 +66,7 @@
           data     : {
             id      : this.id,
             catelog : this.catelog,
+            murl    : window.location.hash.replace('#',''),
             menu    : true
           },
           url      : this.ajaxUrl,
@@ -85,6 +86,7 @@
           data     : {
               id      : this.id,
               catelog : this.catelog,
+              murl    : window.location.hash.replace('#',''),
               menu    : false
             },
           url      : this.ajaxUrl,
@@ -102,6 +104,7 @@
           data     : {
               id      : this.id,
               catelog : this.catelog,
+              murl    : window.location.hash.replace('#',''),
               menu    : false,
               filter  : this.filter,
               sort    : this.sort,
@@ -158,7 +161,7 @@
       }
     , onCatalogResult: function(e) {
         console.log('onCatalogResult:'+this.id+'|'+e.key+'|'+e.url)
-        this.catelog(this.id, e.key, e.url)
+        this.goCatelog(this.id, e.key, e.url)
       }
 
     , onSortResult: function(e) {
