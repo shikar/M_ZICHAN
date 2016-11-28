@@ -444,12 +444,15 @@
             ]
         }
     ],
-    "breadcrumb":[
+    "breadcrumb":{
+      "serchplaceholder":"搜索当前目录下11",
+      "list":[
         "首页",
         "一级目录",
         "二级目录",
         "三级目录"
-    ],
+      ]
+    },
     "sort":[
         {
             "name":"name",

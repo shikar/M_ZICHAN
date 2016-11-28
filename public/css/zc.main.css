@@ -9,6 +9,9 @@ body {
   color: #f00;
 }
 
+.modal-body .dl-horizontal {
+  margin-bottom: 0;
+}
 #top-search {
 /*margin-top: 13px;*/
   margin-top: 23px;
@@ -530,10 +533,10 @@ ul li.placeholder .btn {
 .thumbnail-main .panel .dl-horizontal {
   margin-bottom: 0;
 }
-.thumbnail-main .panel .dl-horizontal dt {
+.thumbnail-main .panel .dl-horizontal dt, .modal-body .dl-horizontal dt {
   width: 110px;
 }
-.thumbnail-main .panel .dl-horizontal dd {
+.thumbnail-main .panel .dl-horizontal dd, .modal-body .dl-horizontal dd {
   margin-left: 120px;
 }
 .thumbnail-main .panel .btn-open {
