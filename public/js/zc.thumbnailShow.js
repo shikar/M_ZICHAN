@@ -157,7 +157,7 @@
       }
     , onCatalogResult: function(e) {
         console.log('onCatalogResult',e.key)
-        this.goCatelog(e.key)
+        this.goCatelog(this.id, e.key, e.url)
       }
 
     , onSortResult: function(e) {

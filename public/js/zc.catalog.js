@@ -89,7 +89,8 @@
         if (!auto && arr.length > 2 && arr[0] == '#m') {
           this.el.trigger({
             type : 'onCatalog',
-            key  : key
+            key  : key,
+            url  : url
           })
         }
 
