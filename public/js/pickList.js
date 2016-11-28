@@ -58,13 +58,13 @@
                  "	 <select class='form-control pickListSelect pickData' multiple></select>" +
                  " </div>" +
                  " <div class='col-sm-2 pickListButtons'>" +
-                 "	<button  class='pAdd btn btn-primary btn-sm' type='button'>" + opts.add + "</button><br>" +
-                 "  <button  class='pAddAll btn btn-primary btn-sm' type='button'>" + opts.addAll + "</button><br>" +
-                 "	<button  class='pRemove btn btn-primary btn-sm' type='button'>" + opts.remove + "</button><br>" +
-                 "	<button  class='pRemoveAll btn btn-primary btn-sm' type='button'>" + opts.removeAll + "</button><br>" +
+                 "	<button class='pAdd btn btn-primary btn-sm' type='button'>" + opts.add + "</button><br>" +
+                 "  <button class='pAddAll btn btn-primary btn-sm' type='button'>" + opts.addAll + "</button><br>" +
+                 "	<button class='pRemove btn btn-primary btn-sm' type='button'>" + opts.remove + "</button><br>" +
+                 "	<button class='pRemoveAll btn btn-primary btn-sm' type='button'>" + opts.removeAll + "</button><br>" +
                  " </div>" +
                  " <div class='col-sm-5'>" +
-                 "    <select class='form-control pickListSelect pickListResult' multiple></select>" +
+                 "    <select class='form-control pickListSelect pickListResult' name='" + opts.name + "' multiple></select>" +
                  " </div>" +
                  "</div>";
 
@@ -79,10 +79,11 @@
    };
 
    $.fn.pickList.defaults = {
-      add: 'Add',
-      addAll: 'Add All',
-      remove: 'Remove',
-      removeAll: 'Remove All'
+      add       : 'Add',
+      addAll    : 'Add All',
+      remove    : 'Remove',
+      removeAll : 'Remove All',
+      name      : 'multSelect'
    };
 
 
