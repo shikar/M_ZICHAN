@@ -75,9 +75,10 @@
       /**
        * 根据目录 ID 刷新右边组件, 返回的 json 结构参照 thumbnailCatelog.json
        */
-    , goCatelog: function(catelog) {
+    , goCatelog: function(id, catelog, ajaxUrl) {
         this.el.find('input[name=search]').val('')
-        this.catelog = catelog
+        this.ajaxUrl = (ajaxUrl||this.opts.rootUrl + this.opts.ajaxUrl)
+        this.catelog = (catelog||0)
         $.ajax({
           cache    : false,
           dataType : "json",
@@ -157,7 +158,7 @@
       }
     , onCatalogResult: function(e) {
         console.log('onCatalogResult:'+this.id+'|'+e.key+'|'+e.url)
-        this.goCatelog(this.id, e.key, e.url)
+        this.catelog(this.id, e.key, e.url)
       }
 
     , onSortResult: function(e) {
