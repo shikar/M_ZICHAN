@@ -6,19 +6,8 @@
   <form action="ajax/ok.html" method="post"  enctype="multipart/form-data" class="form-horizontal">
     <div class="form-group">
       <label class="col-sm-2 control-label">请选择数据元</label>
-      <div class="col-sm-10">
+      <div class="col-sm-10 multSelect">
         数据元: 101<br>
-        <select id="pre-selected-options" name="input3" size="8" multiple class="form-control">
-          <option value="1">项目1</option>
-          <option value="2">项目2</option>
-          <option value="3">项目3</option>
-          <option value="4">项目4</option>
-          <option value="5">项目5</option>
-          <option value="6">项目6</option>
-          <option value="7">项目7</option>
-          <option value="8">项目8</option>
-          <option value="9">项目9</option>
-        </select>
       </div>
     </div>
     <div class="form-group">
@@ -57,6 +46,20 @@
 </div>
 
 <script type="text/javascript">
-$('#pre-selected-options').multiSelect();
 $('.chosen-select').chosen({width:"100%",placeholder_text_multiple: "请选择数据元",});
+var val = [
+  {id: 1, text: 'Isis'},
+  {id: 2, text: 'Sophia'},
+  {id: 3, text: 'Alice'},
+  {id: 4, text: 'Isabella'},
+  {id: 5, text: 'Manuela'},
+  {id: 6, text: 'Laura'}
+];
+$('.multSelect').pickList({
+  data: val,
+  add: 'Add',
+  addAll: 'Add All',
+  remove: 'Remove',
+  removeAll: 'Remove All'
+});
 </script>
