@@ -116,7 +116,6 @@
         })
       }
     , checkReturn: function(json) {
-        console.log(json)
         if (json.errflag === 1) {
           window.location.reload()
           return true
@@ -138,7 +137,11 @@
         this.el.empty().append(this.opts.tplMain)
         if (json.hasOwnProperty('menu')) this.el.find('.row>div').ZCCatalog('create', json.menu)
         else this.el.find('.thumbnail-main').addClass('no-thumbnail-menu')
-        if (json.hasOwnProperty('breadcrumb')) this.el.find('.row>div').ZCBreadcrumb('create', json.breadcrumb)
+        if (json.hasOwnProperty('breadcrumb')) {
+          if (json.breadcrumb.searchcontent)
+            this.search = json.breadcrumb.searchcontent
+          this.el.find('.row>div').ZCBreadcrumb('create', json.breadcrumb)
+        }
         if (json.hasOwnProperty('info')) this.el.find('.thumbnail-main').ZCTopInfo('create', json.info)
         if (json.hasOwnProperty('filter')) this.el.find('.thumbnail-main').ZCFilter('create', json.filter)
         if (json.hasOwnProperty('sort')) this.el.find('.thumbnail-main').ZCSort('create', json.sort)
@@ -147,7 +150,11 @@
       }
     , onThumbnailCatalogResult: function(json) {
         if (this.checkReturn(json)) return
-        if (json.hasOwnProperty('breadcrumb')) this.el.find('.row>div').ZCBreadcrumb('create', json.breadcrumb)
+        if (json.hasOwnProperty('breadcrumb')) {
+          if (json.breadcrumb.searchcontent)
+            this.search = json.breadcrumb.searchcontent
+          this.el.find('.row>div').ZCBreadcrumb('create', json.breadcrumb)
+        }
         if (json.hasOwnProperty('info')) this.el.find('.thumbnail-main').ZCTopInfo('create', json.info)
         if (json.hasOwnProperty('filter')) this.el.find('.thumbnail-main').ZCFilter('create', json.filter)
         if (json.hasOwnProperty('sort')) this.el.find('.thumbnail-main').ZCSort('create', json.sort)
@@ -165,10 +172,10 @@
       }
 
     , onSortResult: function(e) {
+        e.stopPropagation()
         console.log(e.list)
         this.sort = JSON.stringify(e.list)
         this.refreshTable()
-        e.stopPropagation()
       }
     , onActResult: function(e) {
         switch (e.cmd) {
@@ -193,22 +200,22 @@
         // e.stopPropagation()
       }
     , onPageResult: function(e) {
+        e.stopPropagation()
         console.log(e.page)
         this.page = e.page
         this.refreshTable()
-        e.stopPropagation()
       }
     , onFilterResult: function(e) {
+        e.stopPropagation()
         console.log(e.selected)
         this.filter = JSON.stringify(e.selected)
         this.refreshTable()
-        e.stopPropagation()
       }
     , onSearchResult: function(e) {
+        e.stopPropagation()
         console.log('onSearchResult')
         this.search = e.search
         this.refreshTable()
-        e.stopPropagation()
       }
   }
 

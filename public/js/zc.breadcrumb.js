@@ -20,6 +20,8 @@
         var i,item
         this.el.find('.thumbnail-breadcrumb ul').empty()
         this.el.find('input[name=search]').attr('placeholder', data.serchplaceholder)
+        if (data.searchcontent)
+            this.el.find('input[name=search]').val(data.searchcontent)
         for (i = 0; i < data.list.length; i++) {
           item = data.list[i]
           this.el.find('.thumbnail-breadcrumb ul').append($.sprintf(this.opts.tplItem, item))

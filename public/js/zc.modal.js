@@ -77,6 +77,8 @@
         this.$modal.find('.modal-dialog').removeClass('modal-lg').addClass('modal-sm')
         this.$modal.find('[type=submit]').remove()
         this.$modal.find('.modal-body').html(e.responseText)
+        // 提交后刷新表格
+        $('#main-block').ZCThumbnailShow('refreshTable')
       }
     , onSetTimeOut: function() {
         this.$modal.find('[type=submit]').button('reset')

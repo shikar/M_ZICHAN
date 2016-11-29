@@ -445,6 +445,7 @@
         }
     ],
     "breadcrumb":{
+      "searchcontent":"搜索当",
       "serchplaceholder":"搜索当前目录下11",
       "list":[
         "首页",
