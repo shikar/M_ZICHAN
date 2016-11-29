@@ -534,10 +534,10 @@ ul li.placeholder .btn {
   margin-bottom: 0;
 }
 .thumbnail-main .panel .dl-horizontal dt, .modal-body .dl-horizontal dt {
-  width: 110px;
+  width: 120px;
 }
 .thumbnail-main .panel .dl-horizontal dd, .modal-body .dl-horizontal dd {
-  margin-left: 120px;
+  margin-left: 130px;
 }
 .thumbnail-main .panel .btn-open {
   position: absolute;

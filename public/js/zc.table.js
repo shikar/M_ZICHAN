@@ -46,7 +46,10 @@
             // 插入表格内数据
             for (j in item) {
               if (item[j]['hidden']) continue
-              td = this.checkKeyword(item[j]['value'])
+              td = item[j]['value']
+              if (!data.info.keyfields || $.inArray(item[j].name, data.info.keyfields) != -1)
+                td = this.checkKeyword(td)
+
               if (item[j].hasOwnProperty('link') && item[j].link!=null) {
                 itemLinkRet = this.checkLink(item[j], item)
                 if (item[j].hasOwnProperty('type'))
@@ -117,7 +120,7 @@
         return link
       }
     , checkKeyword: function(str) {
-        str = str + ''
+        str = str.toString()
         str = str.replace(new RegExp('('+this.data.info.keyword+')', 'ig'), '<b class="'+this.opts.clsKeyword+'">$1</b>')
         return str
       }

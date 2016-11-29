@@ -40,14 +40,22 @@
         if (json.errflag === 1) {
           window.location.reload()
           return true
-        }
-        else if (json.msg != null) {
+        } else if (json.errflag !== 0 && json.msg != null) {
           $.notify('提示信息: '+json.msg, {
+            className: 'error',
             clickToHide: true,
             globalPosition: 'bottom right',
             gap: 2
           })
           return true
+        } else if (json.errflag === 0 && json.msg != null) {
+          $.notify('提示信息: '+json.msg, {
+            className: 'success',
+            clickToHide: true,
+            globalPosition: 'bottom right',
+            gap: 2
+          })
+          return false
         }
         return false
       }

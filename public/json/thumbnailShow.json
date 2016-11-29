@@ -1,13 +1,13 @@
 {
     "errflag":0,
-    "msg":null,
+    "msg":"che ",
     "info":[
         {
             "name":"id",
             "value":1
         },
         {
-            "name":"数据集名称",
+            "name":"数据集名数据集名",
             "value":"数据集1",
             "link":"ajax/form.html?id=1",
             "type":"popup",
@@ -488,6 +488,7 @@
         "info":{
             "checkbox":1,
             "keyword":"测",
+            "keyfields":["数据集名称","数据集标示符"],
             "listbtn":[
                 "<a title=\"收藏\" href=\"index.html?id=:id&murl=:murl\" data-type=\"open\"><span class=\"glyphicon glyphicon-heart\"></span></a>",
                 "<a title=\"编辑\" href=\"ajax/form.html?id=:id\" data-type=\"popup\"><span class=\"glyphicon glyphicon-edit\"></span></a>"

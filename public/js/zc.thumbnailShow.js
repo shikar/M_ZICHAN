@@ -80,6 +80,7 @@
         this.el.find('input[name=search]').val('')
         this.ajaxUrl = (ajaxUrl||this.ajaxUrl)
         this.catelog = (catelog||0)
+        this.page = 1
         $.ajax({
           cache    : false,
           dataType : "json",
@@ -119,14 +120,22 @@
         if (json.errflag === 1) {
           window.location.reload()
           return true
-        }
-        else if (json.msg != null) {
+        } else if (json.errflag !== 0 && json.msg != null) {
           $.notify('提示信息: '+json.msg, {
+            className: 'error',
             clickToHide: true,
             globalPosition: 'bottom right',
             gap: 2
           })
           return true
+        } else if (json.errflag === 0 && json.msg != null) {
+          $.notify('提示信息: '+json.msg, {
+            className: 'success',
+            clickToHide: true,
+            globalPosition: 'bottom right',
+            gap: 2
+          })
+          return false
         }
         return false
       }
@@ -175,6 +184,7 @@
         e.stopPropagation()
         console.log(e.list)
         this.sort = JSON.stringify(e.list)
+        this.page = 1
         this.refreshTable()
       }
     , onActResult: function(e) {
@@ -209,12 +219,14 @@
         e.stopPropagation()
         console.log(e.selected)
         this.filter = JSON.stringify(e.selected)
+        this.page = 1
         this.refreshTable()
       }
     , onSearchResult: function(e) {
         e.stopPropagation()
         console.log('onSearchResult')
         this.search = e.search
+        this.page = 1
         this.refreshTable()
       }
   }
