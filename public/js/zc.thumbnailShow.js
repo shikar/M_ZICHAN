@@ -78,7 +78,7 @@
        */
     , goCatelog: function(id, catelog, ajaxUrl) {
         this.el.find('input[name=search]').val('')
-        this.ajaxUrl = (ajaxUrl||this.opts.rootUrl + this.opts.ajaxUrl)
+        this.ajaxUrl = (ajaxUrl||this.ajaxUrl)
         this.catelog = (catelog||0)
         $.ajax({
           cache    : false,
