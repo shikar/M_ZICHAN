@@ -188,6 +188,7 @@
         this.refreshTable()
       }
     , onActResult: function(e) {
+        console.dir(e);
         switch (e.cmd) {
           case 'link':
           case 'list':
