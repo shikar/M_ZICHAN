@@ -68,7 +68,7 @@
         $('#top-search .search-tip').on('click', 'li a', $.proxy(this.onSearchTipSel, this))
         // 输入框监听
 
-        $('#top-search input[name=key]').bind('keypress', $.proxy(this.onKeyEnter, this))
+        $('#top-search').bind('submit', $.proxy(this.onSearchSubmit, this))
 		    /*
         $('#top-search input[name=key]').bind({
           input : $.proxy(this.onTopSearchInput, this),
@@ -150,11 +150,9 @@
     , onTopSearchKeyup: function(e) {
 
       }
-    , onKeyEnter: function(e) {
-
-        var key = e.which;
-        if (key == 13)
-          $('#top-search .btn-search').trigger('click')
+    , onSearchSubmit: function(e) {
+        $('#top-search .btn-search').trigger('click')
+        return false
       }
 
 
