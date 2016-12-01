@@ -371,19 +371,19 @@
         forceParse     : 0
       })
       var val = [
-        {id: 1, text: 'Isis'},
-        {id: 2, text: 'Sophia'},
-        {id: 3, text: 'Alice'},
-        {id: 4, text: 'Isabella'},
-        {id: 5, text: 'Manuela'},
-        {id: 6, text: 'Laura'}
+        {id: 1, text: 'Isis',checkF:true},
+        {id: 2, text: 'Sophia',checkF:true},
+        {id: 3, text: 'Alice',checkF:true},
+        {id: 4, text: 'Isabella',checkF:true},
+        {id: 5, text: 'Manuela',checkF:false},
+        {id: 6, text: 'Laura',checkF:true}
       ];
       $('.multSelect').pickList({
         data: val,
-        add: 'Add',
-        addAll: 'Add All',
-        remove: 'Remove',
-        removeAll: 'Remove All'
+        add: '>',
+        addAll: '>>',
+        remove: '<',
+        removeAll: '<<'
       });
       $('.chosen-select').chosen({width:"100%",placeholder_text_multiple: "请选择数据元",});
 

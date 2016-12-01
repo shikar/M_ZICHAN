@@ -8,7 +8,7 @@
          var option = '';
 
          $.each(opts.data, function (key, val) {
-            option += '<option data-id=' + val.id + '>' + val.text + '</option>';
+            option += '<option data-id="' + val.id+'"'+(val.checkF?'selected=selected':'') + '>' + val.text + '</option>';
          });
          this.find('.pickData').append(option);
       };

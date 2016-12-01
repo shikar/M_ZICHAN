@@ -16,6 +16,7 @@
       constructor: ZCTable
     , init: function() {
         this.el.append(this.opts.tplMain)
+        console.dir(this.opts.tplMain)
       }
     , create: function(data) {
         var i,j,item,$lastTr,td,itemLinkRet
@@ -134,6 +135,7 @@
           this.el.find('tbody tr').removeClass(this.opts.clsSelected)
       }
     , onTableBtnActClick: function(e) {
+        
         var self = $(e.currentTarget)
           , url  = self.attr('href')
           , type = self.data('type')
@@ -142,11 +144,14 @@
           var $el = $(el)
           key.push($el.val())
         })
+        console.log(key);
 
         if (key.length <= 0) return false
 
         url = this.checkAct(url, {"ids":{"value":key.toString()}})
         self.attr('href', url)
+        
+        console.log(self.attr('href'));
         if (type == 'open') return true
 
         this.el.trigger({
