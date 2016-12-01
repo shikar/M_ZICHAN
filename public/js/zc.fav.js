@@ -39,7 +39,7 @@
             globalPosition: 'bottom right',
             gap: 2
           })
-          return true
+          return false
         } else if (json.errflag === 0 && json.msg != null) {
           $.notify('提示信息: '+json.msg, {
             className: 'success',

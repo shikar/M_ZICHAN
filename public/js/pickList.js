@@ -38,6 +38,18 @@
             p.clone().appendTo(pickThis.find(".pickData"));
             p.remove();
          });
+
+         pickThis.find(".pickData").on('dblclick', function () {
+            var p = pickThis.find(".pickData option:selected");
+            p.clone().appendTo(pickThis.find(".pickListResult"));
+            p.remove();
+         });
+
+         pickThis.find(".pickListResult").on('dblclick', function () {
+            var p = pickThis.find(".pickListResult option:selected");
+            p.clone().appendTo(pickThis.find(".pickData"));
+            p.remove();
+         });
       };
 
       this.getValues = function () {

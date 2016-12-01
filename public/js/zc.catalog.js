@@ -76,7 +76,7 @@
         this.el.find('.thumbnail-menu>li li').removeClass('act')
         parent.addClass('act')
 
-        if (!auto && arr.length > 2 && arr[0] == '#m') {
+        if (arr.length > 2 && arr[0] == '#m') {
           window.location.hash = '#m_' + arr[1] + '_' + arr[2] + '_' + (arr[3]||'') + '_' + pkey + '_' + key
         }
 

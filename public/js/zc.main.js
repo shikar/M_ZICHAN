@@ -47,7 +47,7 @@
             globalPosition: 'bottom right',
             gap: 2
           })
-          return true
+          return false
         } else if (json.errflag === 0 && json.msg != null) {
           $.notify('提示信息: '+json.msg, {
             className: 'success',
@@ -67,7 +67,9 @@
         // 搜索提示框
         $('#top-search .search-tip').on('click', 'li a', $.proxy(this.onSearchTipSel, this))
         // 输入框监听
-		/*
+
+        $('#top-search input[name=key]').bind('keypress', $.proxy(this.onKeyEnter, this))
+		    /*
         $('#top-search input[name=key]').bind({
           input : $.proxy(this.onTopSearchInput, this),
           blur  : $.proxy(this.onTopSearchBlur, this),
@@ -147,6 +149,12 @@
       }
     , onTopSearchKeyup: function(e) {
 
+      }
+    , onKeyEnter: function(e) {
+
+        var key = e.which;
+        if (key == 13)
+          $('#top-search .btn-search').trigger('click')
       }
 
 

@@ -53,7 +53,7 @@
               if (item[j].hasOwnProperty('link') && item[j].link!=null) {
                 itemLinkRet = this.checkLink(item[j], item)
                 if (item[j].hasOwnProperty('type'))
-                  td = $.sprintf(this.opts.tplLink, itemLinkRet, item[j].type, item[j].menu, td)
+                  td = $.sprintf(this.opts.tplLink, itemLinkRet, item[j].type, td)
               }
               $lastTr.append('<td>'+td+'</td>')
             }
@@ -176,7 +176,6 @@
       }
     , onLinkClick: function(e) {
         var self = $(e.currentTarget)
-          , menu = self.data('menu')
           , url  = self.attr('href')
           , type = self.data('type')
 
@@ -222,7 +221,7 @@
       data        : null
     , loadHtml    : '<div class="sk-wave"><div class="sk-rect sk-rect1"></div><div class="sk-rect sk-rect2"></div><div class="sk-rect sk-rect3"></div><div class="sk-rect sk-rect4"></div><div class="sk-rect sk-rect5"></div></div>'
     , tplMain     : '<table class="table table-striped table-hover table-list"><thead></thead><tbody></tbody></table><div class="table-btn text-center"></div>'
-    , tplLink     : '<a href="%s" class="item-link" data-type="%s" data-menu="%s">%s</a>'
+    , tplLink     : '<a href="%s" class="item-link" data-type="%s">%s</a>'
     , clsKeyword  : 'red'
     , clsSelected : 'info'
   }
