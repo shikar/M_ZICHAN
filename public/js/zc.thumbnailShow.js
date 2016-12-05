@@ -56,6 +56,7 @@
           if (murlnum && murlnum > 0) {
             arr.splice(murlnum)
             this.catelog = ""
+            window.location.hash = arr.join('_')
           }
         }
 
