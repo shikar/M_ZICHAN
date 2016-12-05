@@ -49,13 +49,13 @@
           , arr = hash.split('_')
 
         this.ajaxUrl = (ajaxUrl||this.opts.rootUrl + this.opts.ajaxUrl)
-        this.catelog = (catelog||0)
+        this.catelog = (catelog||"")
 
         if (arr.length > 3 && arr[0] == '#m') {
           this.catelog = arr[5]
           if (murlnum && murlnum > 0) {
             arr.splice(murlnum)
-            this.catelog = 0
+            this.catelog = ""
           }
         }
 
@@ -86,7 +86,7 @@
     , goCatelog: function(id, catelog, ajaxUrl) {
         this.el.find('input[name=search]').val('')
         this.ajaxUrl = (ajaxUrl||this.ajaxUrl)
-        this.catelog = (catelog||0)
+        this.catelog = (catelog||"")
         this.page = 1
         $.ajax({
           cache    : false,
