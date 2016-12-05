@@ -53,8 +53,8 @@
 
         if (arr.length > 3 && arr[0] == '#m') {
           this.catelog = arr[5]
-          for (var i = murlnum; i < arr.length; i++) {
-            delete arr[i]
+          if (murlnum) {
+            arr.splice(murlnum)
           }
         }
 
@@ -195,7 +195,7 @@
       }
     , onActResult: function(e) {
         console.dir(e);
-        murlnum = e.murlnum || 5
+        var murlnum = e.murlnum || 8
         switch (e.cmd) {
           case 'link':
           case 'list':

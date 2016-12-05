@@ -60,7 +60,7 @@
           type    : 'onAct',
           cmd     : 'link',
           utype   : type,
-          murlnum : 3,
+          murlnum : 4,
           url     : url
         })
         return false

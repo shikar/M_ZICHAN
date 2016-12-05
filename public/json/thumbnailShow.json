@@ -448,7 +448,7 @@
       "searchcontent":"搜索当",
       "serchplaceholder":"搜索当前目录下11",
       "list":[
-        {"name":"首页","type":"open","url":"index.html"},
+        {"name":"首页","type":"ajax","url":"json/thumbnailShow.json"},
         {"name":"一级目录","type":null,"url":null},
         {"name":"二级目录","type":null,"url":null},
         {"name":"三级目录","type":null,"url":null}
