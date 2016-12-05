@@ -185,8 +185,19 @@
                         </div>
                         <div class="form-group">
                           <label class="col-sm-1 control-label nopaddinglr">请选择数据元</label>
-                          <div class="col-sm-11 multSelect">
+                          <div class="col-sm-11">
                             数据元: 101<br>
+                            <select multiple name="select1" id="select1" class="form-control" placeholder="请选择数据元">
+                              <option value="1" selected="selected">项目1</option>
+                              <option value="2" selected="selected">项目2</option>
+                              <option value="3" selected="selected">项目3</option>
+                              <option value="4">项目4</option>
+                              <option value="5">项目5</option>
+                              <option value="6">项目6</option>
+                              <option value="7">项目7</option>
+                              <option value="8">项目8</option>
+                              <option value="9">项目9</option>
+                            </select>
                           </div>
                         </div>
                         <div class="form-group">
@@ -370,21 +381,14 @@
         minView        : 2,
         forceParse     : 0
       })
-      var val = [
-        {id: 1, text: 'Isis',checkF:true},
-        {id: 2, text: 'Sophia',checkF:true},
-        {id: 3, text: 'Alice',checkF:true},
-        {id: 4, text: 'Isabella',checkF:true},
-        {id: 5, text: 'Manuela',checkF:false},
-        {id: 6, text: 'Laura',checkF:true}
-      ];
-      $('.multSelect').pickList({
-        data: val,
+
+      $('#select1').pickList({
         add: '>',
         addAll: '>>',
         remove: '<',
         removeAll: '<<'
       });
+
       $('.chosen-select').chosen({width:"100%",placeholder_text_multiple: "请选择数据元",});
 
       $(".img-upload").fileinput({

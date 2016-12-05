@@ -153,7 +153,7 @@
 
         if (key.length <= 0) return false
 
-        url = this.checkAct(url, {"ids":{"value":key.toString()}})
+        // url = this.checkAct(url, {"ids":{"value":key.toString()}})
         self.attr('href', url)
         
         console.log(self.attr('href'));
@@ -163,7 +163,7 @@
           type  : 'onAct',
           cmd   : 'table',
           utype : type,
-          url   : url
+          url   : this.checkAct(url, {"ids":{"value":key.toString()}})
         })
         return false
       }

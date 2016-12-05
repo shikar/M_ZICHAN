@@ -44,15 +44,21 @@
        * @param  {number} id      表格界面调用的依据
        * @param  {[type]} ajaxUrl 自定义的 ajax 地址
        */
-    , create: function(id, catelog, ajaxUrl) {
+    , create: function(id, catelog, ajaxUrl, murlnum) {
         var hash = window.location.hash
           , arr = hash.split('_')
 
         this.ajaxUrl = (ajaxUrl||this.opts.rootUrl + this.opts.ajaxUrl)
         this.catelog = (catelog||0)
 
-        if (arr.length > 3 && arr[0] == '#m')
+        if (arr.length > 3 && arr[0] == '#m') {
           this.catelog = arr[5]
+          for (var i = murlnum; i < arr.length; i++) {
+            delete arr[i]
+          }
+        }
+
+
 
         this.el.empty().append(this.opts.loadHtml)
         this.id     = id
@@ -66,7 +72,7 @@
           data     : {
             id      : this.id,
             catelog : this.catelog,
-            murl    : window.location.hash.replace('#',''),
+            murl    : arr.join('_').replace('#',''),
             menu    : true
           },
           url      : this.ajaxUrl,
@@ -189,14 +195,13 @@
       }
     , onActResult: function(e) {
         console.dir(e);
+        murlnum = e.murlnum || 5
         switch (e.cmd) {
           case 'link':
           case 'list':
           case 'table':
-            if (e.menu)
-              window.location.hash = '#'+e.menu
             if (e.utype == 'ajax')
-              this.create(this.id, undefined, e.url)
+              this.create(this.id, undefined, e.url, murlnum)
             else if (e.utype == 'popup') {
               $.fn.ZCModal({
                 title  : '加载中',

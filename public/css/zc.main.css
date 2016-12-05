@@ -533,11 +533,14 @@ ul li.placeholder .btn {
 .thumbnail-main .panel .dl-horizontal {
   margin-bottom: 0;
 }
-.thumbnail-main .panel .dl-horizontal dt, .modal-body .dl-horizontal dt {
+.thumbnail-main .dl-horizontal dt, .modal-body .dl-horizontal dt {
   width: 120px;
 }
-.thumbnail-main .panel .dl-horizontal dd, .modal-body .dl-horizontal dd {
+.thumbnail-main .dl-horizontal dd, .modal-body .dl-horizontal dd {
   margin-left: 130px;
+}
+.thumbnail-main  .filter-bar dt, .thumbnail-main .sort-bar dt {
+  text-align: left;
 }
 .thumbnail-main .panel .btn-open {
   position: absolute;
