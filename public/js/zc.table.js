@@ -18,14 +18,24 @@
         this.el.append(this.opts.tplMain)
         //console.dir(this.opts.tplMain)
       }
+    , clear: function() {
+        this.el.find('thead').empty()
+        this.el.find('tbody').empty()
+        this.el.find('.table-btn').empty()
+        this.el.find('table').hide()
+      }
     , create: function(data) {
         var i,j,item,$lastTr,td,itemLinkRet
         this.data = data
-        this.el.find('thead').empty()
+        this.clear()
+
         this.el.find('thead').append('<tr></tr>')
 
         // 是否生成 checkbox 头
-        if (this.data.info.checkbox == true) this.el.find('thead tr').append('<th class="text-center"><input type="checkbox" name="seletct-all"></th>')
+        if (this.data.info.checkbox == true) {
+          this.el.find('thead tr').append('<th class="text-center"><input type="checkbox" name="seletct-all"></th>')
+          this.el.find('input[name=seletct-all]').bind('click', $.proxy(this.onSelectAllClick, this))
+        }
         for (i = 0; i < data.fields.length; i++) {
           if (!data.fields[i]['hidden']) this.el.find('thead tr').append('<th>'+data.fields[i]['name']+'</th>')
         }
@@ -33,7 +43,6 @@
 
         //if(data.lists!=null  && data.lists.length>0){
           this.formatData(data)
-          this.el.find('tbody').empty()
           for (i = 0; i < this.list.length; i++) {
             item = this.list[i]
             this.el.find('tbody').append($.sprintf('<tr data-key="%s"></tr>', item.id.value))
@@ -71,13 +80,12 @@
 
 
 
-        this.el.find('.table-btn').empty()
+
         // 插入表格按钮和事件
         if (data.info.hasOwnProperty('tablebtn') && data.info.tablebtn.length > 0) {
           for (i = 0; i < data.info.tablebtn.length; i++) {
             this.el.find('.table-btn').append(data.info.tablebtn[i]+' ')
           }
-          this.el.find('input[name=seletct-all]').bind('click', $.proxy(this.onSelectAllClick, this))
           this.el.find('.table-btn a').tooltip().bind('click', $.proxy(this.onTableBtnActClick, this))
         }
 
@@ -87,6 +95,8 @@
 
         this.el.find('tbody tr').bind('click', $.proxy(this.onTrClick, this))
         this.el.find('tbody tr .item-link').bind('click', $.proxy(this.onLinkClick, this))
+
+        this.el.find('table').show()
       }
     , formatData: function(data) {
         var i,j,row
@@ -144,7 +154,7 @@
         }else{
             url  = self.attr('originhref')
         }
-          
+
         this.el.find('tbody tr input[name=ids]:checked').each(function(idx, el) {
           var $el = $(el)
           key.push($el.val())
@@ -155,7 +165,7 @@
 
         // url = this.checkAct(url, {"ids":{"value":key.toString()}})
         self.attr('href', url)
-        
+
         console.log(self.attr('href'));
         if (type == 'open') return true
 

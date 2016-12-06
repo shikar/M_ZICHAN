@@ -86,12 +86,14 @@
         }
         if (type == 'open' || type == 'blank') return true
 
-        if (!auto && arr.length > 2 && arr[0] == '#m') {
-          this.el.trigger({
-            type : 'onCatalog',
-            key  : key,
-            url  : url
-          })
+        if (arr.length > 4 && arr[0] == '#m') {
+          if (!this.menuData.hasOwnProperty('open') || arr[4] != this.menuData.open[0] || arr[5] != this.menuData.open[1]) {
+            this.el.trigger({
+              type : 'onCatalog',
+              key  : key,
+              url  : url
+            })
+          }
         }
 
         return false

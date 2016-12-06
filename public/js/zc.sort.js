@@ -17,12 +17,16 @@
         this.el.append(this.opts.tplMain)
         this.el.find('[data-toggle=tooltip]').tooltip()
       }
+    , clear: function() {
+        this.el.find('.sort-bar .list-sort').empty()
+        this.el.find('.sort-bar').hide()
+      }
     , create: function(data) {
         var key,val
           , list = this.el.find('.sort-bar .list-sort')
         this.data = data
+        this.clear()
 
-        list.empty()
         for (key in data) {
           val = data[key]
           list.append($.sprintf(this.opts.tplItem, val.name, val.value, val.value))
@@ -37,6 +41,8 @@
 
         this.el.find('.btn-reset').bind('click', $.proxy(this.onResetClick, this))
         list.find('li').bind('click', $.proxy(this.onSortItemClick, this))
+
+        this.el.find('.sort-bar').show()
       }
 
     , sortSortList: function() {

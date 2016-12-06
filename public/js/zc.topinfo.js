@@ -19,11 +19,15 @@
         this.el.append(this.opts.tplMain)
         this.el.find('.btn-open').bind('click', $.proxy(this.onOpenClick, this))
       }
+    , clear: function() {
+        this.el.find('.block-info dl').empty()
+        this.el.find('.block-info').hide()
+      }
     , create: function(data) {
         var key,curDl,value
           , i = 0
         this.data = data
-        this.el.find('.block-info dl').empty()
+        this.clear()
 
         for (key in this.data) {
           curDl = this.el.find('dl:eq('+i%2+')')
@@ -35,6 +39,8 @@
         }
 
         this.el.find('.item-link').bind('click', $.proxy(this.onLinkClick, this))
+
+        this.el.find('.block-info').show()
       }
     , checkLink: function(link) {
         var hash = window.location.hash

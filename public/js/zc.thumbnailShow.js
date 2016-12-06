@@ -60,8 +60,6 @@
           }
         }
 
-
-
         this.el.empty().append(this.opts.loadHtml)
         this.id     = id
         this.filter = []
@@ -159,6 +157,13 @@
             this.search = json.breadcrumb.searchcontent
           this.el.find('.row>div').ZCBreadcrumb('create', json.breadcrumb)
         }
+
+        this.el.find('.thumbnail-main').ZCTopInfo('clear')
+          .ZCFilter('clear')
+          .ZCSort('clear')
+          .ZCTable('clear')
+          .ZCPagination2('clear')
+
         if (json.hasOwnProperty('info')) this.el.find('.thumbnail-main').ZCTopInfo('create', json.info)
         if (json.hasOwnProperty('filter')) this.el.find('.thumbnail-main').ZCFilter('create', json.filter)
         if (json.hasOwnProperty('sort')) this.el.find('.thumbnail-main').ZCSort('create', json.sort)
@@ -172,6 +177,13 @@
             this.search = json.breadcrumb.searchcontent
           this.el.find('.row>div').ZCBreadcrumb('create', json.breadcrumb)
         }
+
+        this.el.find('.thumbnail-main').ZCTopInfo('clear')
+          .ZCFilter('clear')
+          .ZCSort('clear')
+          .ZCTable('clear')
+          .ZCPagination2('clear')
+
         if (json.hasOwnProperty('info')) this.el.find('.thumbnail-main').ZCTopInfo('create', json.info)
         if (json.hasOwnProperty('filter')) this.el.find('.thumbnail-main').ZCFilter('create', json.filter)
         if (json.hasOwnProperty('sort')) this.el.find('.thumbnail-main').ZCSort('create', json.sort)

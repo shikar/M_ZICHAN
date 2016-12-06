@@ -15,6 +15,10 @@
     , init: function() {
         this.el.append(this.opts.tplMain)
       }
+    , clear: function() {
+        this.el.find('nav').empty()
+        this.el.find('nav').hide()
+      }
     , create: function(data) {
         var $pagination
 
@@ -22,8 +26,9 @@
         this.opts.pageCur   = data.curPage
         this.opts.count     = data.count
 
+        this.clear()
         $pagination = this.el.find('nav')
-        $pagination.empty()
+
         if (this.opts.pageTotal > 1) {
           if (this.opts.pageCur == 1) {
             $pagination.append($.sprintf(this.opts.tplPageFrist, ' disabled'))
@@ -47,6 +52,8 @@
         }
         $pagination.find('a').bind('click', $.proxy(this.onPageClick, this))
         $pagination.find('.page-ipt').bind('keypress', $.proxy(this.onPageKeypress, this))
+
+        this.el.find('nav').show()
       }
 
     , onPageClick: function(e) {

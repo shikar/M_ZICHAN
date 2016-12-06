@@ -18,9 +18,14 @@
         $(window).bind('resize', $.proxy(this.onDocResize, this))
         $('.thumbnail-breadcrumb').find('.ctrl-left, .ctrl-right').bind('click', $.proxy(this.onBreadcrumbCtrlClick, this))
       }
+    , clear: function() {
+        this.el.find('.filter-bar').empty()
+        this.el.find('.filter-bar').hide()
+      }
     , create: function(data) {
         var i,j,item,subitem
-        this.el.find('.filter-bar').empty()
+        this.clear()
+
         for (i = 0; i < data.length; i++) {
           item = data[i]
           this.el.find('.filter-bar').append($.sprintf(this.opts.tplList, item.name))
@@ -32,6 +37,8 @@
         this.el.find('.filter-bar .btn-open').bind('click', $.proxy(this.onOpenClick, this))
         this.el.find('.filter-bar .filter-item').bind('click', $.proxy(this.onFilterBtnClick, this))
         this.checkOpenBtn()
+
+        this.el.find('.filter-bar').show()
       }
     , checkOpenBtn: function() {
         this.el.find('.filter-bar dd').each(function(idx, el){
