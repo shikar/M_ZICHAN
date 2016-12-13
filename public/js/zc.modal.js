@@ -57,6 +57,11 @@
         }
       }
     , onSubmitClick: function(e) {
+        var self = $(e.currentTarget)
+          , type = self.data('type')
+        if (type && this.$modal.find('input[name="submit-type"]')) {
+          this.$modal.find('input[name="submit-type"]').val(type)
+        }
         this.$modal.find('[type=submit]').button('loading')
         this.$modal.find('form').trigger('submit')
         setTimeout($.proxy(this.onSetTimeOut, this), 4000)

@@ -3,7 +3,8 @@
   <h4 class="modal-title">通用表单</h4>
 </div>
 <div class="modal-body">
-  <form action="ajax/ok.html" method="post" class="form-horizontal"><!--  enctype="multipart/form-data" -->
+  <form action="ajax/ok.html" method="get" class="form-horizontal"><!--  enctype="multipart/form-data" -->
+    <input type="hidden" name="submit-type">
     <div class="form-group">
       <label for="input1" class="col-sm-2 control-label">申请单名称</label>
       <div class="col-sm-4">
@@ -97,7 +98,8 @@
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-default" data-dismiss="modal"> 关 闭 </button>
-  <button type="submit" class="btn btn-primary"> 提 交 </button>
+  <button type="submit" data-type="type1" class="btn btn-primary"> 提 交 </button>
+  <button type="submit" data-type="type2" class="btn btn-primary"> 提 交 </button>
 </div>
 
 
