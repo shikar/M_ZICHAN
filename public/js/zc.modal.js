@@ -80,7 +80,8 @@
     , onSubmitComplete: function(e) {
         console.log('onSubmitSuccess', e)
         this.$modal.find('.modal-dialog').removeClass('modal-lg').addClass('modal-sm')
-        this.$modal.find('[type=submit]').remove()
+        this.$modal.find('.modal-footer button').remove()
+        this.$modal.find('.modal-footer').append('<button type="button" class="btn btn-default" data-dismiss="modal"> 关 闭 </button>')
         this.$modal.find('.modal-body').html(e.responseText)
         // 提交后刷新表格
         $('#main-block').ZCThumbnailShow('refreshTable')
