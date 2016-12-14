@@ -161,7 +161,14 @@
         })
         console.log(key);
 
-        if (key.length <= 0) return false
+        if (key.length <= 0) {
+          $.fn.ZCModal({
+            title  : '提示',
+            size   : 'small',
+            body   : '没有选中任何记录! 请选择记录'
+          })
+          return false
+        }
 
         // url = this.checkAct(url, {"ids":{"value":key.toString()}})
         self.attr('href', url)
