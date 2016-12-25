@@ -450,7 +450,8 @@ table th {white-space: nowrap;}
 
 
 dl.filter-bar,
-dl.sort-bar {
+dl.sort-bar,
+dl.datefilter-bar {
   margin-bottom: 10px;
   margin-left: 0;
   padding: 8px 10px 0 10px;
@@ -461,21 +462,25 @@ dl.sort-bar {
 .filter-bar > dt {
   width: 110px;
 }
-.sort-bar > dt {
+.sort-bar > dt,
+.datefilter-bar > dt {
   width: 40px;
 }
 .filter-bar > dd {
   margin-left: 120px;
 }
-.sort-bar > dd {
+.sort-bar > dd,
+.datefilter-bar > dd {
   margin-left: 50px;
 }
-.sort-bar ul {
+.sort-bar ul,
+.datefilter-bar ul {
   margin-bottom: 0;
 }
 .filter-bar input,
 .filter-bar button,
-.sort-bar ul li {
+.sort-bar ul li,
+.datefilter-bar ul li {
   margin-bottom: 8px;
 }
 .filter-selects .btn,
@@ -540,7 +545,9 @@ ul li.placeholder .btn {
 .thumbnail-main .dl-horizontal dd, .modal-body .dl-horizontal dd {
   margin-left: 130px;
 }
-.thumbnail-main  .filter-bar dt, .thumbnail-main .sort-bar dt {
+.thumbnail-main .filter-bar dt,
+.thumbnail-main .datefilter-bar dt,
+.thumbnail-main .sort-bar dt {
   text-align: left;
 }
 .thumbnail-main .panel .btn-open {

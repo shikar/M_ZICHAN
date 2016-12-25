@@ -37,7 +37,7 @@
             "value":"2016-09-01 12:31:18"
         }
     ],
-    "adcrumb": {
+    "breadcrumb": {
         "serchplaceholder": "搜索申请单",
         "list": [{
                 "name": "首页",
@@ -59,6 +59,7 @@
             "value": "提交时间"
         }
     ],
+    "datefilter": true,
     "page": {
         "curPage": 1,
         "totalPage": 1,
@@ -74,13 +75,13 @@
                         "id": 1,
                         "name": "待共享数据集",
                         "type": "ajax",
-                        "url": "json/share/apply",
+                        "url": null,
                         "list": null
                     }, {
                         "id": 2,
                         "name": "申请单列表",
                         "type": "ajax",
-                        "url": "json/share/apply/list",
+                        "url": null,
                         "list": null
                     }
                 ]

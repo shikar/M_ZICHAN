@@ -18,6 +18,7 @@
     , init: function() {
         this.el.append(this.opts.tplMain)
         this.el.find('.btn-open').bind('click', $.proxy(this.onOpenClick, this))
+        console.dir('ZCTopInfo')
       }
     , clear: function() {
         this.el.find('.block-info dl').empty()

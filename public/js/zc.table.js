@@ -16,6 +16,7 @@
       constructor: ZCTable
     , init: function() {
         this.el.append(this.opts.tplMain)
+        console.dir('ZCTable')
       }
     , clear: function() {
         this.el.find('thead').empty()

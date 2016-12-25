@@ -7,12 +7,13 @@
     this.opts     = opts
     this.ajaxData = null
 
-    this.id      = 0
-    this.catelog = 0
-    this.filter  = []
-    this.sort    = []
-    this.page    = 1
-    this.search  = ''
+    this.id        = 0
+    this.catelog   = 0
+    this.filter    = []
+    this.dateRange = ''
+    this.sort      = []
+    this.page      = 1
+    this.search    = ''
 
     this.ajaxUrl = ''
 
@@ -25,12 +26,13 @@
       constructor: ZCThumbnailShow
     , init: function() {
         this.el.bind({
-          'onSort'    : $.proxy(this.onSortResult, this),
-          'onAct'     : $.proxy(this.onActResult, this),
-          'onPage'    : $.proxy(this.onPageResult, this),
-          'onFilter'  : $.proxy(this.onFilterResult, this),
-          'onCatalog' : $.proxy(this.onCatalogResult, this),
-          'onSearch'  : $.proxy(this.onSearchResult, this)
+          'onSort'       : $.proxy(this.onSortResult, this),
+          'onAct'        : $.proxy(this.onActResult, this),
+          'onPage'       : $.proxy(this.onPageResult, this),
+          'onFilter'     : $.proxy(this.onFilterResult, this),
+          'onDateFilter' : $.proxy(this.onDateFilterResult, this),
+          'onCatalog'    : $.proxy(this.onCatalogResult, this),
+          'onSearch'     : $.proxy(this.onSearchResult, this)
         })
       }
     , checkLoacAccessUrl: function() {
@@ -66,6 +68,7 @@
         this.sort   = []
         this.page   = 1
         this.search = ''
+
         $.ajax({
           cache    : false,
           dataType : "json",
@@ -87,7 +90,6 @@
         this.ajaxUrl = (ajaxUrl||this.ajaxUrl)
         this.catelog = (catelog||"")
         this.page = 1
-        this.el.find('.thumbnail-main').ZCTable('loading')
         $.ajax({
           cache    : false,
           dataType : "json",
@@ -111,14 +113,15 @@
           cache    : false,
           dataType : "json",
           data     : {
-              id      : this.id,
-              catelog : this.catelog,
-              murl    : window.location.hash.replace('#',''),
-              menu    : false,
-              filter  : this.filter,
-              sort    : this.sort,
-              page    : this.page,
-              search  : this.search
+              id        : this.id,
+              catelog   : this.catelog,
+              murl      : window.location.hash.replace('#',''),
+              menu      : false,
+              filter    : this.filter,
+              dateRange : this.dateRange,
+              sort      : this.sort,
+              page      : this.page,
+              search    : this.search
             },
           url      : this.ajaxUrl,
           success  : $.proxy(this.onThumbnailTableResult, this)
@@ -160,17 +163,12 @@
           this.el.find('.row>div').ZCBreadcrumb('create', json.breadcrumb)
         }
 
-        this.el.find('.thumbnail-main').ZCTopInfo('clear')
-          .ZCFilter('clear')
-          .ZCSort('clear')
-          .ZCTable('clear')
-          .ZCPagination2('clear')
-
-        if (json.hasOwnProperty('info')) this.el.find('.thumbnail-main').ZCTopInfo('create', json.info)
-        if (json.hasOwnProperty('filter')) this.el.find('.thumbnail-main').ZCFilter('create', json.filter)
-        if (json.hasOwnProperty('sort')) this.el.find('.thumbnail-main').ZCSort('create', json.sort)
-        if (json.hasOwnProperty('table')) this.el.find('.thumbnail-main').ZCTable('create', json.table)
-        if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('create', json.page)
+        if (json.hasOwnProperty('info')) this.el.find('.thumbnail-main').ZCTopInfo('clear').ZCTopInfo('create', json.info)
+        if (json.hasOwnProperty('filter')) this.el.find('.thumbnail-main').ZCFilter('clear').ZCFilter('create', json.filter)
+        if (json.hasOwnProperty('sort')) this.el.find('.thumbnail-main').ZCSort('clear').ZCSort('create', json.sort)
+        if (json.hasOwnProperty('datefilter')) this.el.find('.thumbnail-main').ZCDateFilter('clear').ZCDateFilter('create', json.datefilter)
+        if (json.hasOwnProperty('table')) this.el.find('.thumbnail-main').ZCTable('clear').ZCTable('create', json.table)
+        if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('clear').ZCPagination2('create', json.page)
       }
     , onThumbnailCatalogResult: function(json) {
         if (this.checkReturn(json)) return
@@ -180,17 +178,12 @@
           this.el.find('.row>div').ZCBreadcrumb('create', json.breadcrumb)
         }
 
-        this.el.find('.thumbnail-main').ZCTopInfo('clear')
-          .ZCFilter('clear')
-          .ZCSort('clear')
-          .ZCTable('clear')
-          .ZCPagination2('clear')
-
-        if (json.hasOwnProperty('info')) this.el.find('.thumbnail-main').ZCTopInfo('create', json.info)
-        if (json.hasOwnProperty('filter')) this.el.find('.thumbnail-main').ZCFilter('create', json.filter)
-        if (json.hasOwnProperty('sort')) this.el.find('.thumbnail-main').ZCSort('create', json.sort)
-        if (json.hasOwnProperty('table')) this.el.find('.thumbnail-main').ZCTable('create', json.table)
-        if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('create', json.page)
+        if (json.hasOwnProperty('info')) this.el.find('.thumbnail-main').ZCTopInfo('clear').ZCTopInfo('create', json.info)
+        if (json.hasOwnProperty('filter')) this.el.find('.thumbnail-main').ZCFilter('clear').ZCFilter('create', json.filter)
+        if (json.hasOwnProperty('sort')) this.el.find('.thumbnail-main').ZCSort('clear').ZCSort('create', json.sort)
+        if (json.hasOwnProperty('datefilter')) this.el.find('.thumbnail-main').ZCDateFilter('clear').ZCDateFilter('create', json.datefilter)
+        if (json.hasOwnProperty('table')) this.el.find('.thumbnail-main').ZCTable('clear').ZCTable('create', json.table)
+        if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('clear').ZCPagination2('create', json.page)
       }
     , onThumbnailTableResult: function(json) {
         if (this.checkReturn(json)) return
@@ -244,6 +237,12 @@
         console.log(e.selected)
         this.filter = JSON.stringify(e.selected)
         this.page = 1
+        this.refreshTable()
+      }
+    , onDateFilterResult: function(e) {
+        e.stopPropagation()
+        console.log(e.sDate, e.eDate)
+        this.dateRange = JSON.stringify({s:e.sDate, e:e.eDate})
         this.refreshTable()
       }
     , onSearchResult: function(e) {

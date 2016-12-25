@@ -13,6 +13,7 @@
     <link href="css/bootstrap3/glyphicons.pro.css" rel="stylesheet">
     <link href="css/multi-select.css" rel="stylesheet" type="text/css">
     <link href="css/chosen.min.css" rel="stylesheet" type="text/css">
+    <link href="css/daterangepicker.css" rel="stylesheet" type="text/css">
     <link href="css/zc.main.css" rel="stylesheet">
     <link href="css/zc.main.theme.css" rel="stylesheet">
     <link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
@@ -314,6 +315,8 @@
                   <button class="test-btn" data-idx="1">按钮2</button>
                   <button class="test-btn" data-idx="2">按钮3</button>
                   <button class="test-btn" data-idx="3">按钮4</button>
+
+                  <div class="form-group has-feedback"><input type="text" class="form-control" id="dateipt"><span class="glyphicon glyphicon-calendar form-control-feedback"></span></div>
                 </div>
               </div>
             </div>
@@ -331,12 +334,15 @@
       </div>
     </div>
 
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery3.min.js"></script>
     <script src="js/jquery.notify.js"></script>
     <script src="js/jquery.form.js"></script>
     <script src="js/jquery.sprintf.min.js"></script>
     <script src="js/jquery.sortable.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/daterangepicker.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap3.min.js"></script>
 
@@ -356,6 +362,7 @@
     <script src="js/zc.modal.js"></script>
     <script src="js/zc.table.js"></script>
     <script src="js/zc.filter.js"></script>
+    <script src="js/zc.datefilter.js"></script>
     <script src="js/zc.sort.js"></script>
     <script src="js/zc.breadcrumb.js"></script>
     <script src="js/zc.catalog.js"></script>
