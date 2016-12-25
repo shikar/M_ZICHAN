@@ -92,10 +92,10 @@
           , url   = self.data('url')
           , type  = self.data('type')
 
-        if (!auto) window.location.hash = '#f_' + key
+        // if (!auto) window.location.hash = '#f_' + key
         if (type == 'blank') {
           self.find('a').attr({target: '_blank'})
-          self.attr({href: self.attr('href')+window.location.hash})
+          // self.attr({href: self.attr('href')+window.location.hash})
         }
         if (type == 'open' || type == 'blank') return true
 

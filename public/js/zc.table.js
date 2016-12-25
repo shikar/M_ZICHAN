@@ -16,13 +16,17 @@
       constructor: ZCTable
     , init: function() {
         this.el.append(this.opts.tplMain)
-        //console.dir(this.opts.tplMain)
       }
     , clear: function() {
         this.el.find('thead').empty()
         this.el.find('tbody').empty()
         this.el.find('.table-btn').empty()
         this.el.find('table').hide()
+        this.el.find('.sk-wave').remove()
+      }
+    , loading: function() {
+        this.clear()
+        this.el.find('.table-responsive').append(this.opts.loadHtml)
       }
     , create: function(data) {
         var i,j,item,$lastTr,td,itemLinkRet
@@ -247,7 +251,7 @@
   $.fn.ZCTable.defs = {
       data        : null
     , loadHtml    : '<div class="sk-wave"><div class="sk-rect sk-rect1"></div><div class="sk-rect sk-rect2"></div><div class="sk-rect sk-rect3"></div><div class="sk-rect sk-rect4"></div><div class="sk-rect sk-rect5"></div></div>'
-    , tplMain     : '<table class="table table-striped table-hover table-list"><thead></thead><tbody></tbody></table><div class="table-btn text-center"></div>'
+    , tplMain     : '<div class="table-responsive"><table class="table table-striped table-hover table-list"><thead></thead><tbody></tbody></table></div><div class="table-btn text-center"></div>'
     , tplLink     : '<a href="%s" class="item-link" data-type="%s">%s</a>'
     , clsKeyword  : 'red'
     , clsSelected : 'info'

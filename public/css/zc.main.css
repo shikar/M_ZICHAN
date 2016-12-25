@@ -2,6 +2,7 @@
 body {
   font-family: '微软雅黑','Microsoft Yahei','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
+table th {white-space: nowrap;}
 .breadcrumb > li + li:before {
   content: '>';
 }
@@ -544,8 +545,8 @@ ul li.placeholder .btn {
 }
 .thumbnail-main .panel .btn-open {
   position: absolute;
-  top: -8px;
-  right: 10px;
+  top: -18px;
+  right: -4px;
 }
 
 

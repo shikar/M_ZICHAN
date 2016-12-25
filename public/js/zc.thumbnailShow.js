@@ -87,6 +87,7 @@
         this.ajaxUrl = (ajaxUrl||this.ajaxUrl)
         this.catelog = (catelog||"")
         this.page = 1
+        this.el.find('.thumbnail-main').ZCTable('loading')
         $.ajax({
           cache    : false,
           dataType : "json",
@@ -105,6 +106,7 @@
        * 有条件的查询,只更新表格和分页组件, 返回的 json 结构参照 thumbnailTable.json
        */
     , refreshTable: function() {
+        this.el.find('.thumbnail-main').ZCTable('loading')
         $.ajax({
           cache    : false,
           dataType : "json",
@@ -192,6 +194,8 @@
       }
     , onThumbnailTableResult: function(json) {
         if (this.checkReturn(json)) return
+        console.log( json.info)
+        if (json.hasOwnProperty('info')) this.el.find('.thumbnail-main').ZCTopInfo('create', json.info)
         if (json.hasOwnProperty('table')) this.el.find('.thumbnail-main').ZCTable('create', json.table)
         if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('create', json.page)
       }

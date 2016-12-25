@@ -1,4 +1,41 @@
 {
+  "info":[
+      {
+          "name":"id",
+          "value":2
+      },
+      {
+          "name":"数据集名数据集名",
+          "value":"数据集1",
+          "link":"ajax/form.html?id=1",
+          "type":"popup",
+          "menu":""
+      },
+      {
+          "name":"标示符",
+          "value":"xxx3"
+      },
+      {
+          "name":"负责单位",
+          "value":"CDC"
+      },
+      {
+          "name":"数据元个数",
+          "value":20
+      },
+      {
+          "name":"记录行数",
+          "value":23000
+      },
+      {
+          "name":"业务类别",
+          "value":2908
+      },
+      {
+          "name":"抓取时间",
+          "value":"2016-09-01 12:31:18"
+      }
+  ],
   "table" : {
     "info":{
       "checkbox": 1,
