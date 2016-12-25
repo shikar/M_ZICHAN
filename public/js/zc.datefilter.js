@@ -54,7 +54,7 @@
   $.fn.ZCDateFilter.defs = {
       data    : true
     , tplMain : '<dl class="dl-horizontal datefilter-bar clearfix"></dl>'
-    , tplItem : '<dt class="title">提交时间:</dt><dd class="title form-inline"><div class="form-group has-feedback" style="margin-bottom:8px"><input type="text" class="form-control input-sm" style="width:300px" id="daterange" placeholder="请选择日期区间"><span class="glyphicon glyphicon-calendar form-control-feedback"></span></div></dd>'
+    , tplItem : '<dt class="title" style="margin-top:4px">提交时间:</dt><dd class="title form-inline"><div class="form-group has-feedback" style="margin-bottom:8px"><input type="text" class="form-control input-sm" style="width:300px" id="daterange" placeholder="请选择日期区间"><span class="glyphicon glyphicon-calendar form-control-feedback"></span></div></dd>'
   }
 
   $.fn.ZCDateFilter.Constructor = ZCDateFilter
