@@ -5,7 +5,7 @@
   var ZCDateFilter = function (el, opts) {
     this.el = el
     this.opts = opts
-    this.prevRet = []
+    this.ranges = {}
 
     this.init()
   }
@@ -17,22 +17,36 @@
         this.el.append(this.opts.tplMain)
       }
     , clear: function() {
-        // this.el.find('.datefilter-bar').empty()
+        this.el.find('.datefilter-bar').empty()
+        this.ranges = {}
       }
     , create: function(data) {
-        this.el.find('.datefilter-bar').append(this.opts.tplItem)
-        this.el.find('#daterange').daterangepicker({
+        this.clear()
+        var i,item = null
+        if (data.length > 0) {
+          for (i = 0; i < data.length; i++) {
+            item = data[i]
+            this.el.find('.datefilter-bar').append($.sprintf(this.opts.tplItem, item.name, item.key))
+          }
+        }
+
+        this.el.find('.daterange').daterangepicker({
           "minDate": "YYYY-MM-DD",
-          "maxDate": "YYYY-MM-DD"
-        }, $.proxy(this.onSelected, this))
+          "maxDate": "YYYY-MM-DD",
+          "showDropdowns": true
+        }).on('apply.daterangepicker', $.proxy(this.onSelected, this))
       }
-    , onSelected: function(start, end, label) {
+    , onSelected: function(e, picker) {
+        var self = $(e.currentTarget)
+          , id = self.attr('id')
+        this.ranges[id] = {
+          "startDate" : picker.startDate.format('YYYY-MM-DD'),
+          "endDate"   : picker.endDate.format('YYYY-MM-DD')
+        }
         this.el.trigger({
-          type : "onDateFilter",
-          sDate : start.format('YYYY-MM-DD'),
-          eDate : end.format('YYYY-MM-DD'),
+          type   : "onDateFilter",
+          ranges : this.ranges
         })
-        // console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'))
       }
   }
 
@@ -54,7 +68,7 @@
   $.fn.ZCDateFilter.defs = {
       data    : true
     , tplMain : '<dl class="dl-horizontal datefilter-bar clearfix"></dl>'
-    , tplItem : '<dt class="title" style="margin-top:4px">提交时间:</dt><dd class="title form-inline"><div class="form-group has-feedback" style="margin-bottom:8px"><input type="text" class="form-control input-sm" style="width:300px" id="daterange" placeholder="请选择日期区间"><span class="glyphicon glyphicon-calendar form-control-feedback"></span></div></dd>'
+    , tplItem : '<dt class="title" style="margin-top:4px">%s:</dt><dd class="title form-inline"><div class="form-group has-feedback" style="margin-bottom:8px"><input type="text" class="form-control input-sm daterange" style="width:300px" id="%s"><span class="glyphicon glyphicon-calendar form-control-feedback"></span></div></dd>'
   }
 
   $.fn.ZCDateFilter.Constructor = ZCDateFilter

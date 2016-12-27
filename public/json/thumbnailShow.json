@@ -3,7 +3,7 @@
     "info":[
         {
             "name":"id",
-            "value":2
+            "value":2111
         },
         {
             "name":"数据集名数据集名",
@@ -59,7 +59,15 @@
             "value": "提交时间"
         }
     ],
-    "datefilter": true,
+    "datefilter": [
+        {
+            "name": "提交时间",
+            "key": "submitDate"
+        } , {
+            "name": "其他时间",
+            "key": "otherDate"
+        }
+    ],
     "page": {
         "curPage": 1,
         "totalPage": 1,
@@ -105,31 +113,267 @@
                 "hidden": true,
                 "link": null,
                 "menu": null,
-                "type": null
+                "type": null,
+                "nowrap": true
             }, {
                 "name": "编号",
                 "hidden": false,
                 "link": null,
                 "menu": null,
-                "type": null
+                "type": null,
+                "nowrap": true
             }, {
                 "name": "申请单名称",
                 "hidden": false,
                 "link": null,
                 "menu": null,
-                "type": null
+                "type": null,
+                "nowrap": true
             }, {
                 "name": "申请人",
                 "hidden": false,
                 "link": null,
                 "menu": null,
-                "type": null
+                "type": null,
+                "nowrap": true
             }, {
                 "name": "提交时间",
                 "hidden": false,
                 "link": null,
                 "menu": null,
-                "type": null
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
+            }, {
+                "name": "状态",
+                "hidden": false,
+                "link": null,
+                "menu": null,
+                "type": null,
+                "nowrap": true
             }, {
                 "name": "状态",
                 "hidden": false,
@@ -141,238 +385,46 @@
                 "hidden": false,
                 "link": null,
                 "menu": null,
-                "type": null
+                "type": null,
+                "nowrap": true
             }, {
                 "name": "状态",
                 "hidden": false,
                 "link": null,
                 "menu": null,
-                "type": null
+                "type": null,
+                "nowrap": true
             }, {
                 "name": "状态",
                 "hidden": false,
                 "link": null,
                 "menu": null,
-                "type": null
+                "type": null,
+                "nowrap": true
             }, {
                 "name": "状态",
                 "hidden": false,
                 "link": null,
                 "menu": null,
-                "type": null
+                "type": null,
+                "nowrap": true
             }, {
                 "name": "状态",
                 "hidden": false,
                 "link": null,
                 "menu": null,
-                "type": null
+                "type": null,
+                "nowrap": true
             }, {
                 "name": "状态",
                 "hidden": false,
                 "link": null,
                 "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
-            }, {
-                "name": "状态",
-                "hidden": false,
-                "link": null,
-                "menu": null,
-                "type": null
+                "type": null,
+                "nowrap": true
             }
         ],
-        "lists": [[4, 4, "第一个申请", "wwx", 1479206223000, "已提交"], [5, 5, "名称", "管理员", 1480581960000, "已提交"]]
+        "lists": [[4, 4, "第一个申请", "wwx", 1479206223000, "已提交", [0]], [5, 5, "名称", "管理员", 1480581960000, "已提交", [0]]]
     }
 }
 

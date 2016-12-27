@@ -30,7 +30,7 @@
         this.el.find('.table-responsive').append(this.opts.loadHtml)
       }
     , create: function(data) {
-        var i,j,item,$lastTr,td,itemLinkRet
+        var i,j,item,$lastTr,td,itemLinkRet,x,nowrap = ''
         this.data = data
         this.clear()
 
@@ -44,43 +44,56 @@
         for (i = 0; i < data.fields.length; i++) {
           if (!data.fields[i]['hidden']) this.el.find('thead tr').append('<th>'+data.fields[i]['name']+'</th>')
         }
-        if (data.info.hasOwnProperty('listbtn') && data.info.listbtn.length > 0) this.el.find('thead tr').append('<th class="text-center">操作</th>')
+        if (data.info.hasOwnProperty('listbtn') && data.info.listbtn.length > 0)
+          this.el.find('thead tr').append('<th class="text-center">操作</th>')
 
         //if(data.lists!=null  && data.lists.length>0){
-          this.formatData(data)
-          for (i = 0; i < this.list.length; i++) {
-            item = this.list[i]
-            this.el.find('tbody').append($.sprintf('<tr data-key="%s"></tr>', item.id.value))
-            $lastTr = this.el.find('tbody tr:last')
+        this.formatData(data)
+        for (i = 0; i < this.list.length; i++) {
+          item = this.list[i]
+          this.el.find('tbody').append($.sprintf('<tr data-key="%s"></tr>', item.id.value))
+          $lastTr = this.el.find('tbody tr:last')
 
-            // 是否生成 checkbox
-            if (this.data.info.checkbox == true) {
-              $lastTr.append('<td class="text-center"><input type="checkbox" name="ids" value="'+item.id.value+'"></td>')
-            }
+          // 是否生成 checkbox
+          if (this.data.info.checkbox == true) {
+            $lastTr.append('<td class="text-center"><input type="checkbox" name="ids" value="'+item.id.value+'"></td>')
+          }
 
-            // 插入表格内数据
-            for (j in item) {
+          // 插入表格内数据
+          for (j in item) {
+            nowrap = ''
+            if(j=='listaction'){
+              if(data.info.hasOwnProperty('listbtn') && data.info.listbtn.length > 0){
+                td=""
+                for(x in item[j])
+                  td=td+this.checkAct(data.info.listbtn[item[j][x]], item)
+                $lastTr.append('<td class="text-center act-btn">'+td+'</td>')
+              }
+            }else{
               if (item[j]['hidden']) continue
               td = item[j]['value']
               if (!data.info.keyfields || $.inArray(item[j].name, data.info.keyfields) != -1)
-                td = this.checkKeyword(td)
+              td = this.checkKeyword(td)
 
               if (item[j].hasOwnProperty('link') && item[j].link!=null) {
                 itemLinkRet = this.checkLink(item[j], item)
                 if (item[j].hasOwnProperty('type'))
                   td = $.sprintf(this.opts.tplLink, itemLinkRet, item[j].type, td)
               }
-              $lastTr.append('<td>'+td+'</td>')
-            }
-
-            // 插入记录按钮
-            if (data.info.hasOwnProperty('listbtn') && data.info.listbtn.length > 0) {
-              this.el.find('tbody tr:last').append('<td class="text-center act-btn"></td>')
-              for (j = 0; j < data.info.listbtn.length; j++) {
-                $lastTr.find('.act-btn').append(this.checkAct(data.info.listbtn[j], item))
-              }
+              if (item[j].nowrap) nowrap = "text-nowrap"
+              $lastTr.append('<td class="'+nowrap+'">'+td+'</td>')
             }
           }
+
+          // 插入记录按钮
+          /*
+          if (data.info.hasOwnProperty('listbtn') && data.info.listbtn.length > 0) {
+            this.el.find('tbody tr:last').append('<td class="text-center act-btn"></td>')
+            for (j = 0; j < data.info.listbtn.length; j++) {
+              $lastTr.find('.act-btn').append(this.checkAct(data.info.listbtn[j], item))
+            }
+          }*/
+        }
         //}
 
 
@@ -109,10 +122,11 @@
         if(data.lists!=null){
           for (i = 0; i < data.lists.length; i++) {
             row = {}
-            for (j = 0; j < data.lists[i].length; j++) {
-            row[data.fields[j]['name']] = jQuery.extend({'value':data.lists[i][j]==null?"":data.lists[i][j]}, data.fields[j])
+            for (j = 0; j < data.lists[i].length-1; j++) {
+              row[data.fields[j]['name']] = jQuery.extend({'value':data.lists[i][j]==null?"":data.lists[i][j]}, data.fields[j])
             }
-            this.list.push(row)
+          row['listaction']=data.lists[i][j]
+          this.list.push(row)
           }
         }
       }
@@ -261,3 +275,4 @@
   $.fn.ZCTable.Constructor = ZCTable
 
 }(window.jQuery);
+

@@ -187,7 +187,6 @@
       }
     , onThumbnailTableResult: function(json) {
         if (this.checkReturn(json)) return
-        console.log( json.info)
         if (json.hasOwnProperty('info')) this.el.find('.thumbnail-main').ZCTopInfo('create', json.info)
         if (json.hasOwnProperty('table')) this.el.find('.thumbnail-main').ZCTable('create', json.table)
         if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('create', json.page)
@@ -241,8 +240,8 @@
       }
     , onDateFilterResult: function(e) {
         e.stopPropagation()
-        console.log(e.sDate, e.eDate)
-        this.dateRange = JSON.stringify({s:e.sDate, e:e.eDate})
+        console.log(e.ranges)
+        this.dateRange = JSON.stringify(e.ranges)
         this.refreshTable()
       }
     , onSearchResult: function(e) {
