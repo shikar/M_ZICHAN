@@ -9,7 +9,8 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap3/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-datepicker3.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen"> -->
     <link href="css/bootstrap3/glyphicons.pro.css" rel="stylesheet">
     <link href="css/multi-select.css" rel="stylesheet" type="text/css">
     <link href="css/chosen.min.css" rel="stylesheet" type="text/css">
@@ -342,12 +343,13 @@
     <script src="js/jquery.sprintf.min.js"></script>
     <script src="js/jquery.sortable.min.js"></script>
     <script src="js/moment.min.js"></script>
-    <script src="js/daterangepicker.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap3.min.js"></script>
 
     <script src="js/chosen.jquery.js"></script>
     <script src="js/pickList.js"></script>
+    <!-- <script src="js/daterangepicker.js"></script> -->
+    <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/bootstrap-datetimepicker.min.js"></script>
     <script src="js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
     <script src="js/fileinput.js"></script>
@@ -378,16 +380,16 @@
     $(document).ready(function(){
       $.fn.ZCMain({rootUrl:''});
 
-      $('.form_date').datetimepicker({
-        language       : 'zh-CN',
-        weekStart      : 1,
-        todayBtn       : 1,
-        autoclose      : 1,
-        todayHighlight : 1,
-        startView      : 2,
-        minView        : 2,
-        forceParse     : 0
-      })
+      // $('.form_date').datetimepicker({
+      //   language       : 'zh-CN',
+      //   weekStart      : 1,
+      //   todayBtn       : 1,
+      //   autoclose      : 1,
+      //   todayHighlight : 1,
+      //   startView      : 2,
+      //   minView        : 2,
+      //   forceParse     : 0
+      // })
 
       $('#select1').pickList({
         add: '>',

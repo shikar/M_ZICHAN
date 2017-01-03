@@ -163,12 +163,19 @@
           this.el.find('.row>div').ZCBreadcrumb('create', json.breadcrumb)
         }
 
-        if (json.hasOwnProperty('info')) this.el.find('.thumbnail-main').ZCTopInfo('clear').ZCTopInfo('create', json.info)
-        if (json.hasOwnProperty('filter')) this.el.find('.thumbnail-main').ZCFilter('clear').ZCFilter('create', json.filter)
-        if (json.hasOwnProperty('sort')) this.el.find('.thumbnail-main').ZCSort('clear').ZCSort('create', json.sort)
-        if (json.hasOwnProperty('datefilter')) this.el.find('.thumbnail-main').ZCDateFilter('clear').ZCDateFilter('create', json.datefilter)
-        if (json.hasOwnProperty('table')) this.el.find('.thumbnail-main').ZCTable('clear').ZCTable('create', json.table)
-        if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('clear').ZCPagination2('create', json.page)
+        this.el.find('.thumbnail-main').ZCTopInfo('clear')
+          .ZCFilter('clear')
+          .ZCDateFilter('clear')
+          .ZCSort('clear')
+          .ZCTable('clear')
+          .ZCPagination2('clear')
+
+        if (json.hasOwnProperty('info')) this.el.find('.thumbnail-main').ZCTopInfo('create', json.info)
+        if (json.hasOwnProperty('filter')) this.el.find('.thumbnail-main').ZCFilter('create', json.filter)
+        if (json.hasOwnProperty('datefilter')) this.el.find('.thumbnail-main').ZCDateFilter('create', json.datefilter)
+        if (json.hasOwnProperty('sort')) this.el.find('.thumbnail-main').ZCSort('create', json.sort)
+        if (json.hasOwnProperty('table')) this.el.find('.thumbnail-main').ZCTable('create', json.table)
+        if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('create', json.page)
       }
     , onThumbnailCatalogResult: function(json) {
         if (this.checkReturn(json)) return
@@ -178,12 +185,19 @@
           this.el.find('.row>div').ZCBreadcrumb('create', json.breadcrumb)
         }
 
-        if (json.hasOwnProperty('info')) this.el.find('.thumbnail-main').ZCTopInfo('clear').ZCTopInfo('create', json.info)
-        if (json.hasOwnProperty('filter')) this.el.find('.thumbnail-main').ZCFilter('clear').ZCFilter('create', json.filter)
-        if (json.hasOwnProperty('sort')) this.el.find('.thumbnail-main').ZCSort('clear').ZCSort('create', json.sort)
-        if (json.hasOwnProperty('datefilter')) this.el.find('.thumbnail-main').ZCDateFilter('clear').ZCDateFilter('create', json.datefilter)
-        if (json.hasOwnProperty('table')) this.el.find('.thumbnail-main').ZCTable('clear').ZCTable('create', json.table)
-        if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('clear').ZCPagination2('create', json.page)
+        this.el.find('.thumbnail-main').ZCTopInfo('clear')
+          .ZCFilter('clear')
+          .ZCDateFilter('clear')
+          .ZCSort('clear')
+          .ZCTable('clear')
+          .ZCPagination2('clear')
+
+        if (json.hasOwnProperty('info')) this.el.find('.thumbnail-main').ZCTopInfo('create', json.info)
+        if (json.hasOwnProperty('filter')) this.el.find('.thumbnail-main').ZCFilter('create', json.filter)
+        if (json.hasOwnProperty('datefilter')) this.el.find('.thumbnail-main').ZCDateFilter('create', json.datefilter)
+        if (json.hasOwnProperty('sort')) this.el.find('.thumbnail-main').ZCSort('create', json.sort)
+        if (json.hasOwnProperty('table')) this.el.find('.thumbnail-main').ZCTable('create', json.table)
+        if (json.hasOwnProperty('page')) this.el.find('.thumbnail-main').ZCPagination2('create', json.page)
       }
     , onThumbnailTableResult: function(json) {
         if (this.checkReturn(json)) return
