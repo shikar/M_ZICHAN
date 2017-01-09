@@ -37,7 +37,9 @@
             autoclose: true
           })
           this.el.find('.btn-submit').bind('click', $.proxy(this.onSubmit, this));
-        }
+        }else{
+			this.el.find('.datefilter-bar').hide();
+		}
       }
     , onSubmit: function(e) {
         this.ranges = {}
