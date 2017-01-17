@@ -13,6 +13,7 @@
     this.dateRange = ''
     this.sort      = []
     this.page      = 1
+    this.pagePer   = 20
     this.search    = ''
 
     this.ajaxUrl = ''
@@ -244,6 +245,7 @@
         console.log(e.page)
         console.log(e.per)
         this.page = e.page
+        this.pagePer = e.per
         this.refreshTable()
       }
     , onFilterResult: function(e) {
