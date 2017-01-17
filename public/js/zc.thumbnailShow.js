@@ -18,6 +18,8 @@
 
     this.ajaxUrl = ''
 
+    if ($.cookie('page-per-count') != undefined) this.pagePer = $.cookie('page-per-count')
+
     this.checkLoacAccessUrl()
     this.init()
   }
