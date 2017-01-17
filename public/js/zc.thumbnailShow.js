@@ -122,6 +122,7 @@
               dateRange : this.dateRange,
               sort      : this.sort,
               page      : this.page,
+              pagePer   : this.pagePer,
               search    : this.search
             },
           url      : this.ajaxUrl,
