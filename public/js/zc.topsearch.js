@@ -67,7 +67,8 @@
        * @param  {Number} page 第几页 默认:1
        */
     , goSearch: function(key, type, page) {
-        window.location.hash = ''
+    if(type=='all')
+      window.location.hash = ''
         this.el.html(this.opts.loadHtml)
         page = page||1
         $.ajax({

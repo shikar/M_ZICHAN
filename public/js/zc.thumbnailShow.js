@@ -242,6 +242,7 @@
     , onPageResult: function(e) {
         e.stopPropagation()
         console.log(e.page)
+        console.log(e.per)
         this.page = e.page
         this.refreshTable()
       }
