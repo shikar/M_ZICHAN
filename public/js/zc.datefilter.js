@@ -54,7 +54,7 @@
           , id = cur.attr('id')
           , start = cur.find('input[name=start]').val()
           , end = cur.find('input[name=end]').val()
-        if (start != '' && end != '') {
+        if (start != '' || end != '') {
           this.ranges[id] = {
             "startDate" : start,
             "endDate"   : end
